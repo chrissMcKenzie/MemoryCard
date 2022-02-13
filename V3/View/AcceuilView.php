@@ -1,24 +1,29 @@
-<div class="logotitle">
-    <span class="titre">Bienvenue sur MemoryCard </span>
-    <img class="logo" src="view/téléchargement.png">
+<?php require_once './template/TemplateView.php'; ?>
+<!DOCTYPE html>
+<html lang="fr">
 
-    <div class="buttons">
-        <button class=patient onclick="window.location.href = 'index.php?page=7';"> Patient </button>
-        <button class=soignant onclick="window.location.href = 'index.php?page=1';"> Soignant </button>
-        <h1>Veuillez choisir votre espace</h1>
-    </div>
-</div>
-
-<footer>
-    <h2>2022 CopyRight</h2>
-</footer>
-
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceuil</title>
+</head>
 
 <style>
-    .logotitle {
+    main {
+        margin-top: 3%;
+        margin-left: 0%;
+        margin-bottom: 3%;
+        padding: 1%;
+
+        text-align: center;
+    }
+
+
+    /* .logotitle {
         display: flex;
         margin: 50px 500px 0px 500px;
-    }
+    } */
 
     h1 {
         font-family: impact;
@@ -27,49 +32,16 @@
 
     }
 
+    h2 {
+        font-size: 50px;
+        margin-left: -80px;
+    }
+
     .titre {
         position: absolute;
         font-size: 50px;
         font-family: impact;
         margin-left: 80px;
-    }
-
-    * {
-        /* position: static; */
-        margin: 0;
-        padding: 0;
-        text-decoration: none;
-        list-style-type: none;
-    }
-
-    html {
-        width: 100%;
-        height: 100%;
-        display: block;
-    }
-
-    header {
-        z-index: 500;
-        margin-top: 0%;
-        padding: 1%;
-        background-color: white;
-        width: 100%;
-        height: 7%;
-        color: black;
-        text-align: center;
-    }
-
-    footer {
-        z-index: 500;
-        position: fixed;
-        bottom: 0%;
-        margin-bottom: 0px;
-        padding: 1%;
-        background-color: white;
-        width: 100%;
-        height: 12px;
-        color: black;
-        text-align: center;
     }
 
     .soignant {
@@ -116,11 +88,31 @@
 
     .buttons {
         position: absolute;
-        margin: 220px 100px 100px 150px;
-    }
-
-    h2 {
-        font-size: 50px;
-        margin-left: -80px;
+        margin: 200px 100px 100px 150px;
     }
 </style>
+
+
+<body>
+    <main class="container-fluid mx-0">
+        <section>
+            <div class="logotitle">
+                <h1 class="titre">Bienvenue sur MemoryCard </h1>
+                <img class="logo" src="./media/images/téléchargement.png">
+
+                <div class="buttons">
+
+                    <button class=patient onclick="window.location.href = 'index.php?page=7';"> Patient </button>
+                    <button class=soignant onclick="window.location.href = 'index.php?page=1';"> Soignant </button>
+                    <h2>Veuillez choisir votre espace</h2>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- <footer>
+        <h2></h2>
+    </footer> -->
+</body>
+
+</html>
