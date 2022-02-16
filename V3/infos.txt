@@ -5,6 +5,8 @@
 Ez€R Vt€R tel que z.t !=1
 
 
+Pathogène
+autarcie
 //var output = "output width='200px' height='190px' "
 var carte1 = document.querySelector('#1')
     var carte2 = document.querySelector('#2')
