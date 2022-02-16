@@ -1,4 +1,5 @@
-<?php include_once './Template.php'; ?>
+<?php //require_once './template/TemplateView.php'; 
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
