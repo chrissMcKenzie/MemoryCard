@@ -10,28 +10,25 @@
 	<div class="card">
 		<div class="card__inner">
 			<div class="card__face card__face--front">
-				<h2 class="title">Bienvenue sur MEMORY CARD !</h2>
-                <div class='logo'>
-                <img src="view/LogoGif.gif" id='gif'>
-            </div>  
+				<span>Bienvenue sur MEMORY CARD !</span>
+        <img src="view/LogoGif.gif" id='gif'>
+            
 			</div>
 			<div class="card__face card__face--back">
-				<div class="card__content"> 
-					<div class="logotitle"> 
-                        
-                        <div class="block">
-                            <div class="imgbut">                            
-                            <img src="view/patient.png" id="img2">
-                            <img src="view/soignant.png" id="img1">
-                            </div>
-                            <div class="buts">
-                            <button class=patient onclick= "window.location.href = 'index.php?page=7';"> Patient </button>
-                            <button class=soignant onclick= "window.location.href = 'index.php?page=1';"> Soignant </button>
-                            </div>
-                        </div>
-                        <h1 class="espace" >Veuillez choisir votre espace</h1>
-                    </div>
+					<div class="logotitle">                         
+              <div class="buts">
+                <div class="but1">                  
+                  <img src="view/patient.png" id="img2">
+                  <button class=patient onclick= "window.location.href = 'index.php?page=7';"> Patient </button>
                 </div>
+                <div class="but2">                
+                  <img src="view/soignant.png" id="img1">
+                  <button class=soignant onclick= "window.location.href = 'index.php?page=1';"> Soignant </button>
+                </div>
+              </div>                
+              <span class="spacetitle">Veuillez choisir votre espace</span>
+
+          </div>
 			</div>
 		</div>
 	</div>
@@ -46,39 +43,49 @@
 
 <style>
 
-.title{
-    color:#0bf6c5;
-    font-family:arial;
-    font-weight:bold;
+
+body{
+  background-color:#142b4e;
 }
+
+.spacetitle{
+  display: block;
+  margin: 20px;
+  text-align:center;
+}
+
 #gif{
-    height: 300px;
-    width: 300px;
+  width: 350px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
-.block{
-    padding:50px;
-}
+
+
 .buts{
-    display: flex;
+  display: flex;
+  text-align:center;
 }
 #img1{
     height: 50px;
     width: 50px;
-   margin-left:110px;
 }
 #img2{
     height: 50px;
     width: 50px;
-    margin-left:70px;
 }
 
 .imgbut{
-    display:flex;
+  display: block;
 }
 
 .logotitle{
-    margin:80px;
-    height: 500px;
+  font-size: 32px;
+  font-weight:bold;
+  color:black;
+  font-family:arial;
+  margin:150px;
+  width: 500px; 
 }
 
 .buttons{
@@ -87,8 +94,7 @@
 }
 
 .logo{
-    padding-left:150px;
-    padding-right:200px
+    margin:80px;
 }
 
 :root {
@@ -106,7 +112,7 @@ body {
 
 .card {
   margin: 100px auto 0;
-  width: 600px;
+  width: 800px;
   height: 600px;
   perspective: 1000px;
 }
@@ -144,11 +150,14 @@ body {
 
 }
 
-.card__face--front h2 {
-  color: #black;
+.card__face--front span {
   font-size: 32px;
   font-weight:bold;
-  padding: 50px;
+  color:#0bf6c5;
+  font-family:arial;
+  display: block;
+  margin: 50px;
+  text-align:center;
 }
 
 .card__face--back {
@@ -156,10 +165,6 @@ body {
   transform: rotateY(180deg);
 }
 
-.card__content {
-  width: 100%;
-  height: 100%;
-}
 
 .pp {
   display: block;
