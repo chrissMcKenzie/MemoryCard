@@ -50,9 +50,8 @@ session_start();
         <br>
         <label for="Role"><b>poste</b><i>*</i></label>
         <select name="poste" id="Role">
-          <option>medecin</option>
-          <option>infirmier</option>
-          <option>aide soigant</option>
+          <option>Alzheimer</option>
+          <option>AVC</option>
         </select><br />
         <br>
         <label for="Email"><b>Email:</b><i>*</i></label>
@@ -61,7 +60,7 @@ session_start();
         <button type="submit" name="submit" id="Inscription"><b>Inscription</b></button>
       </form>
       <div class="Option">
-        <a href="index.php?page=1">Connexion</a>
+        <a href="index.php?page=LoginPatient">Connexion</a>
       </div>
     </section>
 

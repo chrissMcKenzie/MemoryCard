@@ -157,7 +157,7 @@ if (isset($_SESSION['mail_soignant'])) {
                     </ul>
                 </div>
                 <div class="profile">
-                    <img src="./media/images/chrissMcKenzie - CarteDeVisite [940x520].png" width="100px" height="70px" alt="Logo Session Admin">
+                    <img src="./../media/images/Logo_SessionAdmin.png" width="100px" height="70px" alt="Logo Session Admin">
                 </div>
             </section>
 
@@ -171,7 +171,7 @@ if (isset($_SESSION['mail_soignant'])) {
             </section>
 
             <section class="container">
-                <div id="formulaire" action="Admin.php" method="POST">
+                <div id="formulaire" action="AdminView.php" method="POST">
                     <label for="Email"><b>Email:</b></label>
                     <input type="text" id="Email" placeholder="Email ?" required>
                     <br>
@@ -181,7 +181,7 @@ if (isset($_SESSION['mail_soignant'])) {
 
                     <button type="submit" id="Connexion"><b>Connexion</b></button>
                 </div>
-                <button type="submit" id="Deconnexion" onclick="window.location.href = 'index.php?page=6';"><b>Deconnexion</b></button>
+                <button type="submit" id="Deconnexion" onclick="window.location.href = 'index.php?page=LogOut';"><b>Deconnexion</b></button>
 
             </section>
 
