@@ -1,10 +1,10 @@
-<?php include_once('./DatabaseModel.php');
+<?php require_once('./DatabaseModel.php');
 
 //Voici la class Patient et managePatient, nous sommes concient que ce n'est pas complet
 //Nous allons implementer et modifier certaine fonctions en fonction du Front et des options
 
-
-    class Patient{
+class Patient
+{
 
     private $id_patient;
     private $nom_patient;
@@ -13,49 +13,58 @@
     private $motdepasse_patient;
     private $pathologie_patient;
     private $score_patient;
+    private $pdo;
 
-    public function __construct($pid, $pnom,$pprenom,$pdate,$pmp,$ppatho,$pscore){
-        $this->id_patient=$pid;
-        $this->nom_patient=$pnom;
-        $this->prenom_patient=$pprenom;
-        $this->datenaissance_patient=$pdate;
-        $this->motdepasse_patient=$pmp;
-        $this->pathologie_patient=$ppatho;
-        $this->score_patient=$pscore;
+    public function __construct($pid, $pnom, $pprenom, $pdate, $pmp, $ppatho, $pscore)
+    {
+        $this->id_patient = $pid;
+        $this->nom_patient = $pnom;
+        $this->prenom_patient = $pprenom;
+        $this->datenaissance_patient = $pdate;
+        $this->motdepasse_patient = $pmp;
+        $this->pathologie_patient = $ppatho;
+        $this->score_patient = $pscore;
     }
 
 
-    public function getIdPatient(){
+    public function getIdPatient()
+    {
         return $this->id_patient;
     }
-    public function getNomPatient(){
+    public function getNomPatient()
+    {
         return $this->nom_patient;
     }
-    public function getPrenomPatient(){
+    public function getPrenomPatient()
+    {
         return $this->renom_patient;
     }
-    public function getDatePatient(){
+    public function getDatePatient()
+    {
         return $this->datenaissance_patient;
     }
-    public function getMpPatient(){
+    public function getMpPatient()
+    {
         return $this->motdepasse_patient;
     }
-    public function getPathoPatient(){
+    public function getPathoPatient()
+    {
         return $this->pathologie_patient;
     }
-    public function getScorePatient(){
+    public function getScorePatient()
+    {
         return $this->score_patient;
     }
-
 }
-    
-    
-class managePatient{
 
-    
+
+class managePatient
+{
+
+
     //Pour la creation du patient nous avons mis en place une methode POST avec un formulaire qui creé dirrectement un patient en base de donné 
     //avec les information rentré par l'utlisateur
-    
+
     /*
     public function createPatient($nom, $prenom, $datenaissance, $motdepasse, $pathologie, $temps, $score)
     {
@@ -77,11 +86,11 @@ class managePatient{
         // return $id;
     }
 */
-    public function readPatient($security = false)
+    public function readPatient()
     {
         if ($this->pdo === null) {
             try {
-                $pdo = DatabaseModel::connection_DatabaseModel(); //on se connecte à la base
+                $pdo = DatabaseModel::connect(); //on se connecte à la base
                 $this->pdo = $pdo;
                 // var_dump("PDO initialise");
             } catch (PDOException $e) {

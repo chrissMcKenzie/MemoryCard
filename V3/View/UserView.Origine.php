@@ -1,11 +1,10 @@
-<?php session_start();
-include_once './../Model/DatabaseModel.php';
+<?php include_once './../Model/DatabaseModel.php';
 include_once './../Model/PatientClass.php';
-//include_once './../Model/SoignantClass.php';
-
+include_once './../Model/SoignantClass.php';
+session_start();
 $PDO = DatabaseModel::connect();
-$mPatient = new managePatient();
-$patientsListe = $mPatient->readPatient();
+$Patient = new Patient();
+$patientsListe = $Patient->readPatient();
 // print_r($PDO);
 // print_r($Users);
 
@@ -174,13 +173,9 @@ $patientsListe = $mPatient->readPatient();
     <main id="Main">
         <section class="container">
             <h1 id="H1">Connexion à la Session Admin</h1>
-            <pre>
-                <?php
-                print_r($PDO);
-                print_r($patientsListe);
-
-                ?>
-            </pre>
+            <?php //print_r($PDO); 
+            ?>
+            <?php print_r($patientsListe); ?>
 
             <div>
                 <h2>INVENTAIRE DIGITAL</h2>
@@ -249,6 +244,32 @@ $patientsListe = $mPatient->readPatient();
             <div>Codeur, Développeur (c) 2020 chrissMcKenzie.com</div>
         </section>
     </footer>
+
+    <script type="text/javascript">
+        //formulaire.style.display = "none" // let formulaire = document.getElementById("formulaire")
+
+        // const pseudo = "";
+        // if (localStorage.getItem("Email") && localStorage.getItem("MotDePasse")) {
+        //     if (localStorage.pseudo != null) {
+        //         const pseudo = localStorage.pseudo
+        //         H1.innerHTML = `Bonjour <br> ${pseudo}`
+        //     } else {
+        //         const pseudo = prompt("Entrez votre pseudo")
+        //         localStorage.pseudo = pseudo // local = JSON.parse(localStorage.getItem("Email"))
+        //         H1.innerHTML = `Bonjour <br> ${pseudo}`
+        //     }
+
+        // }
+
+        // Deconnexion.onclick = () => {
+        //     document.location.pathname = "model/logout.php"
+        //     localStorage.clear()
+        // }
+
+        //document.querySelector(h1).innerText = `${Email}`
+
+        //chrissMcKenzie.IT.Agence@gmail.com
+    </script>
 </body>
 
 </html>

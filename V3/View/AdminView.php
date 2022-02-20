@@ -164,7 +164,7 @@ session_start();
         </section>
 
         <section class="container">
-            <div id="formulaire" action="Admin.php" method="POST">
+            <div id="formulaire" action="AdminView.php" method="POST">
                 <label for="Email"><b>Email:</b></label>
                 <input type="text" id="Email" placeholder="Email ?" required>
                 <br>
