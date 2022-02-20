@@ -1,16 +1,15 @@
-<?php session_start();
+<?php
+session_start();
 include_once './../Model/DatabaseModel.php';
 include_once './../Model/PatientClass.php';
-//include_once './../Model/SoignantClass.php';
+include_once './../Model/SoignantClass.php';
 
 $PDO = DatabaseModel::connect();
-$mPatient = new managePatient();
-$patientsListe = $mPatient->readPatient();
-// print_r($PDO);
-// print_r($Users);
+$Patient = new Patient();
+$patientsListe = $Patient->readPatient();
 
-// $sql = 'SELECT * FROM person ORDER BY idPerson ASC'; //on formule notre requete 
-// $result = $pdo->query($sql);
+// $sql = 'SELECT * FROM Patient';
+// $result = $PDO->query($sql);
 // $allRows = $result->fetchAll();
 ?>
 <!DOCTYPE html>
@@ -174,13 +173,11 @@ $patientsListe = $mPatient->readPatient();
     <main id="Main">
         <section class="container">
             <h1 id="H1">Connexion à la Session Admin</h1>
-            <pre>
-                <?php
-                print_r($PDO);
-                print_r($patientsListe);
 
-                ?>
-            </pre>
+            <?php
+            print_r($PDO);
+            print_r($patientsListe);
+            ?>
 
             <div>
                 <h2>INVENTAIRE DIGITAL</h2>
@@ -199,22 +196,14 @@ $patientsListe = $mPatient->readPatient();
                         <?php foreach ($patientsListe as $data) : ?>
                             <tr class="table-active" style="text-align: center;">
                                 <th scope="row"><?= $data ?></th>
-                                <!-- <th scope="row"><?php //$data['id_patient'] 
-                                                        ?></th>
-                                <td style="color: white;"><?php //$data['nom_patient'] 
-                                                            ?></td>
-                                <td class="Title" style="text-align: left;"><?php //$data['prenom_patient'] 
-                                                                            ?></td>
-                                <td><?php //$data['datenaissance_patient'] 
-                                    ?></td>
-                                <td style="padding: 0px 2px; color: white;"><?php //$data['motdepasse_patient'] 
-                                                                            ?></td>
-                                <td style="padding: 0px 2px;"><?php //$data['pathologie_patient'] 
-                                                                ?></td>
-                                <td style="padding: 0px 2px; color: red;"><?php //$data['temps_patient'] 
-                                                                            ?>minutes</td>
-                                <td style="padding: 0px 2px; color: red;"><?php //$data['score_patient'] 
-                                                                            ?>coups</td> -->
+                                <th scope="row"><?= $data['id_patient'] ?></th>
+                                <td style="color: white;"><?= $data['nom_patient'] ?></td>
+                                <td class="Title" style="text-align: left;"><?= $data['prenom_patient'] ?></td>
+                                <td><?= $data['datenaissance_patient'] ?></td>
+                                <td style="padding: 0px 2px; color: white;"><?= $data['motdepasse_patient'] ?></td>
+                                <td style="padding: 0px 2px;"><?= $data['pathologie_patient'] ?></td>
+                                <td style="padding: 0px 2px; color: red;"><?= $data['temps_patient'] ?>minutes</td>
+                                <td style="padding: 0px 2px; color: red;"><?= $data['score_patient'] ?>coups</td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -249,6 +238,32 @@ $patientsListe = $mPatient->readPatient();
             <div>Codeur, Développeur (c) 2020 chrissMcKenzie.com</div>
         </section>
     </footer>
+
+    <script type="text/javascript">
+        //formulaire.style.display = "none" // let formulaire = document.getElementById("formulaire")
+
+        // const pseudo = "";
+        // if (localStorage.getItem("Email") && localStorage.getItem("MotDePasse")) {
+        //     if (localStorage.pseudo != null) {
+        //         const pseudo = localStorage.pseudo
+        //         H1.innerHTML = `Bonjour <br> ${pseudo}`
+        //     } else {
+        //         const pseudo = prompt("Entrez votre pseudo")
+        //         localStorage.pseudo = pseudo // local = JSON.parse(localStorage.getItem("Email"))
+        //         H1.innerHTML = `Bonjour <br> ${pseudo}`
+        //     }
+
+        // }
+
+        // Deconnexion.onclick = () => {
+        //     document.location.pathname = "model/logout.php"
+        //     localStorage.clear()
+        // }
+
+        //document.querySelector(h1).innerText = `${Email}`
+
+        //chrissMcKenzie.IT.Agence@gmail.com
+    </script>
 </body>
 
 </html>
