@@ -1,12 +1,10 @@
-<?php
-session_start();
+<?php session_start();
 include_once './../Model/DatabaseModel.php';
-include_once './../Model/PatientClass.php';
-include_once './../Model/SoignantClass.php';
+include_once './../Model/PatientModel.php';
 
-$PDO = DatabaseModel::connect();
-$Patient = new Patient();
-$patientsListe = $Patient->readPatient();
+//$PDO = DatabaseModel::connect();
+// $mPatient = new ManagerPatient();
+// $patientsListe = $mPatient->readPatient();
 
 // $sql = 'SELECT * FROM Patient';
 // $result = $PDO->query($sql);
@@ -124,6 +122,14 @@ $patientsListe = $Patient->readPatient();
         font-size: 32px;
     }
 
+    li:hover {
+        background-color: white;
+    }
+
+    li a:hover {
+        color: black;
+    }
+
     /* Full-width inputs */
     input[type="text"],
     input[type="password"] {
@@ -172,11 +178,11 @@ $patientsListe = $Patient->readPatient();
 
     <main id="Main">
         <section class="container">
-            <h1 id="H1">Connexion à la Session Admin</h1>
+            <h1 id="H1">Connexion à la Session User</h1>
 
-            <?php
-            print_r($PDO);
-            print_r($patientsListe);
+            <?php echo "POPO";
+            //var_dump($PDO);
+            //var_dump($patientsListe);
             ?>
 
             <div>
@@ -211,21 +217,12 @@ $patientsListe = $Patient->readPatient();
                 </table>
             </div>
 
-
         </section>
 
         <section class="container">
-            <div id="formulaire" action="UserView.php" method="POST">
-                <label for="Email"><b>Email:</b></label>
-                <input type="text" id="Email" placeholder="Email ?" required>
-                <br>
-                <label for="MotDePasse"><b>Mot de passe:</b></label>
-                <input type="password" id="MotDePasse" placeholder="password ?" required>
-                <br>
-
-                <button type="submit" id="Connexion"><b>Connexion</b></button>
-            </div>
-            <button type="submit" id="Deconne"><b>Deconnexion</b></button>
+            <form method="POST" action="index.php?page=AccueilView">
+                <button type="submit" name="Deconnexion"><b>Deconnexion</b></button>
+            </form>
 
         </section>
 

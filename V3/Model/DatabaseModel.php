@@ -30,6 +30,5 @@ class DatabaseModel
     public static function disconnect()
     {
         self::$cont = null;
-        return "Déconnexion à la base de données";
     }
 }

@@ -1,5 +1,8 @@
-<?php //require_once './template/TemplateView.php';
-session_start();
+<?php session_start();
+include_once './../Model/DatabaseModel.php';
+include_once './../Model/PatientModel.php';
+include_once './../Model/SoignantModel.php';
+//require_once './template/TemplateView.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -9,10 +12,6 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Session Admin</title>
-    <!-- CSS LINKPACK -->
-    <!-- <link rel="stylesheet" href="./Admin.css"> -->
-    <!-- <script src="./Admin.js" defer></script> -->
-    <!-- <script src="./Login.js"></script> -->
 </head>
 
 <style>
@@ -56,6 +55,28 @@ session_start();
         margin-left: 0%;
     }
 
+    main {
+        display: block;
+        margin-top: -6%;
+        text-align: left;
+    }
+
+    footer {
+        display: block;
+        position: absolute;
+        left: 25%;
+        bottom: 0%;
+        padding-top: 15%;
+        width: 600px;
+        font-size: 21px;
+    }
+
+    table {
+        margin-top: 0%;
+        margin-left: -7px;
+        font-size: 18.5px;
+    }
+
     .Menu {
         display: block;
         position: absolute;
@@ -80,25 +101,29 @@ session_start();
         right: 1%;
     }
 
-    h1 {
+    h1,
+    h2 {
         text-align: center;
     }
 
-    main {
-        display: block;
-        margin-top: -6%;
-        text-align: left;
+    h1 {
+        font-style: italic;
     }
 
-    footer {
-        display: block;
-        position: absolute;
-        left: 25%;
-        bottom: 0%;
-        padding-top: 15%;
-        width: 600px;
-        font-size: 21px;
+    h2 {
+        color: #66FF00;
+        margin-top: 3%;
+        font-size: 32px;
     }
+
+    li:hover {
+        background-color: white;
+    }
+
+    li a:hover {
+        color: black;
+    }
+
 
     /* Full-width inputs */
     input[type="text"],
@@ -137,11 +162,11 @@ session_start();
                         <hr>
                     </li>
                     <li>
-                        <a href="./Home/Jeux/View/JeuxView.php">Jeux</a>
+                        <a href="index.php?page=JeuxView">Jeux</a>
                         <hr>
                     </li>
                     <li>
-                        <a href="./Home/Bedroom/Chambre.php">Chambre</a>
+                        <a href="index.php?page=ChambreView">Chambre</a>
                         <hr>
                     </li>
                     <li>
@@ -150,7 +175,7 @@ session_start();
                 </ul>
             </div>
             <div class="profile">
-                <img src="./media/images/chrissMcKenzie - CarteDeVisite [940x520].png" width="100px" height="70px" alt="Logo Session Admin">
+                <img src="./media/images/PhotoDeProfil_Admin1.png" width="100px" height="70px" alt="Logo Session Admin">
             </div>
         </section>
 
@@ -164,17 +189,9 @@ session_start();
         </section>
 
         <section class="container">
-            <div id="formulaire" action="AdminView.php" method="POST">
-                <label for="Email"><b>Email:</b></label>
-                <input type="text" id="Email" placeholder="Email ?" required>
-                <br>
-                <label for="MotDePasse"><b>Mot de passe:</b></label>
-                <input type="password" id="MotDePasse" placeholder="password ?" required>
-                <br>
-
-                <button type="submit" id="Connexion"><b>Connexion</b></button>
-            </div>
-            <button type="submit" id="Deconne"><b>Deconnexion</b></button>
+            <form action="index.php?page=AccueilView" method="POST">
+                <button type="submit" name="Deconnexion"><b>Deconnexion</b></button>
+            </form>
 
         </section>
 

@@ -1,7 +1,7 @@
 <?php
 //define("ROOT", dirname(__DIR__)); // require ROOT.'/';
 //PAGE PAR DEFAUT
-$laPage = 'View/AcceuilView.php';
+$laPage = 'View/AccueilView.php';
 $titre = "Accueil";
 
 if (isset($_GET['page'])) { // l'URL complétée par ?page=x fournit le nom de page souhaité
@@ -9,8 +9,8 @@ if (isset($_GET['page'])) { // l'URL complétée par ?page=x fournit le nom de p
 	//système qui permet de savoir la page à charger
 	switch ($page) {
 		case "Acceuil":
-			$laPage = 'View/AcceuilView.php';
-			$titre = 'Acceuil';
+			$laPage = 'View/AccueilView.php';
+			$titre = 'Accueil';
 			break;
 
 		case "SigninSoignant":
@@ -51,26 +51,26 @@ if (isset($_GET['page'])) { // l'URL complétée par ?page=x fournit le nom de p
 
 		case "User":
 			$laPage = "View/UserView.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
-			$titre = 'Admin';
+			$titre = 'User';
 			//require_once './View/UserView.php';
 			break;
 
 		case "Jeux":
 			$laPage = "View/JeuxView.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
-			$titre = 'jeu';
+			$titre = 'Jeu';
 			//require_once './View/JeuxView.php';
 			break;
 
 		case "Logout":
 			//$laPage = "Model/logout.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
-			$laPage = 'View/AcceuilView.php';
-			$titre = 'Acceuil';
+			$laPage = 'View/AccueilView.php';
+			$titre = 'Accueil';
 			break;
 
 
 		default:
-			$laPage = 'View/AcceuilView.php';
-			$titre = 'Acceuil';
+			$laPage = 'View/AccueilView.php';
+			$titre = 'Accueil';
 			break;
 	}
 	// include($laPage);

@@ -10,7 +10,8 @@ class Soignant
     private $email;
     private $date;
 
-    public function __construct($id, $sname, $firstName,$pwd,$pposte,$semail,$sdate){
+    public function __construct($id, $sname, $firstName, $pwd, $pposte, $semail, $sdate)
+    {
         $this->idSoignant = $id;
         $this->nom = $sname;
         $this->prenom = $firstName;
@@ -20,43 +21,51 @@ class Soignant
         $this->date = $sdate;
     }
 
-    public function getIdSoignant(){
+    public function getIdSoignant()
+    {
         return $this->idSoignant;
     }
-    public function getName(){
+    public function getName()
+    {
         return $this->nom;
     }
-    public function getFisrtName(){
+    public function getFisrtName()
+    {
         return $this->prenom;
     }
-    public function getmp(){
+    public function getmp()
+    {
         return $this->password;
     }
-    public function getPosteSoignant(){
+    public function getPosteSoignant()
+    {
         return $this->poste;
     }
-    public function getEmail(){
+    public function getEmail()
+    {
         return $this->email;
     }
-    public function getDate(){
+    public function getDate()
+    {
         return $this->date;
     }
 }
 
 
-class ManageSoignant {
+class ManagerSoignant
+{
 
-    public function verifyLog(){
-        
+    public function verifyLog()
+    {
     }
-     //Pour la creation du patient nous avons mis en lace une methode POST avec un formulaire qui creé diresctement un patient en base de donné 
+    //Pour la creation du patient nous avons mis en lace une methode POST avec un formulaire qui creé diresctement un patient en base de donné 
     //avec les information rentré par l'utlisateur
 
- /*   public function createSoignant($nom, $prenom, $datenaissance, $motdepasse, $poste, $mail)
+    /*   public function createSoignant($nom, $prenom, $datenaissance, $motdepasse, $poste, $mail)
     {
         if ($this->pdo === null) {
             try {
-                $pdo = DatabaseModel::connection_DatabaseModel(); //on se connecte à la base
+                $pdo = DatabaseModel::connect(); //on se connecte à la base
                 $this->pdo = $pdo;
             } catch (PDOException $e) {
                 die("#=> Error_createSoignant: " . $e->getMessage());
@@ -72,12 +81,11 @@ class ManageSoignant {
 */
 
 
-
     public function readSoignant()
     {
         if ($this->pdo === null) {
             try {
-                $pdo = DatabaseModel::connection_DatabaseModel(); //on se connecte à la base
+                $pdo = DatabaseModel::connect(); //on se connecte à la base
                 $this->pdo = $pdo;
                 // var_dump("PDO initialise");
             } catch (PDOException $e) {
@@ -85,7 +93,7 @@ class ManageSoignant {
             }
         }
         // var_dump("Requête executé");
-        $sql = "SELECT * FROM Patient"; // SELECT DISTINCT * FROM Patient
+        $sql = "SELECT * FROM Soignant"; // SELECT DISTINCT * FROM Patient
         $result = $this->pdo->query($sql);
         $allRows = $result->fetchAll(); //PDO::FETCH_OBJ
         return $allRows;
@@ -95,7 +103,7 @@ class ManageSoignant {
     {
         if ($this->pdo === null) {
             try {
-                $pdo = DatabaseModel::connection_DatabaseModel(); //on se connecte à la base
+                $pdo = DatabaseModel::connect(); //on se connecte à la base
                 $this->pdo = $pdo;
             } catch (PDOException $e) {
                 die("#=> Error_updateSoignant: " . $e->getMessage());
@@ -111,7 +119,7 @@ class ManageSoignant {
     {
         if ($this->pdo === null) {
             try {
-                $pdo = DatabaseModel::connection_DatabaseModel(); //on se connecte à la base
+                $pdo = DatabaseModel::connect(); //on se connecte à la base
                 $this->pdo = $pdo;
             } catch (PDOException $e) {
                 die("#=> Error_deleteSoignant: " . $e->getMessage());
@@ -123,7 +131,7 @@ class ManageSoignant {
     {
         if ($this->pdo === null) {
             try {
-                $pdo = DatabaseModel::connection_DatabaseModel(); //on se connecte à la base
+                $pdo = DatabaseModel::connect(); //on se connecte à la base
                 $this->pdo = $pdo;
             } catch (PDOException $e) {
                 die("#=> Error_getScore: " . $e->getMessage());

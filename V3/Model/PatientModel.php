@@ -1,4 +1,4 @@
-<?php require_once('./DatabaseModel.php');
+<?php require_once './DatabaseModel.php';
 
 //Voici la class Patient et managePatient, nous sommes concient que ce n'est pas complet
 //Nous allons implementer et modifier certaine fonctions en fonction du Front et des options
@@ -58,7 +58,7 @@ class Patient
 }
 
 
-class managePatient
+class ManagerPatient
 {
 
 
@@ -68,10 +68,8 @@ class managePatient
     /*
     public function createPatient($nom, $prenom, $datenaissance, $motdepasse, $pathologie, $temps, $score)
     {
-        if ($this->pdo === null) {
             try {
                 $pdo = DatabaseModel::connection_DatabaseModel(); //on se connecte à la base
-                $this->pdo = $pdo;
             } catch (PDOException $e) {
                 die("#=> Error_createPatient: " . $e->getMessage());
             }
@@ -82,47 +80,40 @@ class managePatient
         $result = $this->pdo->query($sql);
         $allRows = $result->fetchAll(); //PDO::FETCH_OBJ
         return $allRows;
-
         // return $id;
     }
 */
     public function readPatient()
     {
-        if ($this->pdo === null) {
-            try {
-                $pdo = DatabaseModel::connect(); //on se connecte à la base
-                $this->pdo = $pdo;
-                // var_dump("PDO initialise");
-            } catch (PDOException $e) {
-                die("#=> Error_readPatient: " . $e->getMessage());
-            }
+        try {
+            $pdo = DatabaseModel::connect(); //on se connecte à la base
+            // var_dump("PDO initialise");
+        } catch (PDOException $e) {
+            die("#=> Error_readPatient: " . $e->getMessage());
         }
+
         // var_dump("Requête executé");
         $sql = "SELECT * FROM Patient"; // SELECT DISTINCT * FROM Patient
-        $result = $this->pdo->query($sql);
+        $result = $pdo->query($sql);
         $allRows = $result->fetchAll(); //PDO::FETCH_OBJ
         return $allRows;
     }
 
-    public function updatePatient($security = false)
+    public function updatePatient()
     {
-        if ($security != null) {
-            try {
-                // code
-            } catch (PDOException $e) {
-                die("#=> Error_updatePatient: " . $e->getMessage());
-            }
+        try {
+            // code
+        } catch (PDOException $e) {
+            die("#=> Error_updatePatient: " . $e->getMessage());
         }
     }
 
-    public function deletePatient($security = false)
+    public function deletePatient()
     {
-        if ($security != null) {
-            try {
-                // code
-            } catch (PDOException $e) {
-                die("#=> Error_deleteUser: " . $e->getMessage());
-            }
+        try {
+            // code
+        } catch (PDOException $e) {
+            die("#=> Error_deleteUser: " . $e->getMessage());
         }
     }
 }

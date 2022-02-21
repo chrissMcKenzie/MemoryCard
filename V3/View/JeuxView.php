@@ -1,4 +1,7 @@
-<?php //require_once './template/TemplateView.php'; 
+<?php session_start();
+include_once './../Model/DatabaseModel.php';
+include_once './../Model/PatientModel.php';
+//require_once './template/TemplateView.php';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
