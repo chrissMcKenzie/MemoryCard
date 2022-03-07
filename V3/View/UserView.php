@@ -9,6 +9,46 @@ include_once './../Model/PatientModel.php';
 // $sql = 'SELECT * FROM Patient';
 // $result = $PDO->query($sql);
 // $allRows = $result->fetchAll();
+
+function getPDOConnexion()
+{
+    $HOST = 'localhost';
+    $DBNAME = 'bts2a_MemoryCardModel';
+    $DSN = "mysql:host=$HOST; dbname=$DBNAME";
+    $USER = 'root';
+    $PASSWORD = '';
+    $OPTIONS = [
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+    ];
+
+    try {
+        $DB_CONNEXION = new PDO($DSN, $USER, $PASSWORD, $OPTIONS);
+    } catch (PDOException $e) {
+        die("ErrorConnexion: " . $e->getMessage());
+    }
+
+    return $DB_CONNEXION;
+}
+
+function listePatients()
+{
+    $PDOConnexion = getPDOConnexion();
+    $SQL_CODE = "SELECT * FROM Patient";
+    $SQL_REQUÊTE = $PDOConnexion->query($SQL_CODE);
+    $SQL_RESULTAT = $SQL_REQUÊTE->fetchAll();
+
+    // foreach ($SQL_RESULTAT as $DATA) {
+    //     foreach ($DATA as $champ => $value) {
+    //         if (!is_int($champ)) {
+    //             echo "<th scope='col'>{$champ}</th>";
+    //         }
+    //     }
+    //     echo "<tr class='table-active' style='text-align: center;'>{$DATA['id_patient']}</tr>";
+    // }
+
+    return $SQL_RESULTAT;
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -25,6 +65,14 @@ include_once './../Model/PatientModel.php';
         margin: 0;
         padding: 0;
         text-decoration: none;
+    }
+
+    pre {
+        margin: 0%;
+        margin-top: -10%;
+        padding: 0%;
+        font-size: small;
+        color: #66FF00;
     }
 
     html {
@@ -79,8 +127,28 @@ include_once './../Model/PatientModel.php';
 
     table {
         margin-top: 0%;
-        margin-left: -7px;
+        margin-left: -80px;
         font-size: 18.5px;
+    }
+
+    .INSERT {
+        background-color: #66FF00;
+        color: black;
+        font-weight: bold;
+    }
+
+    .UPDATE {
+        background-color: blue;
+        color: white;
+        font-weight: bold;
+    }
+
+
+    .DELETE,
+    .CLEAR {
+        background-color: red;
+        color: black;
+        font-weight: bold;
     }
 
     .Menu {
@@ -160,7 +228,7 @@ include_once './../Model/PatientModel.php';
     <header id="Header">
         <section class="container">
             <div class="Menu">
-                <img src="./media/images/Logo_SessionAdmin.png" height="200px" alt="Logo Session Admin">
+                <img src="./View/media/images/Logo_SessionAdmin.png" height="200px" alt="Logo Session Admin">
                 <ul class="Sous_Menu">
                     <li>
                         <a href="index.php?page=Jeux">Jeux</a>
@@ -169,7 +237,7 @@ include_once './../Model/PatientModel.php';
                 </ul>
             </div>
             <div class="profile">
-                <img src="./media/images/Logo_SessionAdmin.png" width="100px" height="70px" alt="Logo Session Admin">
+                <img src="./View/media/images/Logo_SessionAdmin.png" width="100px" height="70px" alt="Logo Session Admin">
             </div>
         </section>
 
@@ -178,19 +246,23 @@ include_once './../Model/PatientModel.php';
 
     <main id="Main">
         <section class="container">
+            <pre>
+                <?php //echo "OK";
+                //var_dump($PDO);
+                //var_dump($patientsListe);
+                //print_r(listePatients());
+                ?>
+            </pre>
             <h1 id="H1">Connexion à la Session User</h1>
 
-            <?php echo "POPO";
-            //var_dump($PDO);
-            //var_dump($patientsListe);
-            ?>
+
 
             <div>
                 <h2>INVENTAIRE DIGITAL</h2>
                 <table class="table table-dark table-hover" style="border-style: double double double double;" border="1">
                     <thead>
                         <tr>
-                            <?php $Entête = ["ID", "NOM", "PRENOM", "", "DATENASSANCE", "MOTDEPASSE", "PATHOLOGIE", "TEMPS", "SCORE"];
+                            <?php $Entête = ["ID", "NOM", "PRENOM", "DATENASSANCE", "MOTDEPASSE", "PATHOLOGIE", "TEMPS", "SCORE", "CONTRÔLE"];
                             foreach ($Entête as $champ) {
                                 echo "<th scope='col'>$champ</th>";
                             }
@@ -199,19 +271,19 @@ include_once './../Model/PatientModel.php';
                     </thead>
 
                     <tbody>
-                        <?php foreach ($patientsListe as $data) : ?>
+                        <?php foreach (listePatients() as $DATA) : ?>
                             <tr class="table-active" style="text-align: center;">
-                                <th scope="row"><?= $data ?></th>
-                                <th scope="row"><?= $data['id_patient'] ?></th>
-                                <td style="color: white;"><?= $data['nom_patient'] ?></td>
-                                <td class="Title" style="text-align: left;"><?= $data['prenom_patient'] ?></td>
-                                <td><?= $data['datenaissance_patient'] ?></td>
-                                <td style="padding: 0px 2px; color: white;"><?= $data['motdepasse_patient'] ?></td>
-                                <td style="padding: 0px 2px;"><?= $data['pathologie_patient'] ?></td>
-                                <td style="padding: 0px 2px; color: red;"><?= $data['temps_patient'] ?>minutes</td>
-                                <td style="padding: 0px 2px; color: red;"><?= $data['score_patient'] ?>coups</td>
+                                <th scope="row"><?= $DATA['id_patient'] ?></th>
+                                <td style="color: white;"><?= $DATA['nom_patient'] ?></td>
+                                <td style="color: white;"><?= $DATA['prenom_patient'] ?></td>
+                                <td class="Title" style="text-align: left;"><?= $DATA['datenaissance_patient'] ?></td>
+                                <td><?= $DATA['motdepasse_patient'] ?></td>
+                                <td style="padding: 0px 2px; color: white;"><?= $DATA['pathologie_patient'] ?></td>
+                                <td style="padding: 0px 2px;"><?= $DATA['temps_patient'] ?> minutes</td>
+                                <td style="padding: 0px 2px; color: red;"><?= $DATA['score_patient'] ?> Coups</td>
+                                <td><button class="UPDATE">UPDATE</button> <button class="DELETE">DELETE</button></td>
                             </tr>
-                        <?php endforeach; ?>
+                        <?php endforeach ?>
                     </tbody>
 
                 </table>

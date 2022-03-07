@@ -155,7 +155,7 @@ include_once './../Model/SoignantModel.php';
     <header id="Header">
         <section class="container">
             <div class="Menu">
-                <img src="./media/images/Logo_SessionAdmin.png" height="200px" alt="Logo Session Admin">
+                <img src="./View/media/images/Logo_SessionAdmin.png" height="200px" alt="Logo Session Admin">
                 <ul class="Sous_Menu">
                     <li>
                         <a href="./Home/Home.php">Home</a>
@@ -175,7 +175,7 @@ include_once './../Model/SoignantModel.php';
                 </ul>
             </div>
             <div class="profile">
-                <img src="./media/images/PhotoDeProfil_Admin1.png" width="100px" height="70px" alt="Logo Session Admin">
+                <img src="./View/media/images/PhotoDeProfil_Admin1.png" width="100px" height="70px" alt="Logo Session Admin">
             </div>
         </section>
 

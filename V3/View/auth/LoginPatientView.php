@@ -1,4 +1,4 @@
-<?php //require_once './template/TemplateView.php';
+<?php
 session_start();
 ?>
 
@@ -19,7 +19,7 @@ session_start();
   <header id="Header">
     <section class="container">
       <div>
-        <!-- <img src="../../media/images/Logo_SessionAdmin.png" alt="Logo Session Admin"> -->
+        <img src="View/assets/patient.png" id="img2">
       </div>
     </section>
 
@@ -50,8 +50,9 @@ session_start();
         <br>
         <label for="Role"><b>poste</b><i>*</i></label>
         <select name="poste" id="Role">
-          <option>Alzheimer</option>
-          <option>AVC</option>
+          <option>medecin</option>
+          <option>infirmier</option>
+          <option>aide soigant</option>
         </select><br />
         <br>
         <label for="Email"><b>Email:</b><i>*</i></label>
@@ -60,7 +61,7 @@ session_start();
         <button type="submit" name="submit" id="Inscription"><b>Inscription</b></button>
       </form>
       <div class="Option">
-        <a href="index.php?page=LoginPatient">Connexion</a>
+        <a href="index.php?page=1">Connexion</a>
       </div>
     </section>
 
@@ -79,6 +80,12 @@ session_start();
 
 
   <style>
+    #img2 {
+      height: 50px;
+      width: 50px;
+      margin-left: 110px;
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -222,10 +229,8 @@ session_start();
 </html>
 
 <!-- 
-
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset="UTF-8">
   <title>Sélecteurs CSS</title>
@@ -236,17 +241,13 @@ session_start();
     }
   </style>
 </head>
-
 <body>
   <form>
     Nom d'utilisateur: <input type="text" id="nom"><br />
-
     Mot de passe: <input type="password" id="pass"><br />
-
     Sexe:
     H <input type="radio" id="H" name="sexe" value="H">
     F <input type="radio" id="F" name="sexe" value="F"><br />
-
     Fonction: <select id="fonction">
       <option VALUE="etudiant">Etudiant</option>
       <option VALUE="ingenieur">Ingénieur</option>
@@ -254,18 +255,15 @@ session_start();
       <option VALUE="retraite">Retraité</option>
       <option VALUE="autre">Autre</option>
     </select><br /><br />
-
     <input type="submit" id="envoyer" value="Envoyer">
     <input type="reset" id="annuler" value="Annuler">
   </form>
   <p id='log'>Log</p>
-
   <script src="jquery.js"></script>
   <script>
     $(function () {
       // Entrer les instructions jQuery ici
       // $('#nom').val("bond")
-
       // sur appui du bouton submit
       $("form").submit(function (e) {
         e.preventDefault(); //empêche de changer de page
@@ -273,7 +271,6 @@ session_start();
         var H = $('input#H').val(); //console.log('input#H', H1) //#=> "H"
         var F = $('input#F').val(); //console.log('input#F', F) //#=> "F"
         var Genre = $(':radio:checked').val(); console.log(':radio:checked', Genre) //#=> "undefined" | "H" | "F"
-
         var Sexe = (Genre === 'H') ? H : F
         var Fonction = $('#fonction').val()
         switch (Fonction) {
@@ -282,13 +279,11 @@ session_start();
           case 'enseignant': $('#fonction').val('enseignant'); break;
           case 'retraite': $('#fonction').val('retraite'); break;
           case 'autre': $('#fonction').val('autre'); break;
-
           default:
             $('#fonction').html('NOT DEFINED')
             break;
         }
         console.log("#=> info contenue de la variable Fonction", Fonction)
-
         var Log = $('#log').html(`
           <table style="width:50%">
             <tr>
@@ -307,15 +302,11 @@ session_start();
             </tbody>
           </table>`)
       })
-
       // setInterval(() => {
       //   document.location.reload()
       // }, 20000);
-
     })
   </script>
 </body>
-
 </html>
-
  -->

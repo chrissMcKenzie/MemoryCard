@@ -234,18 +234,18 @@
                 <div class="card__inner">
                     <div class="card__face card__face--front">
                         <span>Bienvenue sur MEMORY CARD !</span>
-                        <img src="./media/images/LogoGif.gif" id='gif'>
+                        <img src="./View/media/images/LogoGif.gif" id='gif'>
 
                     </div>
                     <div class="card__face card__face--back">
                         <div class="logotitle">
                             <div class="buts">
                                 <div class="but1">
-                                    <img src="./media/images/patient.png" id="img2">
+                                    <img src="./View/media/images/patient.png" id="img2">
                                     <button class="patient" onclick="window.location.href = 'index.php?page=SigninPatient';">Patient</button>
                                 </div>
                                 <div class="but2">
-                                    <img src="./media/images/soignant.png" id="img1">
+                                    <img src="./View/media/images/soignant.png" id="img1">
                                     <button class="soignant" onclick="window.location.href = 'index.php?page=SigninSoignant';">Soignant</button>
                                 </div>
                             </div>

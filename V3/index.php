@@ -7,6 +7,7 @@ $titre = "Accueil";
 if (isset($_GET['page'])) { // l'URL complétée par ?page=x fournit le nom de page souhaité
 	$page = $_GET['page'];
 	//système qui permet de savoir la page à charger
+	$page = strtoupper($page);
 	switch ($page) {
 		case "Acceuil":
 			$laPage = 'View/AccueilView.php';
