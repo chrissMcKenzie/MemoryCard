@@ -11,23 +11,22 @@
 		<div class="card__inner">
 			<div class="card__face card__face--front">
 				<span>Bienvenue sur MEMORY CARD !</span>
-        <img src="view/LogoGif.gif" id='gif'>
+        <img src="View/assets/LogoGif.gif" id='gif'>
             
 			</div>
 			<div class="card__face card__face--back">
 					<div class="logotitle">                         
               <div class="buts">
                 <div class="but1">                  
-                  <img src="view/patient.png" id="img2">
-                  <button class=patient onclick= "window.location.href = 'index.php?page=7';"> Patient </button>
+                  <img src="View/assets/patient.png" id="img2">
+                  <button class=patient onclick= "window.location.href = 'index.php?page=4';"> Patient </button>
                 </div>
                 <div class="but2">                
-                  <img src="view/soignant.png" id="img1">
+                  <img src="View/assets/soignant.png" id="img1">
                   <button class=soignant onclick= "window.location.href = 'index.php?page=1';"> Soignant </button>
                 </div>
               </div>                
               <span class="spacetitle">Veuillez choisir votre espace</span>
-
           </div>
 			</div>
 		</div>
@@ -37,6 +36,7 @@
         card.addEventListener("click", function (e) {
         card.classList.toggle('is-flipped');
         });
+
     </script>
 </body>
 </html>

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -16,7 +15,7 @@
   <header id="Header">
     <section class="container">
       <div>
-      <img src="view/soignant.png" id="img1">
+      <img src="View/assets/soignant.png" id="img1">
       </div>
     </section>
 
@@ -32,25 +31,21 @@
     </section>
 
     <section class="container">
-      <form id="formulaire" action="Model/traitementSignin.php" method="POST">
-        <label for="Nom"><b>Nom:</b><i>*</i></label>
-        <input type="text" name="nom" placeholder="Nom ?" >
-        <br>
+      <form id="formulaire" method="POST">
         <label for="Prenom"><b>Prenom:</b><i>*</i></label>
-        <input type="text" name="pre" placeholder="Prenom ?" >
+        <input type="text" name="nom" placeholder="Prenom ?" >
+        <br>
+        <label for="Nom"><b>Nom:</b><i>*</i></label>
+        <input type="text" name="pre" placeholder="Nom ?" >
         <br>
         <label for="Date"><b>Date de naissance:</b><i>*</i></label>
-        <input type="text" name="date" placeholder="Date de naissance ?" >
+        <input type="text" name="daten" placeholder="Date de naissance ?" >
         <br>
-        <label for="MotDePasse"><b>Mot de passe:</b><i>*</i></label>
-        <input type="password" name="pwd" placeholder="password ?" >
+        <label for="MotDePasse"><b>Mot de passe: </b><i>*</i></label>
+        <input type="password" name="pwd" placeholder="Password ?" >
         <br>
-        <label for="Role"><b>poste</b><i>*</i></label>
-        <select name="poste" id="Role" >
-          <option >medecin</option>
-          <option >infirmier</option>
-          <option >aide soigant</option>
-        </select><br />
+        <label for="Email"><b>Poste:</b><i>*</i></label>
+        <input type="text" name="poste" placeholder="Poste ?" >
         <br>
         <label for="Email"><b>Email:</b><i>*</i></label>
         <input type="text" name="eml" placeholder="Email ?" >
@@ -62,21 +57,13 @@
       </div>
     </section>
 
-
-
-
   </main>
   <br>
-  <footer id="Footer">
-    <section class="container">
-      <div>Copyright © 2021-2022 www.chrissMcKenzie.com. Tous Droits Réservés</div>
-      <div>Codeur, Développeur (c) 2021 chrissMcKenzie.com</div>
-    </section>
-  </footer>
-
-
-
 <style>
+
+<?php
+  include_once('Controller/InscriptionController.php');
+?>
 
 #img1{
     height: 50px;

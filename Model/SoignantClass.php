@@ -1,150 +1,106 @@
 <?php 
 
-include_once('./DatabaseModel.php');
+include_once('DatabaseModel.php');
 
-class Soignant
-{
-    private $idSoignant;
-    private $nom;
-    private $prenom;    
-    private $password;
-    private $poste;
-    private $email;
-    private $date;
+class Soignant{
 
-    public function __construct($id, $sname, $firstName,$pwd,$pposte,$semail,$sdate){
-        $this->idSoignant = $id;
-        $this->nom = $sname;
-        $this->prenom = $firstName;
-        $this->password = $pwd;
-        $this->poste = $pposte;
-        $this->email = $semail;
-        $this->date = $sdate;
-    }
+        private $id_soignant;
+        private $nom_soignant;
+        private $prenom_soignant;
+        private $datenaissance_soignant;
+        private $motdepasse_soignant;
+        private $poste_soignant;
+        private $mail_soignant;
+     
+        public function __construct($id, $nom,$prenom,$date,$mp,$poste,$mail){
+            $this->id_soignant=$id;
+            $this->nom_soignantt=$nom;
+            $this->prenom_soignant=$prenom;
+            $this->datenaissance_soignant=$date;
+            $this->motdepasse_soignant=$mp;
+            $this->poste_soignant=$poste;
+            $this->mail_soignant=$mail;
+        }
 
-    public function getIdSoignant(){
-        return $this->idSoignant;
-    }
-    public function getName(){
-        return $this->nom;
-    }
-    public function getFisrtName(){
-        return $this->prenom;
-    }
-    public function getmp(){
-        return $this->password;
-    }
-    public function getPosteSoignant(){
-        return $this->poste;
-    }
-    public function getEmail(){
-        return $this->email;
-    }
-    public function getDate(){
-        return $this->date;
-    }
+        public function getIdSoignant(){
+            return $this->id_soignant;
+        }
+        public function getNomSoignant(){
+            return $this->nom_soignant;
+        }
+        public function getPrenomSoignant(){
+            return $this->prenom_soignant;
+        }
+        public function getDateSoignant(){
+            return $this->datenaissance_soignant;
+        }
+        public function getMpSoignant(){
+            return $this->motdepasse_soignant;
+        }
+        public function getPosteSoignant(){
+                return $this->poste_soignant;
+        }
+        public function getMailSoignant(){
+                return $this->mail_soignant;
+        }
 }
 
+class manageSoignant{
 
-class ManageSoignant {
+        private $soignantList=array();
 
-    public function verifyLog(){
+        function enre($NOM,$PRENOM,$DATE,$PWD,$POSTE,$EMAIL){
+                $pdo = DatabaseModel::connect();
 
-        session_start();
-        $email = $_POST['email'];
-        $pass = $_POST['pass'];
-      
-        if (!empty($email) && !empty($pass)){    
-            $db = DatabaseModel::connect();
-
-            $req = $db->prepare('SELECT id_soignant FROM soignant WHERE mail_soignant = :email AND motdepasse_soignant = :pass');
-            $req->execute(array(':email' => $email,':pass' => $pass));
-            $resultat = $req->fetch();
-
+                $req="INSERT INTO soignant (nom_soignant, prenom_soignant, datenaissance_soignant, motdepasse_soignant, poste_soignant, mail_soignant) values ('$NOM','$PRENOM','$DATE','$PWD','$POSTE','$EMAIL')";
+                $result = $pdo->query($req);
         }
-    }
-     //Pour la creation du patient nous avons mis en lace une methode POST avec un formulaire qui creé diresctement un patient en base de donné 
-    //avec les information rentré par l'utlisateur
 
- /*   public function createSoignant($nom, $prenom, $datenaissance, $motdepasse, $poste, $mail)
-    {
-        if ($this->pdo === null) {
-            try {
-                $pdo = DatabaseModel::connection_DatabaseModel(); //on se connecte à la base
-                $this->pdo = $pdo;
-            } catch (PDOException $e) {
-                die("#=> Error_createSoignant: " . $e->getMessage());
+        function log($email,$pass){
+
+                $db = DatabaseModel::connect();
+
+                $req = $db->prepare('SELECT id_soignant FROM soignant WHERE mail_soignant = :email AND motdepasse_soignant = :pass');
+                $req->execute(array(':email' => $email,':pass' => $pass));
+                $resultat = $req->fetch();
+                
+                if ($req->rowCount() > 0){
+                $_SESSION['mail_soignant'] = $email;
+                }
+        }
+
+        public function getSoignantFromDB()
+        {
+            $pdo = DatabaseModel::connect(); //on se connecte à la base 
+            $sql = 'SELECT * FROM soignant ORDER BY id_soignant ASC'; //on formule notre requete 
+            $result = $pdo->query($sql);
+            $allRows = $result->fetchAll();
+          
+            foreach ($allRows as $row) { //on cree un objet Person avec chaque valeur retournée
+                $id = $row["id_soignant"];
+                $nom = $row["nom_soignant"];
+                $prenom = $row["prenom_soignant"];
+                $date = $row["datenaissance_soignant"];
+                $mp = $row["motdepasse_soignant"];
+                $poste = $row["poste_soignant"];
+                $mail = $row["mail_soignant"];
+                $soignant = new Soignant($id,$nom,$prenom,$date,$mp,$poste,$mail);
+                $this->soignantList[] = $soignant;
             }
+            $result->closeCursor();
+            
+            return $this->soignantList;
         }
-        $sql = "INSERT INTO Patient(nom_soignant, prenom_soignant, datenaissance_soignant, motdepasse_soignant, poste_soignant, mail_soignant)
-        VALUES('{$nom}', '{$prenom}', '{$datenaissance}', '{$motdepasse}', '{$poste}', '{$mail}')
-        "; // SELECT DISTINCT * FROM Patient
-        $result = $this->pdo->query($sql);
-        $allRows = $result->fetchAll(); //PDO::FETCH_OBJ
-        return $allRows;
-    }
-*/
-
-
-
-    public function readSoignant()
-    {
-        if ($this->pdo === null) {
-            try {
-                $pdo = DatabaseModel::connection_DatabaseModel(); //on se connecte à la base
-                $this->pdo = $pdo;
-                // var_dump("PDO initialise");
-            } catch (PDOException $e) {
-                die("#=> Error_readPatient: " . $e->getMessage());
+    
+        public function getSoignantFromId($id){
+            // retourne l'objet Person connaissant son id
+            // retourne null si pas trouvée
+            foreach ($this->soignantList as $soignant) {
+                if ($soignant->getIdSoignant() == $id)
+                    return $soignant;
             }
+            return null;
         }
-        // var_dump("Requête executé");
-        $sql = "SELECT * FROM Patient"; // SELECT DISTINCT * FROM Patient
-        $result = $this->pdo->query($sql);
-        $allRows = $result->fetchAll(); //PDO::FETCH_OBJ
-        return $allRows;
-    }
 
-    public function updateSoignant(int $id, $nom, $prenom, $datenaissance, $motdepasse, $poste, $mail)
-    {
-        if ($this->pdo === null) {
-            try {
-                $pdo = DatabaseModel::connection_DatabaseModel(); //on se connecte à la base
-                $this->pdo = $pdo;
-            } catch (PDOException $e) {
-                die("#=> Error_updateSoignant: " . $e->getMessage());
-            }
-        }
-        $sql = "UPDATE Soignant SET nom_soignant='{$nom}', prenom_soignant='{$prenom}', datenaissance_soignant='{$datenaissance}', motdepasse_soignant='{$motdepasse}',  WHERE id_soignant='{$id}' "; // SELECT DISTINCT * FROM Patient
-        $result = $this->pdo->query($sql);
-        $allRows = $result->fetchAll(); //PDO::FETCH_OBJ
-        return $allRows;
-    }
-
-    public function deleteSoignant($id, $name)
-    {
-        if ($this->pdo === null) {
-            try {
-                $pdo = DatabaseModel::connection_DatabaseModel(); //on se connecte à la base
-                $this->pdo = $pdo;
-            } catch (PDOException $e) {
-                die("#=> Error_deleteSoignant: " . $e->getMessage());
-            }
-        }
-    }
-
-    public function getScore()
-    {
-        if ($this->pdo === null) {
-            try {
-                $pdo = DatabaseModel::connection_DatabaseModel(); //on se connecte à la base
-                $this->pdo = $pdo;
-            } catch (PDOException $e) {
-                die("#=> Error_getScore: " . $e->getMessage());
-            }
-        }
-    }
 }
-
-
 ?>

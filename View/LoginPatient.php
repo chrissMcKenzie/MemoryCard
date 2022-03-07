@@ -19,7 +19,7 @@ session_start();
   <header id="Header">
     <section class="container">
       <div>
-      <img src="view/patient.png" id="img2">
+      <img src="View/assets/patient.png" id="img2">
       </div>
     </section>
 

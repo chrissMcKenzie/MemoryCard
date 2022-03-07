@@ -1,10 +1,8 @@
-<?php include_once('./DatabaseModel.php');
-
-//Voici la class Patient et managePatient, nous sommes concient que ce n'est pas complet
-//Nous allons implementer et modifier certaine fonctions en fonction du Front et des options
+<?php 
+include_once('Model/DatabaseModel.php');
 
 
-    class Patient{
+class Patient{
 
     private $id_patient;
     private $nom_patient;
@@ -12,16 +10,17 @@
     private $datenaissance_patient;
     private $motdepasse_patient;
     private $pathologie_patient;
-    private $score_patient;
-
-    public function __construct($pid, $pnom,$pprenom,$pdate,$pmp,$ppatho,$pscore){
-        $this->id_patient=$pid;
-        $this->nom_patient=$pnom;
-        $this->prenom_patient=$pprenom;
-        $this->datenaissance_patient=$pdate;
-        $this->motdepasse_patient=$pmp;
-        $this->pathologie_patient=$ppatho;
-        $this->score_patient=$pscore;
+    private $telephone_patient;
+    private $scoreIdList=array();
+ 
+    public function __construct($id, $nom,$prenom,$date,$mp,$patho,$telephone){
+        $this->id_patient=$id;
+        $this->nom_patient=$nom;
+        $this->prenom_patient=$prenom;
+        $this->datenaissance_patient=$date;
+        $this->motdepasse_patient=$mp;
+        $this->pathologie_patient=$patho;
+        $this->telephone_patient=$telephone;
     }
 
 
@@ -32,7 +31,7 @@
         return $this->nom_patient;
     }
     public function getPrenomPatient(){
-        return $this->renom_patient;
+        return $this->prenom_patient;
     }
     public function getDatePatient(){
         return $this->datenaissance_patient;
@@ -43,40 +42,57 @@
     public function getPathoPatient(){
         return $this->pathologie_patient;
     }
-    public function getScorePatient(){
-        return $this->score_patient;
+    public function getTelephonePatient(){
+        return $this->telephone_patient;
     }
-
+    public function getScoreIdList(){
+        return $this->ScoreIdList;
+    }
+    
+    public function addScore($IdScore){
+        // ajoute un objet Film à filmList
+        $this->ScoreIdList[] = $IdScore;
+    }
 }
-    
-    
+
 class managePatient{
+    private $patientList=array();
 
-    
-    //Pour la creation du patient nous avons mis en place une methode POST avec un formulaire qui creé dirrectement un patient en base de donné 
-    //avec les information rentré par l'utlisateur
-    
-    /*
-    public function createPatient($nom, $prenom, $datenaissance, $motdepasse, $pathologie, $temps, $score)
+    public function getPatientFromDB()
     {
-        if ($this->pdo === null) {
-            try {
-                $pdo = DatabaseModel::connection_DatabaseModel(); //on se connecte à la base
-                $this->pdo = $pdo;
-            } catch (PDOException $e) {
-                die("#=> Error_createPatient: " . $e->getMessage());
-            }
+        $pdo = DatabaseModel::connect(); //on se connecte à la base 
+        $sql = 'SELECT * FROM patient ORDER BY id_patient ASC'; //on formule notre requete 
+        $result = $pdo->query($sql);
+        $allRows = $result->fetchAll();
+      
+        foreach ($allRows as $row) { //on cree un objet Person avec chaque valeur retournée
+            $id = $row["id_patient"];
+            $nom = $row["nom_patient"];
+            $prenom = $row["prenom_patient"];
+            $date = $row["datenaissance_patient"];
+            $mp = $row["motdepasse_patient"];
+            $patho = $row["pathologie_patient"];
+            $telephone = $row["telephone_patient"];
+            $patient = new Patient($id,$nom,$prenom,$date,$mp,$patho,$telephone);
+            $this->patientList[] = $patient;
         }
-        $sql = "INSERT INTO Patient(nom_patient, prenom_patient, datenaissance_patient, motdepasse_patient, pathologie_patient, temps_patient, score_patient)
-        VALUES('{$nom}', '{$prenom}', '{$datenaissance}', '{$motdepasse}', '{$pathologie}', '{$temps}', '{$score}')
-        "; // SELECT DISTINCT * FROM Patient
-        $result = $this->pdo->query($sql);
-        $allRows = $result->fetchAll(); //PDO::FETCH_OBJ
-        return $allRows;
-
-        // return $id;
+        $result->closeCursor();
+        
+        return $this->patientList;
     }
-*/
+
+    public function getPatientFromId($id){
+        // retourne l'objet Person connaissant son id
+        // retourne null si pas trouvée
+        foreach ($this->patientList as $patient) {
+            if ($patient->getIdPatient() == $id)
+                return $patient;
+        }
+        return null;
+    }
+
+
+/*
     public function readPatient($security = false)
     {
         if ($this->pdo === null) {
@@ -116,4 +132,5 @@ class managePatient{
             }
         }
     }
+    */
 }

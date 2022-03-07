@@ -3,44 +3,44 @@
 
    class Score_Patient{
 
-    private $idScore;
-    private $idPatient;
-    private $scorePatient;
-    private $tempsPatient;
-    private $victoirePatient;
-    private $defaitePatient;
-    private $difficultePatient;
+    private $id_score;
+    private $id_patient;
+    private $score;
+    private $temps;
+    private $victoire;
+    private $defaite;
+    private $difficulte;
 
-    public function __construct($sid, $pscore,$ptemps,$pvictoire,$pdefaite,$pdifficulte,$pid){
-        $this->idScore=$sid;
-        $this->idPatient=$pid;
-        $this->scorePatient=$pscore;
-        $this->tempsPatient=$ptemps;
-        $this->victoirePatient=$pvictoire;
-        $this->defaitePatient=$pdefaite;
-        $this->difficultePatient=$pdifficulte;
+    public function __construct($sid, $pid, $pscore, $stemps, $svictoire, $sdefaite, $sdifficulte){
+        $this->id_score=$sid;
+        $this->id_patient=$pid;
+        $this->score=$pscore;
+        $this->temps=$stemps;
+        $this->victoire=$svictoire;
+        $this->defaite=$sdefaite;
+        $this->difficulte=$sdifficulte;
     }
 
     public function getIdScore(){
-        return $this->idScore;
+        return $this->id_score;
     }
     public function getidPatient(){
-        return $this->idpatient;
+        return $this->id_patient;
     }
-    public function getScorePatient(){
-        return $this->scorepatient;
+    public function getScore(){
+        return $this->score;
     }
-    public function getTempPatient(){
-        return $this->tempsPatient;
+    public function getTemp(){
+        return $this->temps;
     }
-    public function getVictoirePatient(){
-        return $this->victoirePatient;
+    public function getVictoire(){
+        return $this->victoire;
     }
-    public function getDefaitePatient(){
-        return $this->defaitePatient;
+    public function getDefaite(){
+        return $this->defaite;
     }
-    public function getDifficultePatient(){
-        return $this->difficultePatient;
+    public function getDifficulte(){
+        return $this->difficulte;
     }
 
 }
@@ -48,22 +48,23 @@
 class manageScore{
     private $ScoreList=array();
 
+
 private function getScoreFromBD(){
     $pdo = DatabaseModel::connect(); //on se connecte à la base 
-    $sql = 'SELECT * FROM Score_Patient ORDER BY id_score ASC'; //on formule notre requete 
+    $sql = 'SELECT * FROM score_patient ORDER BY id_score ASC'; //on formule notre requete 
     $result = $pdo->query($sql);
     $allRows = $result->fetchAll();
 
     foreach ($allRows as $row) { //on cree un objet Film avec chaque valeur retournée
-         $idScore= $row["id_score"];  
-         $idPatient= $row["id_patient"];                                                                                    
-         $scorePatient= $row["score_patient"];
-         $tempsPatient= $row["temps_patient"];
-         $victoirePatient= $row["victoire_patient"];
-         $defaitePatient= $row["defaite_patient"];
-         $difficultePatient= $row["difficulte_patient"];
+         $sid = $row["id_score"];  
+         $pid = $row["id_patient"];                                                                                    
+         $pscore = $row["score"];
+         $stemps = $row["temps"];
+         $svictoire = $row["victoire"];
+         $sdefaite = $row["defaite"];
+         $sdifficulte = $row["difficulte"];
     
-        $score = new ScorePatient($idScore,$idPatient,$scorePatient,$tempsPatient,$victoirePatient,$defaitePatient,$difficultePatient);
+        $score = new ScorePatient($sid, $pid, $pscore, $stemps, $svictoire, $sdefaite, $sdifficulte);
         $this->ScoreList[] = $score;
         }
 
