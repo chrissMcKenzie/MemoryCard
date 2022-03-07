@@ -29,8 +29,8 @@ CREATE TABLE Soignant(
 CREATE TABLE Score_Patient(
     id_score INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     id_patient INT, FOREIGN KEY REFERENCES Patient(id_patient),
-    score_patient INT(3), FOREIGN KEY REFERENCES Patient(score_patient),
-    temps_patient TIME, FOREIGN KEY REFERENCES Patient(temps_patient),
+    score_patient INT(3), FOREIGN KEY (score_patient) REFERENCES Patient(score_patient),
+    temps_patient TIME FOREIGN KEY REFERENCES Patient(temps_patient),
     victoire_patient INT(100) NOT NULL,
     defaite_patient INT(100) NOT NULL,
     difficulte_patient VARCHAR(5) NOT NULL
