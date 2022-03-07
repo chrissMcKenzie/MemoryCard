@@ -33,22 +33,25 @@
     <section class="container">
       <form id="formulaire" method="POST">
         <label for="Prenom"><b>Prenom:</b><i>*</i></label>
-        <input type="text" name="nom" placeholder="Prenom ?" >
+        <input type="text" name="nom" placeholder="Prenom" >
         <br>
         <label for="Nom"><b>Nom:</b><i>*</i></label>
-        <input type="text" name="pre" placeholder="Nom ?" >
+        <input type="text" name="pre" placeholder="Nom" >
         <br>
         <label for="Date"><b>Date de naissance:</b><i>*</i></label>
-        <input type="text" name="daten" placeholder="Date de naissance ?" >
+        <input type="text" name="daten" placeholder="Date de naissance" >
         <br>
         <label for="MotDePasse"><b>Mot de passe: </b><i>*</i></label>
-        <input type="password" name="pwd" placeholder="Password ?" >
+        <input type="password" name="pwd1" placeholder="Password " >
+        <br>
+        <label for="MotDePasse"><b>Confirmer mot de passe: </b><i>*</i></label>
+        <input type="password" name="pwd2" placeholder="Password" >
         <br>
         <label for="Email"><b>Poste:</b><i>*</i></label>
-        <input type="text" name="poste" placeholder="Poste ?" >
+        <input type="text" name="poste" placeholder="Poste " >
         <br>
         <label for="Email"><b>Email:</b><i>*</i></label>
-        <input type="text" name="eml" placeholder="Email ?" >
+        <input type="text" name="eml" placeholder="Email " >
         <br>
         <button type="submit" name="submit" id="Inscription"><b>Inscription</b></button>
       </form>

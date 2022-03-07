@@ -49,10 +49,10 @@ class manageSoignant{
 
         private $soignantList=array();
 
-        function enre($NOM,$PRENOM,$DATE,$PWD,$POSTE,$EMAIL){
+        function enre($NOM,$PRENOM,$DATE,$PWD1,$POSTE,$EMAIL){
                 $pdo = DatabaseModel::connect();
 
-                $req="INSERT INTO soignant (nom_soignant, prenom_soignant, datenaissance_soignant, motdepasse_soignant, poste_soignant, mail_soignant) values ('$NOM','$PRENOM','$DATE','$PWD','$POSTE','$EMAIL')";
+                $req="INSERT INTO soignant (nom_soignant, prenom_soignant, datenaissance_soignant, motdepasse_soignant, poste_soignant, mail_soignant) values ('$NOM','$PRENOM','$DATE','$PWD1','$POSTE','$EMAIL')";
                 $result = $pdo->query($req);
         }
 
