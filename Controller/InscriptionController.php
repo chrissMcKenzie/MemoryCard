@@ -46,7 +46,7 @@ $EMAIL=isset($_POST['eml']) ? $_POST['eml'] : '';
     echo "<script type='text/javascript'>document.location.replace('index.php?page=1');</script>";
 
 }
-    }
+}
 
 
 ?>

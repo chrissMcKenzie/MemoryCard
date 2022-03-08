@@ -14,8 +14,13 @@
 <body>
   <header id="Header">
     <section class="container">
-      <div>
-      <img src="View/assets/soignant.png" id="img1">
+    <div>
+      <a href = 'index.php?page=6'>
+        <img src="View/assets/soignant.png" id="img1">
+      </a>
+      <a href = 'index.php?page=11'>
+        <img src="View/assets/patient.png" id="img2">
+      </a>
       </div>
     </section>
 
@@ -27,11 +32,11 @@
       <div class="BarreDeNotification">
         <p></p>
       </div>
-      <h1>Inscription</h1>
+      <h1>Inscription Patient</h1>
     </section>
 
     <section class="container">
-      <form id="formulaire" method="POST">
+      <form id="formulaire"action="index.php?page=11" method="POST">
         <label for="Nom"><b>Nom:</b><i>*</i></label>
         <input type="text" name="pre" placeholder="Nom" >
         <br>
@@ -41,17 +46,11 @@
         <label for="Date"><b>Date de naissance:</b><i>*</i></label>
         <input type="text" name="daten" placeholder="Date de naissance" >
         <br>
-        <label for="MotDePasse"><b>Mot de passe: </b><i>*</i></label>
-        <input type="password" name="pwd1" placeholder="Password " >
+        <label for="Patho"><b>Pathologie:</b><i>*</i></label>
+        <input type="text" name="patho" placeholder="Pathologie " >
         <br>
-        <label for="MotDePasse"><b>Confirmer mot de passe: </b><i>*</i></label>
-        <input type="password" name="pwd2" placeholder="Password" >
-        <br>
-        <label for="Email"><b>Poste:</b><i>*</i></label>
-        <input type="text" name="poste" placeholder="Poste " >
-        <br>
-        <label for="Email"><b>Email:</b><i>*</i></label>
-        <input type="text" name="eml" placeholder="Email " >
+        <label for="numero"><b>Numero de telephone:</b><i>*</i></label>
+        <input type="text" name="numero" placeholder="numero de telephone " >
         <br>
         <button type="submit" name="submit" id="Inscription"><b>Inscription</b></button>
       </form>
@@ -59,20 +58,20 @@
         <a href="index.php?page=1">Connexion</a>
       </div>
     </section>
-
   </main>
   <br>
+
 <style>
-
-<?php
-  include_once('Controller/InscriptionController.php');
-?>
-
 #img1{
     height: 50px;
     width: 50px;
-   margin-left:110px;
+   margin-left:300px;
 }
+#img2{
+    height: 50px;
+    width: 50px;
+}
+
   * {
     margin: 0;
     padding: 0;

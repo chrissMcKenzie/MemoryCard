@@ -14,11 +14,15 @@
 <body>
   <header id="Header">
     <section class="container">
-      <div>
-      <img src="View/assets/soignant.png" id="img1">
+    <div>
+      <a href = 'index.php?page=6'>
+        <img src="View/assets/soignant.png" id="img1">
+      </a>
+      <a href = 'index.php?page=11'>
+        <img src="View/assets/patient.png" id="img2">
+      </a>
       </div>
     </section>
-
   </header>
   <br>
 
@@ -27,7 +31,7 @@
       <div class="BarreDeNotification">
         <p></p>
       </div>
-      <h1>Inscription</h1>
+      <h1>Inscription Soignant</h1>
     </section>
 
     <section class="container">
@@ -38,7 +42,6 @@
         <label for="Prenom"><b>Prenom:</b><i>*</i></label>
         <input type="text" name="nom" placeholder="Prenom" >
         <br>
-        
         <label for="Date"><b>Date de naissance:</b><i>*</i></label>
         <input type="text" name="daten" placeholder="Date de naissance" >
         <br>
@@ -68,7 +71,11 @@
 #img1{
     height: 50px;
     width: 50px;
-   margin-left:110px;
+   margin-left:300px;
+}
+#img2{
+    height: 50px;
+    width: 50px;
 }
   * {
     margin: 0;

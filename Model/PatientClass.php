@@ -58,11 +58,10 @@ class Patient{
 class managePatient{
     private $patientList=array();
 
-    
-    function enre($NOM,$PRENOM,$DATE,$PWD1,$POSTE,$EMAIL){
+    function enre($NOM,$PRENOM,$DATE,$PATHO,$NUMERO){
         $pdo = DatabaseModel::connect();
 
-        $req="INSERT INTO soignant (nom_soignant, prenom_soignant, datenaissance_soignant, motdepasse_soignant, poste_soignant, mail_soignant) values ('$NOM','$PRENOM','$DATE','$PWD1','$POSTE','$EMAIL')";
+        $req="INSERT INTO patient (nom_patient, prenom_patient, datenaissance_patient, pathologie_patient, telephone_patient) values ('$NOM','$PRENOM','$DATE','$PATHO','$NUMERO')";
         $result = $pdo->query($req);
     }
 

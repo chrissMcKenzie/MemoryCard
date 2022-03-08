@@ -50,9 +50,6 @@
         <br>
         <button type="submit" name="submit" id="Inscription"><b>Inscription</b></button>
       </form>
-      <div class="Option">
-        <a href="index.php?page=1">Connexion</a>
-      </div>
     </section>
 
 

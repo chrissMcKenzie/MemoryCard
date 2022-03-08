@@ -35,6 +35,8 @@ if (isset($_GET['page'])) {		// l'URL complétée par ?page=x fournit le nom de 
 			$titre = 'jeu';
 			break;
 		
+	
+		
 		case 7:
 			$laPage = "Controller/ConsultationController.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
 			$titre = 'jeu';
@@ -52,6 +54,11 @@ if (isset($_GET['page'])) {		// l'URL complétée par ?page=x fournit le nom de 
 			
 		case 10:
 			$laPage = "view/UserView.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
+			$titre = 'jeu';
+			break;	
+			
+		case 11:
+			$laPage = "controller/InscriptionControllerPatient.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
 			$titre = 'jeu';
 			break;
 	}

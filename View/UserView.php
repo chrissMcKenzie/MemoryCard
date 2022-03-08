@@ -293,7 +293,8 @@ function listePatients()
 
         <section class="container">
             <form method="POST" action="index.php?page=AccueilView">
-                <button type="submit" name="Deconnexion"><b>Deconnexion</b></button>
+                <a  class="btn" id="centerbar-elem" href="Controller/Logout.php" >Déconnexion</a>
+
             </form>
 
         </section>
