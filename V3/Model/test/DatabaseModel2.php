@@ -2,9 +2,10 @@
 
 class DatabaseModel2{
 
-    private $_HOST = 'localhost';
+    public $_HOST = 'localhost';
     private $_DBNAME = 'bts2a_MemoryCardModel';
-    //private $DSN = "mysql:host=$HOST; dbname=$DBNAME";
+    private $_DSN = "mysql:host="; //private $_DSN = "mysql:host=$_HOST; dbname=$_DBNAME";
+    //private $_DSN .= $_HOST; private $_DSN .= $_DBNAME;
     private $_USER = 'root';
     private $_PASSWORD = '';
     private $_OPTIONS = [
@@ -17,9 +18,22 @@ class DatabaseModel2{
         $this->_HOST;
     }
 
-    public static function getPDOConnexion() {
+    public function getHost(){
+        return $this->_HOST;
+    }
+
+    public static function getPDOConnexion0(){
         try {
-            $DB_CONNEXION = new PDO("mysql:host=".$this->$_HOST.";"."dbname=". $_DBNAME, $_USER, $_PASSWORD, $_OPTIONS);
+            $DB_CONNEXION = new PDO($_DSN, $_USER, $_PASSWORD, $_OPTIONS);
+        } catch (PDOException $e) {
+            die("ErrorConnexion: " . $e->getMessage());
+        }
+
+        return $DB_CONNEXION;
+    }
+    public static function getPDOConnexion1() {
+        try {
+            $DB_CONNEXION = new PDO("mysql:host=".$_HOST."; dbname=". $_DBNAME, $_USER, $_PASSWORD, $_OPTIONS);
         } catch (PDOException $e) {
             die("ErrorConnexion: " . $e->getMessage());
         }

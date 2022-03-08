@@ -1,4 +1,4 @@
-<?php include_once('DatabaseModel.php'); // https://www.copier-coller.com/un-crud-en-php/
+<?php include_once './DatabaseModel.php'; // https://www.copier-coller.com/un-crud-en-php/
 
 class Soignant{
 
@@ -67,8 +67,7 @@ class manageSoignant{
                 }
         }
 
-        public function getSoignantFromDB()
-        {
+        public function getSoignantFromDB() {
             $pdo = DatabaseModel::connect(); //on se connecte à la base 
             $sql = 'SELECT * FROM soignant ORDER BY id_soignant ASC'; //on formule notre requete 
             $result = $pdo->query($sql);
@@ -82,6 +81,7 @@ class manageSoignant{
                 $mp = $row["motdepasse_soignant"];
                 $poste = $row["poste_soignant"];
                 $mail = $row["mail_soignant"];
+
                 $soignant = new Soignant($id,$nom,$prenom,$date,$mp,$poste,$mail);
                 $this->soignantList[] = $soignant;
             }

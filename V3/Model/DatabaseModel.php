@@ -5,18 +5,18 @@ class DatabaseModel {
     private static $dbHost = 'localhost' ; 
     private static $dbUsername = 'root'; 
     private static $dbUserPassword = ''; 
-    private static $cont = null; 
-    public function __construct() { 
+    private static $cont = null;
+    public function __construct() {
         die('Init function is not allowed'); 
     } 
     public static function connect() { 
         // Connexion à la base de données
 
-        if (null == self::$cont){ 
-        try { 
-                self::$cont = new PDO( "mysql:host=".self::$dbHost.";"."dbname=".self::$dbName, self::$dbUsername, self::$dbUserPassword); 
-            } catch(PDOException $e){ 
-                die($e->getMessage()); 
+        if (self::$cont == null){ 
+            try {
+                self::$cont = new PDO("mysql:host=".self::$dbHost.";"."dbname=".self::$dbName, self::$dbUsername, self::$dbUserPassword); 
+            } catch(PDOException $e){
+                die($e->getMessage());
             }
        }
        return self::$cont;

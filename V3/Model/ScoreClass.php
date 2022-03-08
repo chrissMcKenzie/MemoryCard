@@ -1,8 +1,7 @@
 <?php
-include_once('./DatabaseModel.php');
+include_once './DatabaseModel.php';
 
-class Score_Patient
-{
+class Score_Patient{
 
     private $id_score;
     private $id_patient;
@@ -12,8 +11,7 @@ class Score_Patient
     private $defaite;
     private $difficulte;
 
-    public function __construct($sid, $pid, $pscore, $stemps, $svictoire, $sdefaite, $sdifficulte)
-    {
+    public function __construct($sid, $pid, $pscore, $stemps, $svictoire, $sdefaite, $sdifficulte){
         $this->id_score = $sid;
         $this->id_patient = $pid;
         $this->score = $pscore;
@@ -23,43 +21,34 @@ class Score_Patient
         $this->difficulte = $sdifficulte;
     }
 
-    public function getIdScore()
-    {
+    public function getIdScore(){
         return $this->id_score;
     }
-    public function getidPatient()
-    {
+    public function getidPatient() {
         return $this->id_patient;
     }
-    public function getScore()
-    {
+    public function getScore() {
         return $this->score;
     }
-    public function getTemp()
-    {
+    public function getTemp() {
         return $this->temps;
     }
-    public function getVictoire()
-    {
+    public function getVictoire() {
         return $this->victoire;
     }
-    public function getDefaite()
-    {
+    public function getDefaite() {
         return $this->defaite;
     }
-    public function getDifficulte()
-    {
+    public function getDifficulte() {
         return $this->difficulte;
     }
 }
 
-class manageScore
-{
+class manageScore{
     private $ScoreList = array();
 
 
-    private function getScoreFromBD()
-    {
+    private function getScoreFromBD() {
         $pdo = DatabaseModel::connect(); //on se connecte à la base 
         $sql = 'SELECT * FROM score_patient ORDER BY id_score ASC'; //on formule notre requete 
         $result = $pdo->query($sql);
@@ -74,7 +63,7 @@ class manageScore
             $sdefaite = $row["defaite"];
             $sdifficulte = $row["difficulte"];
 
-            $score = new ScorePatient($sid, $pid, $pscore, $stemps, $svictoire, $sdefaite, $sdifficulte);
+            $score = new Score_Patient($sid, $pid, $pscore, $stemps, $svictoire, $sdefaite, $sdifficulte);
             $this->ScoreList[] = $score;
         }
 
@@ -82,14 +71,12 @@ class manageScore
         return $this->ScoreList;
     }
 
-    public function getScore()
-    {
+    public function getScore() {
         if (count($this->ScoreList) == 0)
             $this->getScoreFromDB();
         return $this->ScoreList;
     }
-    public function getScoreFromId($idScore)
-    {
+    public function getScoreFromId($idScore){
         foreach ($this->ScoreList as $score) {
             if ($film->getIdScore() == $idScore)
                 return $score;

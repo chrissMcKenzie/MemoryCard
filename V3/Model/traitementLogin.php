@@ -1,6 +1,6 @@
-<?php        
+<?php
 session_start();
-include_once('DatabaseModel.php');
+include_once './DatabaseModel.php';
 
     // connexion à la base de données
 

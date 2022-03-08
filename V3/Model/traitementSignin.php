@@ -1,6 +1,4 @@
-<?php
-
-include_once('DatabaseModel.php');
+<?php include_once './DatabaseModel.php';
 
 $pdo = DatabaseModel::connect();
 $NOM = isset($_POST['nom']) ? $_POST['nom'] : '';

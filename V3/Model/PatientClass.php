@@ -1,5 +1,5 @@
 <?php
-include_once('Model/DatabaseModel.php');
+include_once './DatabaseModel.php'; //Model/DatabaseModel.php
 
 
 class Patient

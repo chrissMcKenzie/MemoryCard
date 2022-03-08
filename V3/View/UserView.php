@@ -1,6 +1,6 @@
 <?php session_start();
 include_once './../Model/DatabaseModel.php';
-include_once './../Model/PatientModel.php';
+include_once './../Model/PatientClass.php';
 
 //$PDO = DatabaseModel::connect();
 // $mPatient = new ManagerPatient();
