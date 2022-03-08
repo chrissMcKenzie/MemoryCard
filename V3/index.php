@@ -7,11 +7,7 @@ $titre = "Accueil";
 if (isset($_GET['page'])) { // l'URL complétée par ?page=x fournit le nom de page souhaité
 	$page = $_GET['page'];
 	//système qui permet de savoir la page à charger
-<<<<<<< HEAD
 	$page = strtoupper($page);
-=======
-	//$page = strtoupper($page);
->>>>>>> 09d745e6c77eced8bbe2eb597400dd3347648960
 	switch ($page) {
 		case "Acceuil":
 			$laPage = 'View/AccueilView.php';
@@ -42,7 +38,7 @@ if (isset($_GET['page'])) { // l'URL complétée par ?page=x fournit le nom de p
 			//require_once './View/auth/LoginPatientView.php';
 			break;
 
-		case "Password":
+		case "Forgot":
 			$laPage = "View/auth/ForgotPasswordView.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
 			$titre = 'Password';
 			//require_once './View/auth/ForgotPasswordView.php';

@@ -49,15 +49,13 @@ if (isset($_SESSION['mail_soignant'])) {
                     <button type="submit" name="submit" id="Connexion"><b>Connexion</b></button>
                     </div>
                     <div class="Option">
-                        <a href="index.php?page=6">Inscription</a>
-                        <a href="index.php?page=3">Mot De Passe Oublié ?</a>
+                        <a href="index.php?page=LoginSoignant">Inscription</a>
+                        <a href="index.php?page=Forgot">Mot De Passe Oublié ?</a>
                 </form>
             </section>
         </main>
 
-        <?php
-        include_once('controller/LoginController.php');
-        ?>
+        <?php include_once('./Controller/LoginController.php'); ?>
         <br>
     </body>
 

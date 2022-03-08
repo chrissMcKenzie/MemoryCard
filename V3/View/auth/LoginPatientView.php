@@ -61,7 +61,7 @@ session_start();
         <button type="submit" name="submit" id="Inscription"><b>Inscription</b></button>
       </form>
       <div class="Option">
-        <a href="index.php?page=1">Connexion</a>
+        <a href="index.php?page=LoginPatient">Connexion</a>
       </div>
     </section>
 
@@ -196,9 +196,9 @@ session_start();
     // BarreDeNotification
 
     Inscription.onclick = () => {
-      const annee = `${new Date().getFullYear()}`;
-      const mois = `${new Date().getMonth()+1}`;
-      const date = `${new Date().getDate()}`;
+      const annee = `${new Date().getFullYear()}`
+      const mois = `${new Date().getMonth()+1}`
+      const date = `${new Date().getDate()}`
       const jour = `${new Date().getDay()}`
       const horaire = `${new Date().getHours()}${new Date().getMinutes()}${new Date().getSeconds()}`
       const idInscription = `${annee}${mois}${date}${jour}${horaire}`
@@ -207,7 +207,7 @@ session_start();
       localStorage.setItem("dateInscription", dateInscription.valueOf())
       //localStorage.setItem("idInscription", idInscription.value)
       //localStorage.setItem("idInscription", idInscription.valueOf())
-      localStorage.setItem("Nom", Nom.value);
+      localStorage.setItem("Nom", Nom.value)
       localStorage.setItem("Prenom", Prenom.value)
       localStorage.setItem("Email", Email.value)
       localStorage.setItem("MotDePasse", MotDePasse.value)

@@ -53,16 +53,14 @@
         <button type="submit" name="submit" id="Inscription"><b>Inscription</b></button>
       </form>
       <div class="Option">
-        <a href="index.php?page=1">Connexion</a>
+        <a href="index.php?page=SigninSoignant">Connexion</a>
       </div>
     </section>
 
   </main>
   <br>
   <style>
-    <?php
-    include_once('Controller/InscriptionController.php');
-    ?>#img1 {
+    <?php include_once('Controller/InscriptionController.php'); ?>#img1 {
       height: 50px;
       width: 50px;
       margin-left: 110px;
@@ -195,7 +193,7 @@
       localStorage.setItem("MotDePasse", MotDePasse.value)
 
       // document.location.reload()
-      document.location.pathname = "dashboard/Admin/Login.php"
+      document.location.pathname = "dashboardAdminphp/Home/Jeux/MemoryCard/V3/index.php?page=SigninSoignant.php"
 
     }
 

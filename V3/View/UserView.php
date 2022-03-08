@@ -4,49 +4,49 @@ include_once './../Model/PatientClass.php';
 
 $PDO = DatabaseModel::connect();
 $oPatient = new ManagerPatient();
-$listePatients = $oPatient->readPatient();
+$listePatients = $oPatient->getPatientFromDB();
 
 // $sql = 'SELECT * FROM Patient';
 // $result = $PDO->query($sql);
 // $allRows = $result->fetchAll();
 
-function getPDOConnexion(){
-    $HOST = 'localhost';
-    $DBNAME = 'bts2a_MemoryCardModel';
-    $DSN = "mysql:host=$HOST; dbname=$DBNAME";
-    $USER = 'root';
-    $PASSWORD = '';
-    $OPTIONS = [
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-    ];
+// function getPDOConnexion(){
+//     $HOST = 'localhost';
+//     $DBNAME = 'bts2a_MemoryCardModel';
+//     $DSN = "mysql:host=$HOST; dbname=$DBNAME";
+//     $USER = 'root';
+//     $PASSWORD = '';
+//     $OPTIONS = [
+//         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+//         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+//     ];
 
-    try {
-        $DB_CONNEXION = new PDO($DSN, $USER, $PASSWORD, $OPTIONS);
-    } catch (PDOException $e) {
-        die("ErrorConnexion: " . $e->getMessage());
-    }
+//     try {
+//         $DB_CONNEXION = new PDO($DSN, $USER, $PASSWORD, $OPTIONS);
+//     } catch (PDOException $e) {
+//         die("ErrorConnexion: " . $e->getMessage());
+//     }
 
-    return $DB_CONNEXION;
-}
+//     return $DB_CONNEXION;
+// }
 
-function listePatients(){
-    $PDOConnexion = getPDOConnexion();
-    $SQL_CODE = "SELECT * FROM Patient";
-    $SQL_REQUÊTE = $PDOConnexion->query($SQL_CODE);
-    $SQL_RESULTAT = $SQL_REQUÊTE->fetchAll();
+// function listePatients(){
+//     $PDOConnexion = getPDOConnexion();
+//     $SQL_CODE = "SELECT * FROM Patient";
+//     $SQL_REQUÊTE = $PDOConnexion->query($SQL_CODE);
+//     $SQL_RESULTAT = $SQL_REQUÊTE->fetchAll();
 
-    // foreach ($SQL_RESULTAT as $DATA) {
-    //     foreach ($DATA as $champ => $value) {
-    //         if (!is_int($champ)) {
-    //             echo "<th scope='col'>{$champ}</th>";
-    //         }
-    //     }
-    //     echo "<tr class='table-active' style='text-align: center;'>{$DATA['id_patient']}</tr>";
-    // }
+//     // foreach ($SQL_RESULTAT as $DATA) {
+//     //     foreach ($DATA as $champ => $value) {
+//     //         if (!is_int($champ)) {
+//     //             echo "<th scope='col'>{$champ}</th>";
+//     //         }
+//     //     }
+//     //     echo "<tr class='table-active' style='text-align: center;'>{$DATA['id_patient']}</tr>";
+//     // }
 
-    return $SQL_RESULTAT;
-}
+//     return $SQL_RESULTAT;
+// }
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -290,7 +290,7 @@ function listePatients(){
         </section>
 
         <section class="container">
-            <form method="POST" action="index.php?page=AccueilView">
+            <form method="POST" action="index.php?page=Accueil">
                 <button type="submit" name="Deconnexion"><b>Deconnexion</b></button>
             </form>
 

@@ -1,7 +1,7 @@
 <?php session_start();
 include_once './../Model/DatabaseModel.php';
-include_once './../Model/PatientModel.php';
-include_once './../Model/SoignantModel.php';
+include_once './../Model/PatientClass.php';
+include_once './../Model/SoignantClass.php';
 //require_once './template/TemplateView.php';
 ?>
 <!DOCTYPE html>
@@ -162,11 +162,11 @@ include_once './../Model/SoignantModel.php';
                         <hr>
                     </li>
                     <li>
-                        <a href="index.php?page=JeuxView">Jeux</a>
+                        <a href="index.php?page=Jeux">Jeux</a>
                         <hr>
                     </li>
                     <li>
-                        <a href="index.php?page=ChambreView">Chambre</a>
+                        <a href="index.php?page=Chambre">Chambre</a>
                         <hr>
                     </li>
                     <li>
@@ -189,7 +189,7 @@ include_once './../Model/SoignantModel.php';
         </section>
 
         <section class="container">
-            <form action="index.php?page=AccueilView" method="POST">
+            <form action="index.php?page=Accueil" method="POST">
                 <button type="submit" name="Deconnexion"><b>Deconnexion</b></button>
             </form>
 
