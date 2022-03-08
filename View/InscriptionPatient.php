@@ -1,21 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
-<?php
-    if(isset($_SESSION['nom_patient']))
-    {     
-        echo"<center > Vous etes connecté en tant que : " . $_SESSION['nom_patient']. "</center>";
-        include_once('./View/UserView.php');
-?>
 
-<?php
-    }
-    else{
-?>
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Connexion</title>
+  <title>Signin | Inscription</title>
   <!-- CSS LINKPACK -->
   <!-- <link rel="stylesheet" href="./Signin.css"> -->
   <!-- <script src="./Signin.js" defer></script> -->
@@ -25,7 +15,7 @@
   <header id="Header">
     <section class="container">
       <div>
-      <img src="View/assets/patient.png" id="img2">
+      <img src="View/assets/soignant.png" id="img1">
       </div>
     </section>
 
@@ -37,16 +27,31 @@
       <div class="BarreDeNotification">
         <p></p>
       </div>
-      <h1>Connexion</h1>
+      <h1>Inscription</h1>
     </section>
 
     <section class="container">
       <form id="formulaire" method="POST">
         <label for="Nom"><b>Nom:</b><i>*</i></label>
-        <input type="text" name="nom" placeholder="Nom ?" >
+        <input type="text" name="pre" placeholder="Nom" >
         <br>
         <label for="Prenom"><b>Prenom:</b><i>*</i></label>
-        <input type="text" name="pre" placeholder="Prenom ?" >
+        <input type="text" name="nom" placeholder="Prenom" >
+        <br>
+        <label for="Date"><b>Date de naissance:</b><i>*</i></label>
+        <input type="text" name="daten" placeholder="Date de naissance" >
+        <br>
+        <label for="MotDePasse"><b>Mot de passe: </b><i>*</i></label>
+        <input type="password" name="pwd1" placeholder="Password " >
+        <br>
+        <label for="MotDePasse"><b>Confirmer mot de passe: </b><i>*</i></label>
+        <input type="password" name="pwd2" placeholder="Password" >
+        <br>
+        <label for="Email"><b>Poste:</b><i>*</i></label>
+        <input type="text" name="poste" placeholder="Poste " >
+        <br>
+        <label for="Email"><b>Email:</b><i>*</i></label>
+        <input type="text" name="eml" placeholder="Email " >
         <br>
         <button type="submit" name="submit" id="Inscription"><b>Inscription</b></button>
       </form>
@@ -55,25 +60,15 @@
       </div>
     </section>
 
-
-    <?php
-        include_once('controller/LoginControllerPatient.php');
-    ?>
-
-
   </main>
   <br>
-  <footer id="Footer">
-    <section class="container">
-      <div>Copyright © 2021-2022 www.chrissMcKenzie.com. Tous Droits Réservés</div>
-      <div>Codeur, Développeur (c) 2021 chrissMcKenzie.com</div>
-    </section>
-  </footer>
-
-
-
 <style>
-  #img2{
+
+<?php
+  include_once('Controller/InscriptionController.php');
+?>
+
+#img1{
     height: 50px;
     width: 50px;
    margin-left:110px;
@@ -217,10 +212,7 @@
     //chrissMcKenzie.IT.Agence@gmail.com
   </script>
 </body>
-<?php
-        
-    }
-?>
+
 </html>
 
 <!-- 

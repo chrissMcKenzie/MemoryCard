@@ -44,6 +44,16 @@ if (isset($_GET['page'])) {		// l'URL complétée par ?page=x fournit le nom de 
 			$laPage = "Controller/GraphController.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
 			$titre = 'jeu';
 			break;
+		
+		case 9:
+			$laPage = "controller/LoginControllerPatient.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
+			$titre = 'jeu';
+			break;
+			
+		case 10:
+			$laPage = "view/UserView.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
+			$titre = 'jeu';
+			break;
 	}
 }
 

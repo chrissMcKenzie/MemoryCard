@@ -5,7 +5,7 @@
     if(isset($_SESSION['mail_soignant']))
     {        
         echo"<center > Vous etes connecté en tant que : " . $_SESSION['mail_soignant']. "</center>";
-        include_once('./View/OrganisationAdminSession/NavBar.php');        
+        include_once('./View/OrganisationAdminSession/NavBar.php');       
         
 ?>
 

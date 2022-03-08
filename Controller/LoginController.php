@@ -12,8 +12,8 @@ include_once('./model/SoignantClass.php');
 
         if (!empty($email) && !empty($pass)) {    
         
-            $managerpat = new manageSoignant();
-            $managerpat->log($email,$pass);
+            $managersoi = new manageSoignant();
+            $managersoi->log($email,$pass);
             include_once('View/LoginSoignant.php');
         }
     }

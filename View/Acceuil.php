@@ -19,7 +19,7 @@
               <div class="buts">
                 <div class="but1">                  
                   <img src="View/assets/patient.png" id="img2">
-                  <button class=patient onclick= "window.location.href = 'index.php?page=4';"> Patient </button>
+                  <button class=patient onclick= "window.location.href = 'index.php?page=9';"> Patient </button>
                 </div>
                 <div class="but2">                
                   <img src="View/assets/soignant.png" id="img1">

@@ -2,6 +2,7 @@
 
 include_once('./model/DatabaseModel.php');
 include_once('./model/SoignantClass.php');
+include_once('./View/InscriptionSoignant.php');
 
 if(isset($_POST['submit']))
 {
@@ -26,7 +27,6 @@ $EMAIL=isset($_POST['eml']) ? $_POST['eml'] : '';
     else
     {
      echo'<script>alert("Email pas conforme");</script>';
-
     }
 
     if(($_POST['pwd1'])==($_POST['pwd2']))
@@ -34,19 +34,19 @@ $EMAIL=isset($_POST['eml']) ? $_POST['eml'] : '';
         $PWD1 = password_hash($PWD1, PASSWORD_DEFAULT);
         $mp_valide = true;
     }
-    else{
-        echo"<center><h2>Les mot de passes doivent etre identique</h2></center>"; 
 
+    else{
+        echo'<script>alert("Les mot de passes doivent etre identique");</script>'; 
     }
-    include_once('./View/InscriptionSoignant.php');
 
     if((!isset($v_valide))&&(isset($email_valide))&&(isset($mp_valide))){
-    include_once('./View/InscriptionSoignant.php');
     $managersoignant = new manageSoignant();
     $managersoignant->enre($NOM,$PRENOM,$DATE,$PWD1,$POSTE,$EMAIL);
-    echo '<center><h2>Félicitation vous etes inscrit ! Veuillez vous connecter .</h2></center>';
-}
+    echo'<script>alert("Félicitation vous etes inscrit ! Veuillez vous connecter .");</script>';
+    echo "<script type='text/javascript'>document.location.replace('index.php?page=1');</script>";
 
 }
+    }
+
 
 ?>

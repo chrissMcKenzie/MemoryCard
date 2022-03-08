@@ -31,13 +31,14 @@
     </section>
 
     <section class="container">
-      <form id="formulaire" method="POST">
+      <form id="formulaire" action="index.php?page=6" method="POST">
+        <label for="Nom"><b>Nom:</b><i>*</i></label>
+        <input type="text" name="pre" placeholder="Nom">
+        <br>
         <label for="Prenom"><b>Prenom:</b><i>*</i></label>
         <input type="text" name="nom" placeholder="Prenom" >
         <br>
-        <label for="Nom"><b>Nom:</b><i>*</i></label>
-        <input type="text" name="pre" placeholder="Nom" >
-        <br>
+        
         <label for="Date"><b>Date de naissance:</b><i>*</i></label>
         <input type="text" name="daten" placeholder="Date de naissance" >
         <br>
@@ -63,10 +64,6 @@
   </main>
   <br>
 <style>
-
-<?php
-  include_once('Controller/InscriptionController.php');
-?>
 
 #img1{
     height: 50px;

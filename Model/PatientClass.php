@@ -58,6 +58,29 @@ class Patient{
 class managePatient{
     private $patientList=array();
 
+    
+    function enre($NOM,$PRENOM,$DATE,$PWD1,$POSTE,$EMAIL){
+        $pdo = DatabaseModel::connect();
+
+        $req="INSERT INTO soignant (nom_soignant, prenom_soignant, datenaissance_soignant, motdepasse_soignant, poste_soignant, mail_soignant) values ('$NOM','$PRENOM','$DATE','$PWD1','$POSTE','$EMAIL')";
+        $result = $pdo->query($req);
+    }
+
+    function log($nom,$prenom){
+
+        $db = DatabaseModel::connect();
+
+        $req = $db->prepare('SELECT id_patient FROM patient WHERE nom_patient = :nom AND prenom_patient = :prenom');
+        $req->execute(array(':nom' => $nom,':prenom' => $prenom));
+        $resultat = $req->fetch();
+        
+        if ($req->rowCount() > 0){
+        $_SESSION['nom_patient'] = $nom;
+        }
+    }
+
+
+
     public function getPatientFromDB()
     {
         $pdo = DatabaseModel::connect(); //on se connecte à la base 
@@ -92,45 +115,6 @@ class managePatient{
     }
 
 
-/*
-    public function readPatient($security = false)
-    {
-        if ($this->pdo === null) {
-            try {
-                $pdo = DatabaseModel::connection_DatabaseModel(); //on se connecte à la base
-                $this->pdo = $pdo;
-                // var_dump("PDO initialise");
-            } catch (PDOException $e) {
-                die("#=> Error_readPatient: " . $e->getMessage());
-            }
-        }
-        // var_dump("Requête executé");
-        $sql = "SELECT * FROM Patient"; // SELECT DISTINCT * FROM Patient
-        $result = $this->pdo->query($sql);
-        $allRows = $result->fetchAll(); //PDO::FETCH_OBJ
-        return $allRows;
-    }
 
-    public function updatePatient($security = false)
-    {
-        if ($security != null) {
-            try {
-                // code
-            } catch (PDOException $e) {
-                die("#=> Error_updatePatient: " . $e->getMessage());
-            }
-        }
-    }
 
-    public function deletePatient($security = false)
-    {
-        if ($security != null) {
-            try {
-                // code
-            } catch (PDOException $e) {
-                die("#=> Error_deleteUser: " . $e->getMessage());
-            }
-        }
-    }
-    */
 }
