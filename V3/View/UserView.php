@@ -2,16 +2,15 @@
 include_once './../Model/DatabaseModel.php';
 include_once './../Model/PatientClass.php';
 
-//$PDO = DatabaseModel::connect();
-// $mPatient = new ManagerPatient();
-// $patientsListe = $mPatient->readPatient();
+$PDO = DatabaseModel::connect();
+$oPatient = new ManagerPatient();
+$listePatients = $oPatient->readPatient();
 
 // $sql = 'SELECT * FROM Patient';
 // $result = $PDO->query($sql);
 // $allRows = $result->fetchAll();
 
-function getPDOConnexion()
-{
+function getPDOConnexion(){
     $HOST = 'localhost';
     $DBNAME = 'bts2a_MemoryCardModel';
     $DSN = "mysql:host=$HOST; dbname=$DBNAME";
@@ -31,8 +30,7 @@ function getPDOConnexion()
     return $DB_CONNEXION;
 }
 
-function listePatients()
-{
+function listePatients(){
     $PDOConnexion = getPDOConnexion();
     $SQL_CODE = "SELECT * FROM Patient";
     $SQL_REQUÊTE = $PDOConnexion->query($SQL_CODE);

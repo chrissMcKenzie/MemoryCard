@@ -2,8 +2,7 @@
 include_once './DatabaseModel.php'; //Model/DatabaseModel.php
 
 
-class Patient
-{
+class Patient{
 
     private $id_patient;
     private $nom_patient;
@@ -14,8 +13,7 @@ class Patient
     private $telephone_patient;
     private $scoreIdList = array();
 
-    public function __construct($id, $nom, $prenom, $date, $mp, $patho, $telephone)
-    {
+    public function __construct($id, $nom, $prenom, $date, $mp, $patho, $telephone){
         $this->id_patient = $id;
         $this->nom_patient = $nom;
         $this->prenom_patient = $prenom;
@@ -26,52 +24,41 @@ class Patient
     }
 
 
-    public function getIdPatient()
-    {
+    public function getIdPatient() {
         return $this->id_patient;
     }
-    public function getNomPatient()
-    {
+    public function getNomPatient() {
         return $this->nom_patient;
     }
-    public function getPrenomPatient()
-    {
+    public function getPrenomPatient() {
         return $this->prenom_patient;
     }
-    public function getDatePatient()
-    {
+    public function getDatePatient() {
         return $this->datenaissance_patient;
     }
-    public function getMpPatient()
-    {
+    public function getMpPatient() {
         return $this->motdepasse_patient;
     }
-    public function getPathoPatient()
-    {
+    public function getPathoPatient() {
         return $this->pathologie_patient;
     }
-    public function getTelephonePatient()
-    {
+    public function getTelephonePatient() {
         return $this->telephone_patient;
     }
-    public function getScoreIdList()
-    {
+    public function getScoreIdList() {
         return $this->ScoreIdList;
     }
 
-    public function addScore($IdScore)
-    {
+    public function addScore($IdScore) {
         // ajoute un objet Film à filmList
         $this->ScoreIdList[] = $IdScore;
     }
 }
 
-class managePatient
-{
+class ManagerPatient{
     private $patientList = array();
 
-    public function getPatientFromDB()
-    {
+    public function getPatientFromDB(){
         $pdo = DatabaseModel::connect(); //on se connecte à la base 
         $sql = 'SELECT * FROM patient ORDER BY id_patient ASC'; //on formule notre requete 
         $result = $pdo->query($sql);
@@ -85,6 +72,7 @@ class managePatient
             $mp = $row["motdepasse_patient"];
             $patho = $row["pathologie_patient"];
             $telephone = $row["telephone_patient"];
+
             $patient = new Patient($id, $nom, $prenom, $date, $mp, $patho, $telephone);
             $this->patientList[] = $patient;
         }
@@ -93,8 +81,7 @@ class managePatient
         return $this->patientList;
     }
 
-    public function getPatientFromId($id)
-    {
+    public function getPatientFromId($id){
         // retourne l'objet Person connaissant son id
         // retourne null si pas trouvée
         foreach ($this->patientList as $patient) {
@@ -106,8 +93,7 @@ class managePatient
 
 
     /*
-    public function readPatient($security = false)
-    {
+    public function readPatient($security = false){
         if ($this->pdo === null) {
             try {
                 $pdo = DatabaseModel::connection_DatabaseModel(); //on se connecte à la base
@@ -123,8 +109,7 @@ class managePatient
         $allRows = $result->fetchAll(); //PDO::FETCH_OBJ
         return $allRows;
     }
-    public function updatePatient($security = false)
-    {
+    public function updatePatient($security = false){
         if ($security != null) {
             try {
                 // code
@@ -133,8 +118,7 @@ class managePatient
             }
         }
     }
-    public function deletePatient($security = false)
-    {
+    public function deletePatient($security = false){
         if ($security != null) {
             try {
                 // code

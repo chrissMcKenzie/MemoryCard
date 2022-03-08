@@ -44,11 +44,10 @@ class Score_Patient{
     }
 }
 
-class manageScore{
+class ManagerScore{
     private $ScoreList = array();
 
-
-    private function getScoreFromBD() {
+    public function getScoreFromBD() {
         $pdo = DatabaseModel::connect(); //on se connecte à la base 
         $sql = 'SELECT * FROM score_patient ORDER BY id_score ASC'; //on formule notre requete 
         $result = $pdo->query($sql);
@@ -73,12 +72,13 @@ class manageScore{
 
     public function getScore() {
         if (count($this->ScoreList) == 0)
-            $this->getScoreFromDB();
+            $this->getScoreFromBD();
         return $this->ScoreList;
     }
+
     public function getScoreFromId($idScore){
         foreach ($this->ScoreList as $score) {
-            if ($film->getIdScore() == $idScore)
+            if ($score->getIdScore() == $idScore)
                 return $score;
         }
         return null;
