@@ -58,7 +58,7 @@ class Patient{
 class managePatient{
     private $patientList=array();
 
-    function enre($NOM,$PRENOM,$DATE,$PATHO,$NUMERO){
+    function enregistrementInBD($NOM,$PRENOM,$DATE,$PATHO,$NUMERO){
         $pdo = DatabaseModel::connect();
 
         $req="INSERT INTO patient (nom_patient, prenom_patient, datenaissance_patient, pathologie_patient, telephone_patient) values ('$NOM','$PRENOM','$DATE','$PATHO','$NUMERO')";

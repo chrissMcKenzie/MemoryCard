@@ -11,15 +11,10 @@ $DATE=isset($_POST['daten']) ? $_POST['daten'] : '';
 $PATHO=isset($_POST['patho']) ? $_POST['patho'] : '';
 $NUMERO=isset($_POST['numero']) ? $_POST['numero'] : '';
 
-    if (empty($_POST['nom']) OR empty($_POST['pre']) OR empty($_POST['daten']) OR empty($_POST['patho']) OR empty($_POST['numero'])) 
-    {
-        echo'<script>alert("Veuillez remplir toute les cases du formulaire");</script>';
-    }
-
     $managerpatient = new managePatient();
-    $managerpatient->enre($NOM,$PRENOM,$DATE,$PATHO,$NUMERO);
+    $managerpatient->enregistrementInBD($NOM,$PRENOM,$DATE,$PATHO,$NUMERO);
     echo'<script>alert("Félicitation vous etes inscrit ! Veuillez vous connecter .");</script>';
-    echo "<script type='text/javascript'>document.location.replace('index.php?page=1');</script>";
+    echo "<script type='text/javascript'>document.location.replace('index.php?page=9');</script>";
 
 }
 

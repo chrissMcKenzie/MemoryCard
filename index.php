@@ -9,7 +9,7 @@ if (isset($_GET['page'])) {		// l'URL complétée par ?page=x fournit le nom de 
 	//système qui permet de savoir la page à charger
 	switch ($page) {
 		case 1:
-			$laPage = 'controller/LoginController.php';
+			$laPage = 'controller/LoginSoignantController.php';
 			$titre = 'Login';
 			// require './View/JeuxView.php';
 			break;
@@ -31,11 +31,9 @@ if (isset($_GET['page'])) {		// l'URL complétée par ?page=x fournit le nom de 
 			break; 
 
 		case 6:
-			$laPage = "controller/InscriptionController.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
+			$laPage = "controller/InscriptionSoignantController.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
 			$titre = 'jeu';
 			break;
-		
-	
 		
 		case 7:
 			$laPage = "Controller/ConsultationController.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
@@ -48,7 +46,7 @@ if (isset($_GET['page'])) {		// l'URL complétée par ?page=x fournit le nom de 
 			break;
 		
 		case 9:
-			$laPage = "controller/LoginControllerPatient.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
+			$laPage = "controller/LoginPatientController.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
 			$titre = 'jeu';
 			break;
 			
@@ -58,7 +56,7 @@ if (isset($_GET['page'])) {		// l'URL complétée par ?page=x fournit le nom de 
 			break;	
 			
 		case 11:
-			$laPage = "controller/InscriptionControllerPatient.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
+			$laPage = "controller/InscriptionPatientController.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
 			$titre = 'jeu';
 			break;
 	}

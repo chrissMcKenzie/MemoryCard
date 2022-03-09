@@ -58,7 +58,7 @@
     </main>
 
     <?php
-        include_once('controller/LoginController.php');
+        include_once('controller/LoginSoignantController.php');
     ?>
     <br>
 </body>

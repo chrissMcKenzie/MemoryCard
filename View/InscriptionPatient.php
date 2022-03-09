@@ -36,26 +36,26 @@
     </section>
 
     <section class="container">
-      <form id="formulaire"action="index.php?page=11" method="POST">
+      <form id="formulaire" action="index.php?page=11" method="POST">
         <label for="Nom"><b>Nom:</b><i>*</i></label>
-        <input type="text" name="pre" placeholder="Nom" >
+        <input type="text" name="pre" placeholder="Nom" required>
         <br>
         <label for="Prenom"><b>Prenom:</b><i>*</i></label>
-        <input type="text" name="nom" placeholder="Prenom" >
+        <input type="text" name="nom" placeholder="Prenom" required>
         <br>
         <label for="Date"><b>Date de naissance:</b><i>*</i></label>
-        <input type="text" name="daten" placeholder="Date de naissance" >
+        <input type="text" name="daten" placeholder="Date de naissance" required>
         <br>
         <label for="Patho"><b>Pathologie:</b><i>*</i></label>
-        <input type="text" name="patho" placeholder="Pathologie " >
+        <input type="text" name="patho" placeholder="Pathologie " required>
         <br>
         <label for="numero"><b>Numero de telephone:</b><i>*</i></label>
-        <input type="text" name="numero" placeholder="numero de telephone " >
+        <input type="text" name="numero" placeholder="numero de telephone " required>
         <br>
         <button type="submit" name="submit" id="Inscription"><b>Inscription</b></button>
       </form>
       <div class="Option">
-        <a href="index.php?page=1">Connexion</a>
+        <a href="index.php?page=9">Connexion</a>
       </div>
     </section>
   </main>
