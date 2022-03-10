@@ -484,27 +484,15 @@ include_once './../Model/PatientClass.php';
                 } else {
                     var MatchedCardCollection = document.querySelectorAll('.MatchedCard')
                     var MatchedCard = Array.from(MatchedCardCollection)
-                    FlipedCard[0].classList.remove('MatchedCard')
-                    FlipedCard[1].classList.remove('MatchedCard')
+                    FlipedCard[0].className = 'MatchedCard'
+                    FlipedCard[1].className = 'MatchedCard'
+                    MatchedCard += FlipedCard[0]
+                    MatchedCard += FlipedCard[1]
                     console.log(MatchedCard)
                 }
             } else {
                 a.innerHTML = ""
             }
-            // if (FlipedCard.length == 2) {
-            //     if (FlipedCard[0].src != FlipedCard[1].src) {
-            //         setTimeout(() => {
-            //             a.innerHTML = ""
-            //             FlipedCard[0].className.replace('FlipedCard', '')
-            //             FlipedCard[1].className.replace('FlipedCard', '')
-            //         }, 3000);
-            //     } else {
-            //         a.innerHTML = img
-            //         FlipedCard[0].className.replace('FlipedCard', 'MatchedCard')
-            //         FlipedCard[1].className.replace('FlipedCard', 'MatchedCard')
-            //         console.log(FlipedCard)
-            //     }
-            // }
 
             WinGame(FlipedCard)
             // console.log(FlipedCard)
