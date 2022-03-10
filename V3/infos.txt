@@ -16,7 +16,7 @@ chmod g=rwx LogoAccueil.png LogoGif.gif
 chmod o=rwx LogoAccueil.png LogoGif.gif
 chmod 644 LogoAccueil.png LogoGif.gif
 
-
+composer require --dev phpunit/phpunit
 brew install mc
 
 

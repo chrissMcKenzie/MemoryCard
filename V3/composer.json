@@ -1,0 +1,12 @@
+{
+    "name": "chrissmckenzie/v3",
+    "authors": [
+        {
+            "name": "chrissMcKenzie",
+            "email": "chrissMcKenzie.IT.Agence@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
+}

@@ -1,6 +1,6 @@
 <?php session_start();
 include_once './../Model/DatabaseModel.php';
-include_once './../Model/PatientModel.php';
+include_once './../Model/PatientClass.php';
 //require_once './template/TemplateView.php';
 ?>
 <!DOCTYPE html>
@@ -27,7 +27,6 @@ include_once './../Model/PatientModel.php';
         main {
             z-index: 300;
             margin-top: -2%;
-
             padding-top: 0%;
         }
 
@@ -54,12 +53,12 @@ include_once './../Model/PatientModel.php';
             position: absolute;
             margin-top: -1%;
             margin-bottom: 1%;
-            margin-left: 120px;
-            padding: 280px 250px;
+            margin-left: 180px;
+            padding: 280px 260px;
             background-color: #150a2783;
             /* width: 76%; */
-            width: 400px;
-            height: 145px;
+            width: 350px;
+            height: 135px;
         }
 
         .Player button {
@@ -107,6 +106,7 @@ include_once './../Model/PatientModel.php';
 
         ul {
             width: 100%;
+            margin-bottom: 0%;
         }
 
         img {
@@ -243,7 +243,7 @@ include_once './../Model/PatientModel.php';
         </section>
         <section id="Jeux">
             <div class="Player">
-                <button onclick="Play()" style="color: white;">PLAY</button>
+                <button id="WinGame" onclick="Play()" style="color: white;">PLAY</button>
             </div>
             <div id="Filed4x3">
                 <ul>
@@ -369,6 +369,7 @@ include_once './../Model/PatientModel.php';
             Button4x4.onclick = () => {
                 if (Filed4x4.style.display == "none") {
                     Filed4x4.style.display = "block"
+                    Filed4x4.style.marginLeft = "80px"
                     Filed4x3.style.display = "none"
                     Filed5x4.style.display = "none"
                 } else {
@@ -379,6 +380,7 @@ include_once './../Model/PatientModel.php';
             Button5x4.onclick = () => {
                 if (Filed5x4.style.display == "none") {
                     Filed5x4.style.display = "block"
+                    Filed5x4.style.marginLeft = "80px"
                     Filed4x3.style.display = "none"
                     Filed4x4.style.display = "none"
                 } else {
@@ -387,15 +389,17 @@ include_once './../Model/PatientModel.php';
             }
         })()
 
+        var buttonPlayer = document.querySelector('.Player')
+        var Temps = document.querySelector('#Crono')
+        var MyInterval
+
         function Play() {
-            var buttonPlayer = document.querySelector('.Player')
-            var Temps = document.querySelector('#Crono')
 
             buttonPlayer.onclick = () => {
                 buttonPlayer.style.display = "none";
                 var minutes = 0
                 var secondes = 0;
-                const Chrono = () => {
+                var Chrono = () => {
                     // minutes = minutes < 10 ? "0" + minutes : minutes
                     // secondes = secondes < 10 ? "0" + secondes : secondes
 
@@ -408,20 +412,8 @@ include_once './../Model/PatientModel.php';
                     Temps.innerHTML = `${minutes}:${secondes}`;
 
                 }
-                setInterval(Chrono, 1000);
+                MyInterval = setInterval(Chrono, 1000);
             }
-        }
-
-        function Grille() {
-
-        }
-
-        function GeneratorCard() {
-
-        }
-
-        function checkerImagesIdentiques() {
-
         }
 
         function ConsoleLog(nomFonction = null) {
@@ -464,38 +456,103 @@ include_once './../Model/PatientModel.php';
 
         function FlipCard4x3(id) { //6
             var a = document.getElementById(id)
-            var imgPath = "./../../../media/images/"
-            for (var i = 0; i < 3; i++) {
-                var image = imgGrille4x3[id]
-                var img = `<img class="FlipedCard" src="${imgPath}${image}">`;
-                var FlipedCard = document.querySelectorAll('.FlipedCard')
-                console.log(FlipedCard)
-
-                if (FlipedCard.length <= 1) {
-                    a.innerHTML = img
-                } else if (FlipedCard.length > 1 && FlipedCard.length == 2) {
-                    if (FlipedCard[0].src != FlipedCard[1].src) {
-                        setTimeout(() => {
-                            a.innerHTML = ""
-                            FlipedCard.shift()
-                            FlipedCard.shift()
-                        }, 3000);
-                    }
-
-                    if (FlipedCard[0].src == FlipedCard[1].src) {
-                        FlipedCard[0].className.replace('FlipedCard', 'MatchedCard')
-                        FlipedCard[1].className.replace('FlipedCard', 'MatchedCard')
-                        a.innerHTML = img
-                        FlipedCard = ""
-                    }
+            var imgPath = "./media/images/Animaux/"
+            // for (var i = 0; i < 1; i++) {
+            var image = imgGrille4x3[id]
+            var img = `<img class="FlipedCard" src="${imgPath}${image}">`;
+            // var FlipedCard = []
+            a.innerHTML = img
+            var FlipedCard = document.querySelectorAll('.FlipedCard')
+            console.log(FlipedCard)
+            if (FlipedCard.length == 2) {
+                if (FlipedCard[0].src != FlipedCard[1].src) {
+                    setTimeout(() => {
+                        a.innerHTML = ""
+                        FlipedCard.removeChild()
+                    }, 3000);
                 } else {
-                    // a.innerHTML = img
-                    FlipedCard = ""
+                    a.innerHTML = img
+                    FlipedCard[0].className.replace('FlipedCard', 'MatchedCard')
+                    FlipedCard[1].className.replace('FlipedCard', 'MatchedCard')
+                    console.log(FlipedCard)
                 }
-
             }
+
+            WinGame(FlipedCard)
+
+            // setTimeout(() => {
+            //     a.innerHTML = ""
+            //     // FlipedCard.shift()
+            // }, 3000);
+
+            // }
+            // console.log(FlipedCard)
+
+
+
+
+
+            // if (FlipedCard.length <= 1) {
+            //     a.innerHTML = img
+            // } else if (FlipedCard.length > 1 && FlipedCard.length == 2) {
+            //     if (FlipedCard[0].src != FlipedCard[1].src) {
+            //         setTimeout(() => {
+            //             a.innerHTML = ""
+            //             FlipedCard.shift()
+            //             FlipedCard.shift()
+            //         }, 3000);
+            //     }
+
+            //     if (FlipedCard[0].src == FlipedCard[1].src) {
+            //         FlipedCard[0].className.replace('FlipedCard', 'MatchedCard')
+            //         FlipedCard[1].className.replace('FlipedCard', 'MatchedCard')
+            //         a.innerHTML = img
+            //         FlipedCard = ""
+            //     }
+            // } else {
+            //     // a.innerHTML = img
+            //     FlipedCard = ""
+            // }
+
+            // }
             // ConsoleLog()
         }
+
+
+        // function FlipCard4x3(id) { //6
+        //     var a = document.getElementById(id)
+        //     var imgPath = "./media/images/Animaux/"
+        //     // for (var i = 0; i < 1; i++) {
+        //     var image = imgGrille4x3[id]
+        //     var img = `<img class="FlipedCard" src="${imgPath}${image}">`
+        //     var FlipedCard = document.querySelectorAll('.FlipedCard')
+        //     console.log(FlipedCard)
+
+        //     if (FlipedCard.length <= 1) {
+        //         a.innerHTML = img
+        //     } else if (FlipedCard.length > 1 && FlipedCard.length == 2) {
+        //         if (FlipedCard[0].src != FlipedCard[1].src) {
+        //             setTimeout(() => {
+        //                 a.innerHTML = ""
+        //                 FlipedCard.shift()
+        //                 FlipedCard.shift()
+        //             }, 3000);
+        //         }
+
+        //         if (FlipedCard[0].src == FlipedCard[1].src) {
+        //             FlipedCard[0].className.replace('FlipedCard', 'MatchedCard')
+        //             FlipedCard[1].className.replace('FlipedCard', 'MatchedCard')
+        //             a.innerHTML = img
+        //             FlipedCard = ""
+        //         }
+        //     } else {
+        //         // a.innerHTML = img
+        //         FlipedCard = ""
+        //     }
+
+        //     // }
+        //     // ConsoleLog()
+        // }
 
         function FlipCard4x4(id) { //8
             var a = document.getElementById(id)
@@ -517,10 +574,10 @@ include_once './../Model/PatientModel.php';
                 26: imgGrille4x4[14],
                 27: imgGrille4x4[15],
             }
-            var imgPath = "./../../../media/images/"
+            var imgPath = "./media/images/Animaux/"
             for (var j = 0; j < 2; j++) {
                 var image = index4x4[id]
-                var img = `<img class="activeCard" src="${imgPath}${image}">`;
+                var img = `<img class="activeCard" src="${imgPath}${image}">`
                 setTimeout(() => {
                     a.innerHTML = ""
                 }, 3000);
@@ -553,16 +610,33 @@ include_once './../Model/PatientModel.php';
                 46: imgGrille5x4[18],
                 47: imgGrille5x4[19],
             }
-            var imgPath = "./../../../media/images/"
+            var imgPath = "./media/images/Animaux/"
             for (var k = 0; k < 2; k++) {
                 // if (id >= 28 && id <= 47) {
                 var image = index5x4[id]
-                var img = `<img class="activeCard" src="${imgPath}${image}">`;
+                var img = ` < img class = "activeCard"
+                src = "${imgPath}${image}" > `;
                 setTimeout(() => {
                     a.innerHTML = ""
                 }, 3000);
                 a.innerHTML = img
                 // }
+            }
+        }
+
+        function WinGame(FieldCompleted) {
+            if (FieldCompleted.length == 12) {
+                var ScorePatient = Temps.innerText
+                Temps.innerHTML = ScorePatient
+                clearInterval(MyInterval)
+                buttonPlayer.style.display = "block";
+                Wingame = document.querySelector('#WinGame');
+                Wingame.innerText = "!! WinGame !!";
+                Wingame.disabled = true;
+
+                // WinGame.remove()
+                console.log(Temps.innerText) //Temps, Coups, difficulte/niveau
+                console.log(buttonPlayer)
             }
         }
     </script>
