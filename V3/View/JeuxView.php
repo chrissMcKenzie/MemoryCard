@@ -99,6 +99,10 @@ include_once './../Model/PatientClass.php';
             display: none;
         }
 
+        #Coups {
+            background-color: grey;
+        }
+
         #Crono {
             background-color: #150a27;
             color: white;
@@ -234,6 +238,7 @@ include_once './../Model/PatientClass.php';
             <div>
                 <button type="reset" onclick="ReStart()">ReStart</button>
                 <button id="Crono" style="font-size: 18px;">0:00</button>
+                <button id="Coups" style="font-size: 18px;">0 <span>Coups</span></button>
                 <ul>
                     <button id="Button4x3" style="color: white;">4x3</button>
                     <button id="Button4x4" style="color: white;">4x4</button>
@@ -453,6 +458,9 @@ include_once './../Model/PatientClass.php';
         var imgGrille5x4 = images5x4.concat(images5x4)
         imgGrille5x4.sort(() => Math.random() - 0.5);
 
+        function checkImage() {
+
+        }
 
         function FlipCard4x3(id) { //6
             var a = document.getElementById(id)
@@ -460,62 +468,47 @@ include_once './../Model/PatientClass.php';
             // for (var i = 0; i < 1; i++) {
             var image = imgGrille4x3[id]
             var img = `<img class="FlipedCard" src="${imgPath}${image}">`;
-            // var FlipedCard = []
             a.innerHTML = img
-            var FlipedCard = document.querySelectorAll('.FlipedCard')
+            var FlipedCardCollection = document.querySelectorAll('.FlipedCard')
+            var FlipedCard = Array.from(FlipedCardCollection)
             console.log(FlipedCard)
-            if (FlipedCard.length == 2) {
+            if (FlipedCard.length <= 2) {
+                a.innerHTML = img
                 if (FlipedCard[0].src != FlipedCard[1].src) {
                     setTimeout(() => {
                         a.innerHTML = ""
-                        FlipedCard.removeChild()
-                    }, 3000);
+                        FlipedCard[0].remove()
+                        FlipedCard[1].remove()
+                    }, 2000);
+
                 } else {
-                    a.innerHTML = img
-                    FlipedCard[0].className.replace('FlipedCard', 'MatchedCard')
-                    FlipedCard[1].className.replace('FlipedCard', 'MatchedCard')
-                    console.log(FlipedCard)
+                    var MatchedCardCollection = document.querySelectorAll('.MatchedCard')
+                    var MatchedCard = Array.from(MatchedCardCollection)
+                    FlipedCard[0].classList.remove('MatchedCard')
+                    FlipedCard[1].classList.remove('MatchedCard')
+                    console.log(MatchedCard)
                 }
+            } else {
+                a.innerHTML = ""
             }
-
-            WinGame(FlipedCard)
-
-            // setTimeout(() => {
-            //     a.innerHTML = ""
-            //     // FlipedCard.shift()
-            // }, 3000);
-
-            // }
-            // console.log(FlipedCard)
-
-
-
-
-
-            // if (FlipedCard.length <= 1) {
-            //     a.innerHTML = img
-            // } else if (FlipedCard.length > 1 && FlipedCard.length == 2) {
+            // if (FlipedCard.length == 2) {
             //     if (FlipedCard[0].src != FlipedCard[1].src) {
             //         setTimeout(() => {
             //             a.innerHTML = ""
-            //             FlipedCard.shift()
-            //             FlipedCard.shift()
+            //             FlipedCard[0].className.replace('FlipedCard', '')
+            //             FlipedCard[1].className.replace('FlipedCard', '')
             //         }, 3000);
-            //     }
-
-            //     if (FlipedCard[0].src == FlipedCard[1].src) {
+            //     } else {
+            //         a.innerHTML = img
             //         FlipedCard[0].className.replace('FlipedCard', 'MatchedCard')
             //         FlipedCard[1].className.replace('FlipedCard', 'MatchedCard')
-            //         a.innerHTML = img
-            //         FlipedCard = ""
+            //         console.log(FlipedCard)
             //     }
-            // } else {
-            //     // a.innerHTML = img
-            //     FlipedCard = ""
             // }
 
-            // }
-            // ConsoleLog()
+            WinGame(FlipedCard)
+            // console.log(FlipedCard)
+
         }
 
 
@@ -631,7 +624,7 @@ include_once './../Model/PatientClass.php';
                 clearInterval(MyInterval)
                 buttonPlayer.style.display = "block";
                 Wingame = document.querySelector('#WinGame');
-                Wingame.innerText = "!! WinGame !!";
+                Wingame.innerText = "!! Gagné !!";
                 Wingame.disabled = true;
 
                 // WinGame.remove()
