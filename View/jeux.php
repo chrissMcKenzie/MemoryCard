@@ -54,13 +54,17 @@
 console.log(a);
 
 var pics = document.getElementsByTagName('img');
+var eltscore = document.getElementById('score');
+var score = 0;
+var step = 1;
+var p1, p2;
+var time =null;
 
 for(let i=0; i<pics.length; i++){
     pics[i].src2 = 'View/imageJeu/img' + a[i] + '.jpeg';
 }
 
-var step = 1;
-var p1, p2;
+
 
 document.addEventListener('click', function(e){
     switch(step){
@@ -77,7 +81,7 @@ document.addEventListener('click', function(e){
                 p2 = e.target;
                 step = 3;
             }
-            timer = setTimeout(check, 1000);
+            timer = setTimeout(check, 1200);
             break;
         case 3:
         clearTimeout(timer);
@@ -90,11 +94,19 @@ function check(){
             if(p1.src2==p2.src2){
                 p1.replaceWith(document.createElement('span'))
                 p2.replaceWith(document.createElement('span'))
+                score += 1;
             }else{
                 p2.src = p1.src = 'View/imageJeu/img0.jpg';
+                score = Math.max(0, score-1);
             }
             step = 1;
-}
+            eltscore.textContent = score;
 
+
+            if (document.getElementsByTagName('img').length==0){
+                eltscore.textContent += 'Gagné !';
+            }
+} 
+  
 </script>
 </body>
