@@ -5,24 +5,42 @@
 if (isset($_GET['page'])) {		// l'URL complétée par ?page=x fournit le nom de page souhaité
 	$page = $_GET['page'];
 } else {
-	$page = 'home';
+	$page = 'Acceuil';
 }
 
 // ob_start();
-if ($page === 'home') {
-	require "../Home.php";
+if ($page === 'Acceuil') {
+	require "./../src/View/AccueilView.php";
+} elseif ($page === 'SigninSoignant') {
+	require "./../src/View/auth/SigninSoignantView.php";
+} elseif ($page === 'SigninPatient') {
+	require "./../src/View/auth/SigninPatientView.php";
+} elseif ($page === 'LoginSoignant') {
+	require "./../src/View/auth/LoginSoignantView.php.php";
+} elseif ($page === 'LoginPatient') {
+	require "./../src/View/auth/LoginPatientView.php";
+} elseif ($page === 'Forgot') {
+	require "./../src/View/auth/ForgotPasswordView.php";
+} elseif ($page === 'Admin') {
+	require "./../src/View/AdminView.php";
+} elseif ($page === 'User') {
+	require "./../src/View/UserView.php";
 } elseif ($page === 'Jeux') {
-	require "./View/JeuxView.php";
+	require "./../src/View/JeuxView.php";
+} elseif ($page === 'Logout') {
+	require "./../src/View/AccueilView.php";
+} else{
+	require "./../src/View/404View.php";
 }
 // $content = ob_get_clean();
 
 //phpinfo();
-// require("./View/Template.php");
+// require("./src/View/Template.php");
 
 
 // include($laPage);
 //
-// $laPage = './View/JeuxView.php';
+// $laPage = './src/View/JeuxView.php';
 // $titre = "Accueil";
 // if (isset($_GET['page'])) {		// l'URL complétée par ?page=x fournit le nom de page souhaité
 // 	$page = $_GET['page'];
@@ -31,7 +49,7 @@ if ($page === 'home') {
 // 		case 1:
 // 			$laPage = 'controller/personnes.php';
 // 			$titre = 'Personnes';
-// 			// require './View/JeuxView.php';
+// 			// require './src/View/JeuxView.php';
 // 			break;
 
 // 		case 2:
