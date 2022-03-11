@@ -99,7 +99,7 @@ include_once './../Model/PatientClass.php';
             display: none;
         }
 
-        #Coups {
+        .Coups {
             background-color: grey;
         }
 
@@ -238,7 +238,7 @@ include_once './../Model/PatientClass.php';
             <div>
                 <button type="reset" onclick="ReStart()">ReStart</button>
                 <button id="Crono" style="font-size: 18px;">0:00</button>
-                <button id="Coups" style="font-size: 18px;">0 <span>Coups</span></button>
+                <button class="Coups" style="font-size: 18px;"><span id="Coups">0</span> Coups</button>
                 <ul>
                     <button id="Button4x3" style="color: white;">4x3</button>
                     <button id="Button4x4" style="color: white;">4x4</button>
@@ -337,8 +337,6 @@ include_once './../Model/PatientClass.php';
         </section>
 
     </main>
-
-    <!-- <script src="./MemoryCard.jsx"></script> -->
 
     <script type="text/javascript">
         const imgStock = [
@@ -458,20 +456,20 @@ include_once './../Model/PatientClass.php';
         var imgGrille5x4 = images5x4.concat(images5x4)
         imgGrille5x4.sort(() => Math.random() - 0.5);
 
-        function checkImage() {
-
-        }
+        var Coups = 0
 
         function FlipCard4x3(id) { //6
             var a = document.getElementById(id)
             var imgPath = "./media/images/Animaux/"
-            // for (var i = 0; i < 1; i++) {
             var image = imgGrille4x3[id]
             var img = `<img class="FlipedCard" src="${imgPath}${image}">`;
             a.innerHTML = img
             var FlipedCardCollection = document.querySelectorAll('.FlipedCard')
             var FlipedCard = Array.from(FlipedCardCollection)
-            console.log(FlipedCard)
+
+            var AfficheCoups = document.querySelector("#Coups")
+            console.log("FlipedCard #=>", FlipedCard)
+
             if (FlipedCard.length <= 2) {
                 a.innerHTML = img
                 if (FlipedCard[0].src != FlipedCard[1].src) {
@@ -479,61 +477,33 @@ include_once './../Model/PatientClass.php';
                         a.innerHTML = ""
                         FlipedCard[0].remove()
                         FlipedCard[1].remove()
+                        // FlipedCard.pop(FlipedCard[0])
+                        // FlipedCard.pop(FlipedCard[1])
                     }, 2000);
+                    Coups += 1
+                    AfficheCoups.innerText = Coups;
 
                 } else {
                     var MatchedCardCollection = document.querySelectorAll('.MatchedCard')
                     var MatchedCard = Array.from(MatchedCardCollection)
                     FlipedCard[0].className = 'MatchedCard'
                     FlipedCard[1].className = 'MatchedCard'
-                    MatchedCard += FlipedCard[0]
-                    MatchedCard += FlipedCard[1]
-                    console.log(MatchedCard)
+                    MatchedCard.push(FlipedCard[0])
+                    MatchedCard.push(FlipedCard[1])
+                    FlipedCard.pop(FlipedCard[0])
+                    FlipedCard.pop(FlipedCard[1])
+                    console.log("MatchedCard #=>", MatchedCard)
+                    console.log("FlipedCard 2#=>", FlipedCard)
+                    Coups += 1
+                    AfficheCoups.innerText = Coups;
                 }
             } else {
                 a.innerHTML = ""
             }
 
             WinGame(FlipedCard)
-            // console.log(FlipedCard)
 
         }
-
-
-        // function FlipCard4x3(id) { //6
-        //     var a = document.getElementById(id)
-        //     var imgPath = "./media/images/Animaux/"
-        //     // for (var i = 0; i < 1; i++) {
-        //     var image = imgGrille4x3[id]
-        //     var img = `<img class="FlipedCard" src="${imgPath}${image}">`
-        //     var FlipedCard = document.querySelectorAll('.FlipedCard')
-        //     console.log(FlipedCard)
-
-        //     if (FlipedCard.length <= 1) {
-        //         a.innerHTML = img
-        //     } else if (FlipedCard.length > 1 && FlipedCard.length == 2) {
-        //         if (FlipedCard[0].src != FlipedCard[1].src) {
-        //             setTimeout(() => {
-        //                 a.innerHTML = ""
-        //                 FlipedCard.shift()
-        //                 FlipedCard.shift()
-        //             }, 3000);
-        //         }
-
-        //         if (FlipedCard[0].src == FlipedCard[1].src) {
-        //             FlipedCard[0].className.replace('FlipedCard', 'MatchedCard')
-        //             FlipedCard[1].className.replace('FlipedCard', 'MatchedCard')
-        //             a.innerHTML = img
-        //             FlipedCard = ""
-        //         }
-        //     } else {
-        //         // a.innerHTML = img
-        //         FlipedCard = ""
-        //     }
-
-        //     // }
-        //     // ConsoleLog()
-        // }
 
         function FlipCard4x4(id) { //8
             var a = document.getElementById(id)
@@ -614,8 +584,6 @@ include_once './../Model/PatientClass.php';
                 Wingame = document.querySelector('#WinGame');
                 Wingame.innerText = "!! Gagné !!";
                 Wingame.disabled = true;
-
-                // WinGame.remove()
                 console.log(Temps.innerText) //Temps, Coups, difficulte/niveau
                 console.log(buttonPlayer)
             }
