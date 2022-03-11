@@ -8,7 +8,7 @@ class DatabaseModel {
     private static $cont = null;
     public function __construct() {
         die('Init function is not allowed'); 
-    } 
+    }
     public static function connect() { 
         // Connexion à la base de données
 
