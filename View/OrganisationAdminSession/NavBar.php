@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -165,7 +164,7 @@ border-bottom:1px solid purple;
 <body>
 
     <div id="centerbar">     
-    <a class="btn " id="centerbar-elem" href ='index.php?page=5'>Mon compte</a>       
+    <a class="btn " id="centerbar-elem" href ='index.php?page=5&index=$id'>Mon compte</a>       
           
      <a class="btn" id="centerbar-elem" href = 'index.php?page=7'>Consultation Patient</a> 
     <a  class="btn" id="centerbar-elem" href="Controller/Logout.php" >Déconnexion</a>

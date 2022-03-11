@@ -43,10 +43,10 @@
         <section class="container">
             <form id="formulaire" method="POST">
                 <label for="Email"><b>Email:</b><i>*</i></label>
-                <input type="text" id="Email" name="email" placeholder="Email ?" required>
+                <input type="text" name="email" placeholder="Email" >
                 <br>
                 <label for="MotDePasse"><b>Mot de passe:</b><i>*</i></label>
-                <input type="password" id="MotDePasse" name="pass" placeholder="password ?" required>
+                <input type="password" name="pass" placeholder="Mot de passe" >
                 <br>
                 <button type="submit" name="submit" id="Connexion"><b>Connexion</b></button>
             </div>

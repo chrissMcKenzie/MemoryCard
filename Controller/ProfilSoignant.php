@@ -17,15 +17,15 @@ include_once('./View/Admin.php');
          
            foreach ($bdd->query($sql) as $soig){
              echo '<div class="input-detail">Nom:</div>';  
-             echo '<div class="input-title">'.$soig['nom_soignant'].'</div>';  
+             echo '<div class="input-title">'.htmlspecialchars($soig['nom_soignant']).'</div>';  
              echo '<div class="input-detail">Prenom:</div>';  
-             echo ' <div class="input-title">'.$soig['prenom_soignant'].'</div>';  
+             echo ' <div class="input-title">'.htmlspecialchars($soig['prenom_soignant']).'</div>';  
              echo '<div class="input-detail">Date de naissance:</div>';  
-             echo '<div class="input-title">'.$soig['datenaissance_soignant'].'</div>';  
+             echo '<div class="input-title">'.htmlspecialchars($soig['datenaissance_soignant']).'</div>';  
              echo '<div class="input-detail">Poste:</div>';  
-             echo '<div class="input-title">'.$soig['poste_soignant'].'</div>';
+             echo '<div class="input-title">'.htmlspecialchars($soig['poste_soignant']).'</div>';
              echo '<div class="input-detail">Email:</div>';  
-             echo '<div class="input-title">'.$soig['mail_soignant'].'</div>';    
+             echo '<div class="input-title">'.htmlspecialchars($soig['mail_soignant']).'</div>';    
          }
       ?>
       </div>

@@ -19,9 +19,6 @@ include_once('./View/LoginSoignant.php');
           <span>Date de naissance</span>
       </th>
       <th class="table-head">
-          <span>Mot de passe</span>
-      </th>
-      <th class="table-head">
           <span>Pathologie</span>
       </th>
       <th class="table-head">
@@ -38,7 +35,6 @@ include_once('./View/LoginSoignant.php');
       $name = $patient->getNomPatient();
       $firstName = $patient->getPrenomPatient();
       $date = $patient->getDatePatient();
-      $mp = $patient->getMpPatient();
       $patho = $patient->getPathoPatient();
       $telephone = $patient->getTelephonePatient();
 
@@ -47,7 +43,6 @@ include_once('./View/LoginSoignant.php');
       <td class=\"table-data\">$name</td>
       <td class=\"table-data\">$firstName</td>
       <td class=\"table-data\">$date</td>
-      <td class=\"table-data\">$mp</td>
       <td class=\"table-data\">$patho</td>
       <td class=\"table-data\">$telephone</td>
       <td class=\"table-data\"><a href=\"index.php?page=8&index=$id\" class=\"btn btn-primary\">Vue de détail</a> </td>

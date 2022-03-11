@@ -8,17 +8,15 @@ class Patient{
     private $nom_patient;
     private $prenom_patient;
     private $datenaissance_patient;
-    private $motdepasse_patient;
     private $pathologie_patient;
     private $telephone_patient;
     private $scoreIdList=array();
  
-    public function __construct($id, $nom,$prenom,$date,$mp,$patho,$telephone){
+    public function __construct($id, $nom,$prenom,$date,$patho,$telephone){
         $this->id_patient=$id;
         $this->nom_patient=$nom;
         $this->prenom_patient=$prenom;
         $this->datenaissance_patient=$date;
-        $this->motdepasse_patient=$mp;
         $this->pathologie_patient=$patho;
         $this->telephone_patient=$telephone;
     }
@@ -35,9 +33,6 @@ class Patient{
     }
     public function getDatePatient(){
         return $this->datenaissance_patient;
-    }
-    public function getMpPatient(){
-        return $this->motdepasse_patient;
     }
     public function getPathoPatient(){
         return $this->pathologie_patient;
@@ -92,10 +87,9 @@ class managePatient{
             $nom = $row["nom_patient"];
             $prenom = $row["prenom_patient"];
             $date = $row["datenaissance_patient"];
-            $mp = $row["motdepasse_patient"];
             $patho = $row["pathologie_patient"];
             $telephone = $row["telephone_patient"];
-            $patient = new Patient($id,$nom,$prenom,$date,$mp,$patho,$telephone);
+            $patient = new Patient($id,$nom,$prenom,$date,$patho,$telephone);
             $this->patientList[] = $patient;
         }
         $result->closeCursor();

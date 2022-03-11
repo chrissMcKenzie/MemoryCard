@@ -37,25 +37,24 @@
     <section class="container">
       <form id="formulaire" action="index.php?page=6" method="POST">
         <label for="Nom"><b>Nom:</b><i>*</i></label>
-        <input type="text" name="pre" placeholder="Nom">
-        <br>
+        <input type="text" name="pre" placeholder="Nom" required >
         <label for="Prenom"><b>Prenom:</b><i>*</i></label>
-        <input type="text" name="nom" placeholder="Prenom" >
+        <input type="text" name="nom" placeholder="Prenom" required>
         <br>
         <label for="Date"><b>Date de naissance:</b><i>*</i></label>
-        <input type="text" name="daten" placeholder="Date de naissance" >
+        <input class="date" type="date" name="daten" placeholder="Date de naissance" required>
         <br>
         <label for="MotDePasse"><b>Mot de passe: </b><i>*</i></label>
-        <input type="password" name="pwd1" placeholder="Password " >
+        <input type="password" name="pwd1" minlength="4" maxlength="8"  placeholder="Mot de passe"  required>
         <br>
         <label for="MotDePasse"><b>Confirmer mot de passe: </b><i>*</i></label>
-        <input type="password" name="pwd2" placeholder="Password" >
+        <input type="password" name="pwd2" placeholder="Mot de passe" minlength="4" maxlength="8" required>
         <br>
         <label for="Email"><b>Poste:</b><i>*</i></label>
-        <input type="text" name="poste" placeholder="Poste " >
+        <input type="text" name="poste" placeholder="Poste " min="10" max="100" required>
         <br>
         <label for="Email"><b>Email:</b><i>*</i></label>
-        <input type="text" name="eml" placeholder="Email " >
+        <input type="text" name="eml" placeholder="Email "  min="10" max="100" required>
         <br>
         <button type="submit" name="submit" id="Inscription"><b>Inscription</b></button>
       </form>
@@ -66,12 +65,18 @@
 
   </main>
   <br>
+
 <style>
 
+.date{
+  height: 42px;
+  width: 759px;
+}
+
 #img1{
-    height: 50px;
-    width: 50px;
-   margin-left:300px;
+  height: 50px;
+  width: 50px;
+  margin-left:300px;
 }
 #img2{
     height: 50px;

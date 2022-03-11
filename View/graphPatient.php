@@ -99,9 +99,9 @@ table {
           ['Parties', 'Scores'],
 <?php        
     $bdd = DatabaseModel::connect(); //on se connecte à la base 
-        $sql = "SELECT * FROM score_patient where id_patient='$index'" ;
+        $sql = "SELECT * FROM score where id_patient='$index'" ;
         foreach ($bdd->query($sql) as $graph){
-            echo '["'.$graph['partie'].'",'.$graph['score'].'],';
+            echo '["'.$graph['partie'].'",'.$graph['id_score'].'],';
         }
 ?>
         ]);
@@ -133,9 +133,9 @@ table {
           ['Temps', 'Partie'],
   <?php        
     $bdd = DatabaseModel::connect(); //on se connecte à la base 
-        $sql = "SELECT * FROM score_patient where id_patient='$index'" ;
+        $sql = "SELECT * FROM score where id_patient='$index'" ;
         foreach ($bdd->query($sql) as $graph){
-            echo '["'.$graph['temps'].'",'.$graph['partie'].'],';
+            echo '["'.$graph['temps'].'",'.$graph['score_id'].'],';
         }
   ?>
         ]);
@@ -173,15 +173,15 @@ table {
         $sql = "SELECT * FROM patient where id_patient='$index'" ;
         foreach ($bdd->query($sql) as $pat){
             echo '<div class="input-detail">Nom:</div>';  
-            echo '<div class="input-title">'.$pat['nom_patient'].'</div>';  
+            echo '<div class="input-title">'.htmlspecialchars($pat['nom_patient']).'</div>';  
             echo '<div class="input-detail">Prenom:</div>';  
-            echo ' <div class="input-title">'.$pat['prenom_patient'].'</div>';  
+            echo ' <div class="input-title">'.htmlspecialchars($pat['prenom_patient']).'</div>';  
             echo '<div class="input-detail">Date de naissance:</div>';  
-            echo '<div class="input-title">'.$pat['datenaissance_patient'].'</div>';  
+            echo '<div class="input-title">'.htmlspecialchars($pat['datenaissance_patient']).'</div>';  
             echo '<div class="input-detail">Pathologie:</div>';  
-            echo '<div class="input-title">'.$pat['pathologie_patient'].'</div>';
+            echo '<div class="input-title">'.htmlspecialchars($pat['pathologie_patient']).'</div>';
             echo '<div class="input-detail">Numero de Telephone:</div>';  
-            echo '<div class="input-title">'.$pat['telephone_patient'].'</div>';    
+            echo '<div class="input-title">'.htmlspecialchars($pat['telephone_patient']).'</div>';    
         }
       ?>
       </div>

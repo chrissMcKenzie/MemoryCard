@@ -44,7 +44,7 @@
         <input type="text" name="nom" placeholder="Prenom" required>
         <br>
         <label for="Date"><b>Date de naissance:</b><i>*</i></label>
-        <input type="text" name="daten" placeholder="Date de naissance" required>
+        <input type="date" name="daten" placeholder="Date de naissance" required>
         <br>
         <label for="Patho"><b>Pathologie:</b><i>*</i></label>
         <input type="text" name="patho" placeholder="Pathologie " required>

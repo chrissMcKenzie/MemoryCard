@@ -21,7 +21,7 @@ if (isset($_GET['page'])) {		// l'URL complétée par ?page=x fournit le nom de 
 
 		
 		case 4:
-			$laPage = "view/JeuxView.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
+			$laPage = "view/jeux.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
 			$titre = 'jeu';
 			break;
 

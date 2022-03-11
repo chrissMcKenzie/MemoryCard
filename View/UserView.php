@@ -231,7 +231,7 @@ function listePatients()
                 <img src="./View/media/images/Logo_SessionAdmin.png" height="200px" alt="Logo Session Admin">
                 <ul class="Sous_Menu">
                     <li>
-                        <a href="index.php?page=Jeux">Jeux</a>
+                        <a href="index.php?page=4">Jeux</a>
                         <hr>
                     </li>
                 </ul>

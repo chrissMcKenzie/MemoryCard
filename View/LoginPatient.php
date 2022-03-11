@@ -43,10 +43,10 @@
     <section class="container">
       <form id="formulaire" method="POST">
         <label for="Nom"><b>Nom:</b><i>*</i></label>
-        <input type="text" name="nom" placeholder="Nom ?"  required>
+        <input type="text" name="nom" placeholder="Nom "  required>
         <br>
         <label for="Prenom"><b>Prenom:</b><i>*</i></label>
-        <input type="text" name="pre" placeholder="Prenom ?"  required>
+        <input type="text" name="pre" placeholder="Prenom"  required>
         <br>
         <button type="submit" name="submit" id="connexion"><b>Connexion</b></button>
       </form>
