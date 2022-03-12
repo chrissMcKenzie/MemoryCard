@@ -7,7 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Signin | Inscription</title>
   <!-- CSS LINKPACK -->
-  <!-- <link rel="stylesheet" href="./Signin.css"> -->
+  <link rel="stylesheet" href="./SigninSoignant.css">
+  <link rel="stylesheet" href="./../../../public/pages/css/SigninSoignantView.css">
   <!-- <script src="./Signin.js" defer></script> -->
 </head>
 
@@ -15,7 +16,8 @@
   <header id="Header">
     <section class="container">
       <div>
-        <img src="View/assets/soignant.png" id="img1">
+        <!-- <img src="./../media/images/soignant.png" id="img1"> -->
+        <img src="./../../../public/media/images/soignant.png" id="img1">
       </div>
     </section>
 
@@ -53,7 +55,7 @@
         <button type="submit" name="submit" id="Inscription"><b>Inscription</b></button>
       </form>
       <div class="Option">
-        <a href="index.php?page=1">Connexion</a>
+        <a href="index.php?page=LoginSoignant">Connexion</a>
       </div>
     </section>
 

@@ -8,7 +8,6 @@ if (isset($_GET['page'])) {		// l'URL complétée par ?page=x fournit le nom de 
 	$page = 'Acceuil';
 }
 
-// ob_start();
 if ($page === 'Acceuil') {
 	require "./../src/View/AccueilView.php";
 } elseif ($page === 'SigninSoignant') {

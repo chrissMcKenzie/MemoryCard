@@ -5,66 +5,20 @@
 Ez€R Vt€R tel que z.t !=1
 
 
-//var output = "output width='200px' height='190px' "
-var carte1 = document.querySelector('#1')
-    var carte2 = document.querySelector('#2')
-    var carte3 = document.querySelector('#3')
-    var carte4 = document.querySelector('#4')
-    var carte5 = document.querySelector('#5')
-    var carte6 = document.querySelector('#6')
-    var carte7 = document.querySelector('#7')
-    var carte8 = document.querySelector('#8')
-    var carte9 = document.querySelector('#9')
-    var carte10 = document.querySelector('#10')
-    var carte11 = document.querySelector('#11')
-    var carte12 = document.querySelector('#12')
-    var carte13 = document.querySelector('#13')
-    var carte14 = document.querySelector('#14')
-    var carte15 = document.querySelector('#15')
-    var carte16 = document.querySelector('#16')
-    // carte1.addEventListener('onload', function(){
-    //     var images = document.querySelectorAll('.img')
-    //     images.style.visibility = ""
-    //     carte1.addEventListener('onclick',  function(){
-    //         carte1.style.visibility = "hidden"
-    //     })
-    //      .style.visibility = ""
-    // })
-    // carte2.addEventListener('onclick', function(){
-    //     var images = document.querySelectorAll('.img').style.visibility = "hidden"
-    // })
+- phpunit
+composer init
+...
+<dev dependencies (require)>? no
+<dev dependencies (require-dev)>? yes
+phpunit
+0 (phpunit/phpunit)
+...
+composer require phpunit/phpunit
 
-    // function showImage(image){
-    //     // img = "img width='200px' height='190px'"
-    //     // document.getElementById('#1').style.backgroundImage = image
-    //     document.getElementById("1").style.src = image
-    
-    // }
-
-    <${section}>
-            <${div}>
-                <${output}"><${img} id="1" class="img" src="${image}" alt="" /><${output}">
-                <${output}"><${img} id="2" class="img" src="${image}" alt="" /><${output}">
-                <${output}"><${img} id="3" class="img" src="${image}" alt="" /><${output}">
-                <${output}"><${img} id="4" class="img" src="${image}" alt="" /><${output}">
-            </${div}>
-            <${div}>
-                <${output}"><${img} id="5" class="img" src="${image}" alt="" /><${output}">
-                <${output}"><${img} id="6" class="img" src="${image}" alt="" /><${output}">
-                <${output}"><${img} id="7" class="img" src="${image}" alt="" /><${output}">
-                <${output}"><${img} id="8" class="img" src="${image}" alt="" /><${output}">
-            </${div}>
-            <${div}>
-                <${output}"><${img} id="9" class="img" src="${image}" alt="" /><${output}">
-                <${output}"><${img} id="10" class="img" src="${image}" alt="" /><${output}">
-                <${output}"><${img} id="11" class="img" src="${image}" alt="" /><${output}">
-                <${output}"><${img} id="12" class="img" src="${image}" alt="" /><${output}">
-            </${div}>
-            <${div}>
-                <${output}"><${img} id="13" class=".img" src="${image}" alt="" /><${output}">
-                <${output}"><${img} id="14" class=".img" src="${image}" alt="" /><${output}">
-                <${output}"><${img} id="15" class=".img" src="${image}" alt="" /><${output}">
-                <${output}"><${img} id="16" class=".img" src="${image}" alt="" /><${output}">
-            </${div}>
-
-        </${section}>`;
+./vendor/bin/phpunit ./tests --colors
+composer dump-autoload -o
+./vendor/bin/phpunit ./tests --colors
+phpunit.xml.dist | phpunit.xml
+./vendor/bin/phpunit
+./vendor/bin/phpunit --coverage-html coverage
+git clone https://github.com/xdebug/xdebug.git

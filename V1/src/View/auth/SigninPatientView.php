@@ -17,7 +17,8 @@
   <header id="Header">
     <section class="container">
       <div>
-        <!-- <img src="../../media/images/Logo_SessionAdmin.png" alt="Logo Session Admin"> -->
+        <img src="./../media/images/patient.png" id="img1" alt="Logo Session Admin">
+        <!-- Logo_SessionAdmin.png -->
       </div>
     </section>
 
