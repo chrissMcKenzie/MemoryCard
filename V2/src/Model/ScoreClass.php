@@ -44,7 +44,7 @@ class Score_Patient{
     }
 }
 
-class ManagerScore{
+class ManageScore{
     private $ScoreList = array();
 
     public function getScoreFromBD() {

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 class DatabaseModel { 
     private static $dbName = 'bts2a_MemoryCardModel' ; 
@@ -14,7 +14,7 @@ class DatabaseModel {
 
         if (self::$cont == null){ 
             try {
-                self::$cont = new PDO("mysql:host=".self::$dbHost.";"."dbname=".self::$dbName, self::$dbUsername, self::$dbUserPassword); 
+                self::$cont = new PDO("mysql:host=".self::$dbHost.";"."dbname=".self::$dbName, self::$dbUsername, self::$dbUserPassword);
             } catch(PDOException $e){
                 die($e->getMessage());
             }

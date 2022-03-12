@@ -55,7 +55,7 @@ class Patient{
     }
 }
 
-class ManagerPatient{
+class ManagePatient{
     private $patientList = array();
 
     public function getPatientFromDB(){
