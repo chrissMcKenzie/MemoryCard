@@ -1,0 +1,1 @@
+{"version":1,"defects":{"DatabaseModelTest::test_Database_Connection":4,"getPatientFromDBTest::test_getPatientFromDB":4},"times":{"DatabaseModelTest::test_Database_Connection":0.003,"getPatientFromDBTest::test_getPatientFromDB":0}}
