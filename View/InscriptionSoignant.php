@@ -56,6 +56,9 @@
         <label for="Email"><b>Email:</b><i>*</i></label>
         <input type="text" name="eml" placeholder="Email "  min="10" max="100" required>
         <br>
+        <label for="Email"><b>Hopital:</b><i>*</i></label>
+        <input type="text" name="hop" placeholder="hopital"  min="10" max="100" required>
+        <br>
         <button type="submit" name="submit" id="Inscription"><b>Inscription</b></button>
       </form>
       <div class="Option">

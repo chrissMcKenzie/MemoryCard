@@ -14,7 +14,7 @@ include_once('./model/PatientClass.php');
         
             $managerpat = new managePatient();
             $managerpat->log($nom,$prenom);
-            include_once('View/LoginPatient.php');        
+            include_once('View/LoginPatient.php');
         }
     }
     else{

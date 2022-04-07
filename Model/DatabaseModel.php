@@ -1,7 +1,7 @@
 <?php 
 
 class DatabaseModel { 
-    private static $dbName = 'bts2a_MemoryCardModel' ; 
+    private static $dbName = 'bts2a_memorycardmodel' ; 
     private static $dbHost = 'localhost' ; 
     private static $dbUsername = 'root'; 
     private static $dbUserPassword = ''; 

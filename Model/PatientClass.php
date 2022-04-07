@@ -21,7 +21,6 @@ class Patient{
         $this->telephone_patient=$telephone;
     }
 
-
     public function getIdPatient(){
         return $this->id_patient;
     }
@@ -69,10 +68,13 @@ class managePatient{
         $resultat = $req->fetch();
         
         if ($req->rowCount() > 0){
-        $_SESSION['nom_patient'] = $nom;
+       
+        $idpatient= $resultat["id_patient"];
+        $_SESSION['nom_patient'] = $idpatient;
         }
     }
 
+   
 
 
     public function getPatientFromDB()

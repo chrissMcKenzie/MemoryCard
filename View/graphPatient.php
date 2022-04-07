@@ -101,7 +101,7 @@ table {
     $bdd = DatabaseModel::connect(); //on se connecte à la base 
         $sql = "SELECT * FROM score where id_patient='$index'" ;
         foreach ($bdd->query($sql) as $graph){
-            echo '["'.$graph['partie'].'",'.$graph['id_score'].'],';
+            echo '["'.$graph['id_score'].'",'.$graph['score'].'],';
         }
 ?>
         ]);
@@ -110,8 +110,20 @@ table {
 // Titre du graphique
           title: 'Evolution du patient',
           titleTextStyle: {color: 'white'},
-          hAxis: {title: 'Parties', titleTextStyle: {color: 'purple'}},
-          vAxis: {title: 'Scores', minValue: 0,titleTextStyle: {color: 'purple'}},
+          series: {
+          // Gives each series an axis name that matches the Y-axis below.
+          0: {axis: 'Temps'},
+          1: {axis: 'Daylight'},
+        },
+     
+        axes: {
+          // Adds labels to each axis; they don't have to match the axis names.
+          y: {
+            Temps: {label: 'Temps (Celsius)'},
+            Daylight: {label: 'Daylight'}
+          }
+        },
+
           'width':1000,
           'height':500,
           backgroundColor: '#000',
@@ -121,8 +133,8 @@ table {
         var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
         chart.draw(data, options);
       }
+      
     </script>
-
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {'packages':['bar']});
@@ -135,11 +147,10 @@ table {
     $bdd = DatabaseModel::connect(); //on se connecte à la base 
         $sql = "SELECT * FROM score where id_patient='$index'" ;
         foreach ($bdd->query($sql) as $graph){
-            echo '["'.$graph['temps'].'",'.$graph['score_id'].'],';
+            echo '["'.$graph['temps'].'",'.$graph['id_score'].'],';
         }
   ?>
         ]);
-
 
         var options = {
           colors: [ 'green'],
@@ -158,6 +169,8 @@ table {
         chart.draw(data, google.charts.Bar.convertOptions(options));
       };
     </script>
+
+    
   </head>
   <body>
 
@@ -191,12 +204,6 @@ table {
       <div id="chart_div" style="margin:20px;margin-top:20px;"></div>
       <div id="top_x_div" style="margin-left:180px;margin-bottom:50px;"></div>
     </div>
-
-    
 </div>
-
-
-
-
-    </body>
+</body>
 </html>

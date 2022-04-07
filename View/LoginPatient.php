@@ -3,7 +3,7 @@
 <?php
     if(isset($_SESSION['nom_patient']))
     {     
-        echo"<center > Vous etes connecté en tant que : " . $_SESSION['nom_patient']. "</center>";
+        echo"<center > Vous etes connecté en tant que Patient numero " .$_SESSION['nom_patient']. "</center>";
         include_once('./View/UserView.php');
 ?>
 

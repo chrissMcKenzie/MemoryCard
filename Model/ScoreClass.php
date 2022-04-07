@@ -1,48 +1,42 @@
 <?php
-   include_once('./DatabaseModel.php');
+include_once('Model/DatabaseModel.php');
 
    class Score_Patient{
 
     private $id_score;
-    private $id_patient;
     private $score;
-    private $temps;
-    private $victoire;
-    private $defaite;
-    private $difficulte;
+    private $temps;    
+    private $niveau;
+    private $nb_coup;
+    private $id_patient;
 
-    public function __construct($sid, $pid, $pscore, $stemps, $svictoire, $sdefaite, $sdifficulte){
+    public function __construct($sid,$pscore, $ptemps, $pniveau,$pcoup, $pid ){
         $this->id_score=$sid;
-        $this->id_patient=$pid;
         $this->score=$pscore;
-        $this->temps=$stemps;
-        $this->victoire=$svictoire;
-        $this->defaite=$sdefaite;
-        $this->difficulte=$sdifficulte;
+        $this->temps=$ptemps;
+        $this->niveau=$pniveau;
+        $this->nb_coup=$pcoup;
+        $this->id_patient=$pid;
     }
 
     public function getIdScore(){
         return $this->id_score;
     }
-    public function getidPatient(){
+    public function getIdPatient(){
         return $this->id_patient;
     }
     public function getScore(){
         return $this->score;
     }
-    public function getTemp(){
+    public function getTemps(){
         return $this->temps;
     }
-    public function getVictoire(){
-        return $this->victoire;
+    public function getNiveau(){
+        return $this->niveau;
     }
-    public function getDefaite(){
-        return $this->defaite;
+    public function getnb_coup(){
+        return $this->nb_coup;
     }
-    public function getDifficulte(){
-        return $this->difficulte;
-    }
-
 }
 
 class manageScore{
@@ -51,20 +45,19 @@ class manageScore{
 
 private function getScoreFromBD(){
     $pdo = DatabaseModel::connect(); //on se connecte à la base 
-    $sql = 'SELECT * FROM score_patient ORDER BY id_score ASC'; //on formule notre requete 
+    $sql = 'SELECT * FROM score ORDER BY id_score ASC'; //on formule notre requete 
     $result = $pdo->query($sql);
     $allRows = $result->fetchAll();
 
     foreach ($allRows as $row) { //on cree un objet Film avec chaque valeur retournée
          $sid = $row["id_score"];  
          $pid = $row["id_patient"];                                                                                    
+         $ptemps = $row["temps"];
+         $pcoup = $row["nb_coup"];
+         $pniveau = $row["niveau"];
          $pscore = $row["score"];
-         $stemps = $row["temps"];
-         $svictoire = $row["victoire"];
-         $sdefaite = $row["defaite"];
-         $sdifficulte = $row["difficulte"];
-    
-        $score = new ScorePatient($sid, $pid, $pscore, $stemps, $svictoire, $sdefaite, $sdifficulte);
+
+        $score = new ScorePatient($sid, $pid, $pscore, $ptemps, $pcoup, $pniveau);
         $this->ScoreList[] = $score;
         }
 
@@ -72,11 +65,19 @@ private function getScoreFromBD(){
         return $this->ScoreList;
 }
 
+
+function recup_score($SCORE, $SESSIONPAT,$DATE,$DATE2){
+    $pdo = DatabaseModel::connect();
+    $req="INSERT INTO score ( temps, niveau,nb_coup,id_patient,score,date1) values ('$DATE','$DATE','$SCORE','$SESSIONPAT','$SCORE','$DATE2')";
+    $result = $pdo->query($req);
+}
+
 public function getScore(){
     if ( count($this->ScoreList) == 0)
         $this->getScoreFromDB();
     return $this->ScoreList;
 }
+
 public function getScoreFromId($idScore){
     foreach ($this->ScoreList as $score) {
         if ($film->getIdScore() == $idScore)

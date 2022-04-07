@@ -1,6 +1,5 @@
 <?php
-//define("ROOT", dirname(__DIR__)); // require ROOT.'/';
-//PAGE PAR DEFAUT
+
 $laPage = './View/acceuil.php';
 $titre = "Accueil";
 
@@ -11,7 +10,6 @@ if (isset($_GET['page'])) {		// l'URL complétée par ?page=x fournit le nom de 
 		case 1:
 			$laPage = 'controller/LoginSoignantController.php';
 			$titre = 'Login';
-			// require './View/JeuxView.php';
 			break;
 
 		case 2:
@@ -19,48 +17,50 @@ if (isset($_GET['page'])) {		// l'URL complétée par ?page=x fournit le nom de 
 			$titre = 'Signin';
 			break;
 
-		
 		case 4:
-			$laPage = "view/jeux.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
+			$laPage = "view/jeux.php"; 
 			$titre = 'jeu';
 			break;
 
 		case 5:
-			$laPage = "Controller/ProfilSoignant.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
+			$laPage = "Controller/ProfilSoignant.php"; 
 			$titre = 'jeu';
 			break; 
 
 		case 6:
-			$laPage = "controller/InscriptionSoignantController.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
+			$laPage = "controller/InscriptionSoignantController.php"; 
 			$titre = 'jeu';
 			break;
 		
 		case 7:
-			$laPage = "Controller/ConsultationController.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
+			$laPage = "Controller/ConsultationController.php"; 
 			$titre = 'jeu';
 			break;
 
 		case 8:
-			$laPage = "Controller/GraphController.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
+			$laPage = "Controller/GraphController.php"; 
 			$titre = 'jeu';
 			break;
 		
 		case 9:
-			$laPage = "controller/LoginPatientController.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
+			$laPage = "controller/LoginPatientController.php";
 			$titre = 'jeu';
 			break;
 			
 		case 10:
-			$laPage = "view/UserView.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
+			$laPage = "view/UserView.php";
 			$titre = 'jeu';
 			break;	
 			
 		case 11:
-			$laPage = "controller/InscriptionPatientController.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
+			$laPage = "controller/InscriptionPatientController.php"; 
+			$titre = 'jeu';
+			break;
+
+		case 12:
+			$laPage = "controller/jeuxController.php"; 
 			$titre = 'jeu';
 			break;
 	}
 }
-
-//phpinfo();
 include($laPage);
