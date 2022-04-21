@@ -1,3 +1,4 @@
+<?php //include_once './../../Controller/SigninController.php'; ?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -7,17 +8,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Signin | Inscription</title>
   <!-- CSS LINKPACK -->
-  <!-- <link rel="stylesheet" href="./Signin.css"> -->
+  <link rel="stylesheet" href="./../pages/css/SigninSoignantView.css">
+  <!-- <link rel="stylesheet" href="./src/View/pages/css/SigninSoignantView.css"> -->
   <!-- <script src="./Signin.js" defer></script> -->
 </head>
 
 <body>
   <header id="Header">
-    <section class="container">
+    <!-- <section class="container">
       <div>
-        <img src="./../media/images/soignant.png" id="img1">
+        <img src="./src/View/media/images/soignant.png" id="img1">
+        <img src="./../../../src/View/media/images/soignant.png" id="img1">
       </div>
-    </section>
+    </section> -->
 
   </header>
   <br>
@@ -31,7 +34,7 @@
     </section>
 
     <section class="container">
-      <form id="formulaire" method="POST">
+      <form action="./../../Controller/SigninController.php" method="POST">
         <label for="Prenom"><b>Prenom:</b><i>*</i></label>
         <input type="text" name="nom" placeholder="Prenom ?">
         <br>
@@ -53,120 +56,13 @@
         <button type="submit" name="submit" id="Inscription"><b>Inscription</b></button>
       </form>
       <div class="Option">
-        <a href="index.php?page=SigninSoignant">Connexion</a>
+        <a href="./LoginSoignantView.php">Connexion</a>
+        <!-- <a href="index.php?page=LoginSoignant">Connexion</a> -->
       </div>
     </section>
 
   </main>
   <br>
-  <style>
-    <?php include_once('Controller/InscriptionController.php'); ?>#img1 {
-      height: 50px;
-      width: 50px;
-      margin-left: 110px;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      width: 100%;
-      height: 100%;
-    }
-
-    body {
-      /* width: 100%; height: 100%; */
-      /* background: url('../../media/images/Background_Login0.jpeg') repeat space; */
-      background: url("./media/images/Background_Login0.jpeg") no-repeat;
-      background-size: cover;
-      background-color: rgba(0, 0, 0, 0.1);
-    }
-
-    header,
-    main,
-    footer {
-      /* width:500px; */
-      margin: 0 auto;
-      margin-bottom: 0%;
-      padding: 3%;
-      width: 50%;
-      height: 12%;
-      text-align: center;
-      font-size: 32px;
-
-    }
-
-    header {
-      margin: 1%;
-      margin-left: -10%;
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 2%;
-      font-size: 64px;
-    }
-
-    main {
-      margin-top: -6%;
-      text-align: left;
-    }
-
-    footer {
-      padding-top: 6%;
-      width: 600px;
-      font-size: 21px;
-    }
-
-
-    /* Full-width inputs */
-    input[type=text],
-    input[type=password] {
-      display: inline-block;
-      margin: 8px 0;
-      padding: 12px 20px;
-      width: 100%;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
-    }
-
-    button {
-      background-color: black;
-      color: white;
-    }
-
-    button[type=submit] {
-      margin: 8px 0;
-      padding: 14px 20px;
-      width: 100%;
-      border: none;
-      font-size: 21px;
-      cursor: pointer;
-
-    }
-
-    button[type=submit]:hover {
-      border: 2px solid #53af57;
-    }
-
-    .Option {
-      text-align: center;
-      margin-top: -2%;
-    }
-
-    .Option a {
-      color: black;
-      font-size: 20px;
-
-    }
-
-    .Option a:nth-child(2) {
-      margin-left: 3%;
-      font-size: 19px;
-    }
-  </style>
 
   <script type="text/javascript">
     // if(!localStorage.getItem("Email") && !localStorage.getItem("MotDePasse")){
@@ -193,7 +89,7 @@
       localStorage.setItem("MotDePasse", MotDePasse.value)
 
       // document.location.reload()
-      document.location.pathname = "dashboardAdminphp/Home/Jeux/MemoryCard/V3/index.php?page=SigninSoignant.php"
+      //document.location.pathname = "dashboardAdminphp/Home/Jeux/MemoryCard/V3/index.php?page=SigninSoignant.php"
 
     }
 

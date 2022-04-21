@@ -1,5 +1,5 @@
 {
-    "name": "chrissmckenzie/v2",
+    "name": "chrissmckenzie",
     "authors": [
         {
             "name": "chrissMcKenzie",
@@ -9,6 +9,14 @@
     "autoload": {
         "psr-4": {
             "chrissMcKenzie\\": "src/"
+        },
+        "classmap": [
+            "src/"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "chrissMcKenzie\\Tests\\": "tests/"
         }
     },
     "require": {},

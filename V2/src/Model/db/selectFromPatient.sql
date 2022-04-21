@@ -1,0 +1,5 @@
+SHOW DATABASES;
+USE bts2a_MemoryCardModel;
+SHOW TABLES;
+DESCRIBE Patient;
+SELECT * FROM Patient;

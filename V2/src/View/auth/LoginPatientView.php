@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 ?>
 
 <!DOCTYPE html>
@@ -9,66 +9,47 @@ session_start();
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Signin | Inscription</title>
+  <title>Connexion</title>
   <!-- CSS LINKPACK -->
-  <!-- <link rel="stylesheet" href="./Signin.css"> -->
-  <!-- <script src="./Signin.js" defer></script> -->
+  <link rel="stylesheet" href="./../pages/css/LoginPatientView.css">
+  <!-- <script src="./Login.js" defer></script> -->
 </head>
 
 <body>
   <header id="Header">
-    <section class="container">
+    <!-- <section class="container">
       <div>
         <img src="View/assets/patient.png" id="img2">
       </div>
-    </section>
+    </section> -->
 
   </header>
   <br>
 
   <main id="Main">
     <section class="container">
-      <div class="BarreDeNotification">
-        <p></p>
-      </div>
-      <h1>Inscription</h1>
+      <h1>Connexion</h1>
     </section>
 
     <section class="container">
-      <form id="formulaire" action="Model/traitementSignin.php" method="POST">
-        <label for="Nom"><b>Nom:</b><i>*</i></label>
-        <input type="text" name="nom" placeholder="Nom ?">
-        <br>
-        <label for="Prenom"><b>Prenom:</b><i>*</i></label>
-        <input type="text" name="pre" placeholder="Prenom ?">
-        <br>
-        <label for="Date"><b>Date de naissance:</b><i>*</i></label>
-        <input type="text" name="date" placeholder="Date de naissance ?">
+      <form id="formulaire" method="POST">
+        <label for="Email"><b>Email:</b><i>*</i></label>
+        <input type="text" id="Email" name="email" placeholder="Email ?" required>
         <br>
         <label for="MotDePasse"><b>Mot de passe:</b><i>*</i></label>
-        <input type="password" name="pwd" placeholder="password ?">
+        <input type="password" id="MotDePasse" name="pass" placeholder="password ?" required>
         <br>
-        <label for="Role"><b>poste</b><i>*</i></label>
-        <select name="poste" id="Role">
-          <option>medecin</option>
-          <option>infirmier</option>
-          <option>aide soigant</option>
-        </select><br />
-        <br>
-        <label for="Email"><b>Email:</b><i>*</i></label>
-        <input type="text" name="eml" placeholder="Email ?">
-        <br>
-        <button type="submit" name="submit" id="Inscription"><b>Inscription</b></button>
+        <button type="submit" name="submit" id="Connexion"><b>Connexion</b></button>
+        </div>
+        <div class="Option">
+          <a href="./SigninPatientView.php">Inscription</a>
+          <a href="./ForgotPasswordView.php">Mot De Passe Oublié ?</a>
+          <!-- <a href="index.php?page=LoginSoignant">Inscription</a>
+                        <a href="index.php?page=Forgot">Mot De Passe Oublié ?</a> -->
       </form>
-      <div class="Option">
-        <a href="index.php?page=LoginPatient">Connexion</a>
-      </div>
     </section>
-
-
-
-
   </main>
+
   <br>
   <footer id="Footer">
     <section class="container">
@@ -79,114 +60,7 @@ session_start();
 
 
 
-  <style>
-    #img2 {
-      height: 50px;
-      width: 50px;
-      margin-left: 110px;
-    }
 
-    * {
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      width: 100%;
-      height: 100%;
-    }
-
-    body {
-      /* width: 100%; height: 100%; */
-      /* background: url('../../media/images/Background_Login0.jpeg') repeat space; */
-      background: url("./media/images/Background_Login0.jpeg") no-repeat;
-      background-size: cover;
-      background-color: rgba(0, 0, 0, 0.1);
-    }
-
-    header,
-    main,
-    footer {
-      /* width:500px; */
-      margin: 0 auto;
-      margin-bottom: 0%;
-      padding: 3%;
-      width: 50%;
-      height: 12%;
-      text-align: center;
-      font-size: 32px;
-
-    }
-
-    header {
-      margin: 1%;
-      margin-left: -10%;
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 2%;
-      font-size: 64px;
-    }
-
-    main {
-      margin-top: -6%;
-      text-align: left;
-    }
-
-    footer {
-      padding-top: 6%;
-      width: 600px;
-      font-size: 21px;
-    }
-
-
-    /* Full-width inputs */
-    input[type=text],
-    input[type=password] {
-      display: inline-block;
-      margin: 8px 0;
-      padding: 12px 20px;
-      width: 100%;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
-    }
-
-    button {
-      background-color: black;
-      color: white;
-    }
-
-    button[type=submit] {
-      margin: 8px 0;
-      padding: 14px 20px;
-      width: 100%;
-      border: none;
-      font-size: 21px;
-      cursor: pointer;
-
-    }
-
-    button[type=submit]:hover {
-      border: 2px solid #53af57;
-    }
-
-    .Option {
-      text-align: center;
-      margin-top: -2%;
-    }
-
-    .Option a {
-      color: black;
-      font-size: 20px;
-
-    }
-
-    .Option a:nth-child(2) {
-      margin-left: 3%;
-      font-size: 19px;
-    }
-  </style>
 
   <script type="text/javascript">
     // if(!localStorage.getItem("Email") && !localStorage.getItem("MotDePasse")){

@@ -9,26 +9,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Signin | Inscription</title>
   <!-- CSS LINKPACK -->
-  <!-- <link rel="stylesheet" href="./Signin.css"> -->
+  <!-- <link rel="stylesheet" href="./src/View/pages/css/SigninPatientView.css"> -->
+  <link rel="stylesheet" href="./../pages/css/SigninPatientView.css">
   <!-- <script src="./Signin.js" defer></script> -->
 </head>
 
 <body>
   <header id="Header">
-    <section class="container">
+    <!-- <section class="container">
       <div>
-        <!-- <img src="../../media/images/Logo_SessionAdmin.png" alt="Logo Session Admin"> -->
+        <img src="../../media/images/Logo_SessionAdmin.png" alt="Logo Session Admin">
       </div>
-    </section>
+    </section> -->
 
   </header>
-  <br>
 
   <main id="Main">
     <section class="container">
-      <div class="BarreDeNotification">
+      <!-- <div class="BarreDeNotification">
         <p></p>
-      </div>
+      </div> -->
       <h1>Inscription</h1>
     </section>
 
@@ -59,126 +59,19 @@
         <button type="submit" name="submit" id="Inscription"><b>Inscription</b></button>
       </form>
       <div class="Option">
-        <a href="index.php?page=SigninPatient">Connexion</a>
+        <a href="./LoginPatientView.php">Connexion</a>
+        <!-- <a href="index.php?page=LoginPatient">Connexion</a> -->
       </div>
     </section>
 
-
-
-
   </main>
-  <br>
+
   <footer id="Footer">
-    <section class="container">
+    <!-- <section class="container">
       <div>Copyright © 2021-2022 www.chrissMcKenzie.com. Tous Droits Réservés</div>
       <div>Codeur, Développeur (c) 2021 chrissMcKenzie.com</div>
-    </section>
+    </section> -->
   </footer>
-
-
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      width: 100%;
-      height: 100%;
-    }
-
-    body {
-      /* width: 100%; height: 100%; */
-      /* background: url('../../media/images/Background_Login0.jpeg') repeat space; */
-      background: url("./media/images/Background_Login0.jpeg") no-repeat;
-      background-size: cover;
-      background-color: rgba(0, 0, 0, 0.1);
-    }
-
-    header,
-    main,
-    footer {
-      /* width:500px; */
-      margin: 0 auto;
-      margin-bottom: 0%;
-      padding: 3%;
-      width: 50%;
-      height: 12%;
-      text-align: center;
-      font-size: 32px;
-
-    }
-
-    header {
-      margin: 1%;
-      margin-left: -10%;
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 2%;
-      font-size: 64px;
-    }
-
-    main {
-      margin-top: -6%;
-      text-align: left;
-    }
-
-    footer {
-      padding-top: 6%;
-      width: 600px;
-      font-size: 21px;
-    }
-
-
-    /* Full-width inputs */
-    input[type=text],
-    input[type=password] {
-      display: inline-block;
-      margin: 8px 0;
-      padding: 12px 20px;
-      width: 100%;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
-    }
-
-    button {
-      background-color: black;
-      color: white;
-    }
-
-    button[type=submit] {
-      margin: 8px 0;
-      padding: 14px 20px;
-      width: 100%;
-      border: none;
-      font-size: 21px;
-      cursor: pointer;
-
-    }
-
-    button[type=submit]:hover {
-      border: 2px solid #53af57;
-    }
-
-    .Option {
-      text-align: center;
-      margin-top: -2%;
-    }
-
-    .Option a {
-      color: black;
-      font-size: 20px;
-
-    }
-
-    .Option a:nth-child(2) {
-      margin-left: 3%;
-      font-size: 19px;
-    }
-  </style>
 
   <script type="text/javascript">
     // if(!localStorage.getItem("Email") && !localStorage.getItem("MotDePasse")){

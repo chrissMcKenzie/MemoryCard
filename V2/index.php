@@ -1,9 +1,9 @@
 <?php
 //define("ROOT", dirname(__DIR__)); // require ROOT.'/';
 //PAGE PAR DEFAUT
-$laPage = 'src/View/AccueilView.php';
-$titre = "Accueil";
-//include "./src/View/AccueilView.php";
+$laPage = 'src/View/AccueilView.php'; //include "./src/View/AccueilView.php";
+$titre = "Accueil"; 
+
 if (isset($_GET['page'])) { // l'URL complétée par ?page=x fournit le nom de page souhaité
 	$page = $_GET['page'];
 	//système qui permet de savoir la page à charger
@@ -16,12 +16,12 @@ if (isset($_GET['page'])) { // l'URL complétée par ?page=x fournit le nom de p
 
 		case "SigninSoignant":
 			$laPage = 'src/View/auth/SigninSoignantView.php';
-			$titre = 'Signin';
+			$titre = 'SigninSoignant';
 			break;
 
 		case "SigninPatient": // or "signinpatient" or "signinPatient" or "SigninPatient":
 			$laPage = 'src/View/auth/SigninPatientView.php';
-			$titre = 'Signin';
+			$titre = 'SigninPatient';
 			break;
 
 		case "LoginSoignant": // or "loginsoignant" or "loginSoignant" or "LoginSoignant":
