@@ -1,4 +1,4 @@
-<?php include_once './DatabaseModel.php'; // https://www.copier-coller.com/un-crud-en-php/
+<?php include_once './Model/DatabaseModel.php';
 
 class Soignant{
 
@@ -43,14 +43,13 @@ class Soignant{
         }
 }
 
-class manageSoignant{
+class ManagerSoignant{
 
         private $soignantList=array();
 
-        function enre($NOM,$PRENOM,$DATE,$PWD,$POSTE,$EMAIL){
+        function enregistrementInBD($NOM,$PRENOM,$DATE,$PWD1,$POSTE,$EMAIL){
                 $pdo = DatabaseModel::connect();
-
-                $req="INSERT INTO soignant (nom_soignant, prenom_soignant, datenaissance_soignant, motdepasse_soignant, poste_soignant, mail_soignant) values ('$NOM','$PRENOM','$DATE','$PWD','$POSTE','$EMAIL')";
+                $req="INSERT INTO soignant (nom_soignant, prenom_soignant, datenaissance_soignant, motdepasse_soignant, poste_soignant, mail_soignant) values ('$NOM','$PRENOM','$DATE','$PWD1','$POSTE','$EMAIL')";
                 $result = $pdo->query($req);
         }
 
@@ -61,13 +60,14 @@ class manageSoignant{
                 $req = $db->prepare('SELECT id_soignant FROM soignant WHERE mail_soignant = :email AND motdepasse_soignant = :pass');
                 $req->execute(array(':email' => $email,':pass' => $pass));
                 $resultat = $req->fetch();
-                
+
                 if ($req->rowCount() > 0){
                 $_SESSION['mail_soignant'] = $email;
                 }
         }
 
-        public function getSoignantFromDB() {
+        public function getSoignantFromDB()
+        {
             $pdo = DatabaseModel::connect(); //on se connecte à la base 
             $sql = 'SELECT * FROM soignant ORDER BY id_soignant ASC'; //on formule notre requete 
             $result = $pdo->query($sql);
@@ -81,7 +81,6 @@ class manageSoignant{
                 $mp = $row["motdepasse_soignant"];
                 $poste = $row["poste_soignant"];
                 $mail = $row["mail_soignant"];
-
                 $soignant = new Soignant($id,$nom,$prenom,$date,$mp,$poste,$mail);
                 $this->soignantList[] = $soignant;
             }

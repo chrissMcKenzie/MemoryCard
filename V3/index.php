@@ -1,85 +1,65 @@
 <?php
 //define("ROOT", dirname(__DIR__)); // require ROOT.'/';
 //PAGE PAR DEFAUT
-$laPage = 'View/AccueilView.php';
+$laPage = 'src/View/AcceuilView.php';
 $titre = "Accueil";
 
-if (isset($_GET['page'])) { // l'URL complétée par ?page=x fournit le nom de page souhaité
+if (isset($_GET['page'])) {		// l'URL complétée par ?page=x fournit le nom de page souhaité
 	$page = $_GET['page'];
 	//système qui permet de savoir la page à charger
-	$page = strtoupper($page);
 	switch ($page) {
-		case "Acceuil":
-			$laPage = 'View/AccueilView.php';
-			$titre = 'Accueil';
-			break;
-
-		case "SigninSoignant":
-			$laPage = 'View/auth/SigninSoignantView.php';
-			$titre = 'Signin';
-			//require_once './View/auth/SigninSoignantView.php';
-			break;
-
-		case "SigninPatient": // or "signinpatient" or "signinPatient" or "SigninPatient":
-			$laPage = 'View/auth/SigninPatientView.php';
-			$titre = 'Signin';
-			//require_once './View/auth/SigninPatientView.php';
-			break;
-
-		case "LoginSoignant": // or "loginsoignant" or "loginSoignant" or "LoginSoignant":
-			$laPage = 'View/auth/LoginSoignantView.php';
+		case 1:
+			$laPage = 'src/Controller/LoginSoignantController.php';
 			$titre = 'Login';
-			//require_once './View/auth/LoginSoignantView.php';
 			break;
 
-		case "LoginPatient":
-			$laPage = "View/auth/LoginPatientView.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
-			$titre = 'login';
-			//require_once './View/auth/LoginPatientView.php';
+		case 2:
+			$laPage = 'src/View/InscriptionSoignant.php';
+			$titre = 'Signin';
 			break;
 
-		case "Forgot":
-			$laPage = "View/auth/ForgotPasswordView.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
-			$titre = 'Password';
-			//require_once './View/auth/ForgotPasswordView.php';
+		
+		case 4:
+			$laPage = "src/View/JeuxViex.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
+			$titre = 'jeu';
 			break;
 
-		case "Admin":
-			$laPage = "View/AdminView.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
-			$titre = 'Admin';
-			//require_once './View/AdminView.php';
+		case 5:
+			$laPage = "src/Controller/ProfilSoignant.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
+			$titre = 'jeu';
 			break;
 
-		case "User":
-			$laPage = "View/UserView.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
+		case 6:
+			$laPage = "src/controller/InscriptionSoignantController.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
+			$titre = 'jeu';
+			break;
+		
+		case 7:
+			$laPage = "src/Controller/ConsultationController.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
+			$titre = 'jeu';
+			break;
+
+		case 8:
+			$laPage = "src/Controller/GraphController.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
+			$titre = 'jeu';
+			break;
+		
+		case 9:
+			$laPage = "src/controller/LoginPatientController.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
+			$titre = 'jeu';
+			break;
+			
+		case 10:
+			$laPage = "src/View/UserView.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
 			$titre = 'User';
-			//require_once './View/UserView.php';
-			break;
-
-		case "Jeux":
-			$laPage = "View/JeuxView.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
-			$titre = 'Jeu';
-			//require_once './View/JeuxView.php';
-			break;
-
-		case "Logout":
-			//$laPage = "Model/logout.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
-			$laPage = 'View/AccueilView.php';
-			$titre = 'Accueil';
-			break;
-
-
-		default:
-			$laPage = 'View/AccueilView.php';
-			$titre = 'Accueil';
+			break;	
+			
+		case 11:
+			$laPage = "src/controller/InscriptionPatientController.php"; // l'URL complétée par ?page=3&index=yy fournit l'index Person souhaité
+			$titre = 'jeu';
 			break;
 	}
-	// include($laPage);
-	// print_r($laPage);
 }
-// else {
-// 	$page = "Home";
-// }
 
 //phpinfo();
 include($laPage);

@@ -1,9 +1,11 @@
 <?php
 
-include_once('./model/DatabaseModel.php');
-include_once('./model/PatientClass.php');
+include_once('./Model/DatabaseModel.php');
+include_once('./Model/PatientClass.php');
 
-$managerPatient = new ManagePatient();
-$patientList = $managerPatient->getPatientFromDB();
+$managePatient = new ManagePatient();
+$patientList = $managePatient->getPatientFromDB();
 
-include_once('./View/Consultation.php');
+include_once('./../View/Consultation.php');
+
+?>

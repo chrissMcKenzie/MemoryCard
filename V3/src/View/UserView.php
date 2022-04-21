@@ -1,52 +1,54 @@
 <?php session_start();
 include_once './../Model/DatabaseModel.php';
-include_once './../Model/PatientClass.php';
+include_once './../Model/PatientModel.php';
 
-$PDO = DatabaseModel::connect();
-$oPatient = new ManagerPatient();
-$listePatients = $oPatient->getPatientFromDB();
+//$PDO = DatabaseModel::connect();
+// $mPatient = new ManagerPatient();
+// $patientsListe = $mPatient->readPatient();
 
 // $sql = 'SELECT * FROM Patient';
 // $result = $PDO->query($sql);
 // $allRows = $result->fetchAll();
 
-// function getPDOConnexion(){
-//     $HOST = 'localhost';
-//     $DBNAME = 'bts2a_MemoryCardModel';
-//     $DSN = "mysql:host=$HOST; dbname=$DBNAME";
-//     $USER = 'root';
-//     $PASSWORD = '';
-//     $OPTIONS = [
-//         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-//         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-//     ];
+function getPDOConnexion()
+{
+    $HOST = 'localhost';
+    $DBNAME = 'bts2a_MemoryCardModel';
+    $DSN = "mysql:host=$HOST; dbname=$DBNAME";
+    $USER = 'root';
+    $PASSWORD = '';
+    $OPTIONS = [
+        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+    ];
 
-//     try {
-//         $DB_CONNEXION = new PDO($DSN, $USER, $PASSWORD, $OPTIONS);
-//     } catch (PDOException $e) {
-//         die("ErrorConnexion: " . $e->getMessage());
-//     }
+    try {
+        $DB_CONNEXION = new PDO($DSN, $USER, $PASSWORD, $OPTIONS);
+    } catch (PDOException $e) {
+        die("ErrorConnexion: " . $e->getMessage());
+    }
 
-//     return $DB_CONNEXION;
-// }
+    return $DB_CONNEXION;
+}
 
-// function listePatients(){
-//     $PDOConnexion = getPDOConnexion();
-//     $SQL_CODE = "SELECT * FROM Patient";
-//     $SQL_REQUÊTE = $PDOConnexion->query($SQL_CODE);
-//     $SQL_RESULTAT = $SQL_REQUÊTE->fetchAll();
+function listePatients()
+{
+    $PDOConnexion = getPDOConnexion();
+    $SQL_CODE = "SELECT * FROM Patient";
+    $SQL_REQUÊTE = $PDOConnexion->query($SQL_CODE);
+    $SQL_RESULTAT = $SQL_REQUÊTE->fetchAll();
 
-//     // foreach ($SQL_RESULTAT as $DATA) {
-//     //     foreach ($DATA as $champ => $value) {
-//     //         if (!is_int($champ)) {
-//     //             echo "<th scope='col'>{$champ}</th>";
-//     //         }
-//     //     }
-//     //     echo "<tr class='table-active' style='text-align: center;'>{$DATA['id_patient']}</tr>";
-//     // }
+    // foreach ($SQL_RESULTAT as $DATA) {
+    //     foreach ($DATA as $champ => $value) {
+    //         if (!is_int($champ)) {
+    //             echo "<th scope='col'>{$champ}</th>";
+    //         }
+    //     }
+    //     echo "<tr class='table-active' style='text-align: center;'>{$DATA['id_patient']}</tr>";
+    // }
 
-//     return $SQL_RESULTAT;
-// }
+    return $SQL_RESULTAT;
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -229,7 +231,7 @@ $listePatients = $oPatient->getPatientFromDB();
                 <img src="./View/media/images/Logo_SessionAdmin.png" height="200px" alt="Logo Session Admin">
                 <ul class="Sous_Menu">
                     <li>
-                        <a href="index.php?page=Jeux">Jeux</a>
+                        <a href="index.php?page=4">Jeux</a>
                         <hr>
                     </li>
                 </ul>
@@ -290,8 +292,9 @@ $listePatients = $oPatient->getPatientFromDB();
         </section>
 
         <section class="container">
-            <form method="POST" action="index.php?page=Accueil">
-                <button type="submit" name="Deconnexion"><b>Deconnexion</b></button>
+            <form method="POST" action="index.php?page=AccueilView">
+                <a  class="btn" id="centerbar-elem" href="Controller/Logout.php" >Déconnexion</a>
+
             </form>
 
         </section>
