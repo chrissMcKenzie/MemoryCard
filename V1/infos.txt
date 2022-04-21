@@ -22,3 +22,29 @@ phpunit.xml.dist | phpunit.xml
 ./vendor/bin/phpunit
 ./vendor/bin/phpunit --coverage-html coverage
 git clone https://github.com/xdebug/xdebug.git
+
+Use composer self-update --rollback to return to version 2.1.5
+
+
+ <?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use PdoGsb;
+
+class listeMoisController extends Controller
+{
+    function selectionnerMoisNoms(){
+       $gestionnaire = session('gestionnaire');
+       $lesMois = PdoGsb::getLesMois_visiteur();
+       $lesCles = array_keys( $lesMois );
+       $moisASelectionner = $lesCles[0];
+       return view('listeMoisNoms')
+       ->with('gestionnaire',$gestionnaire)
+       ->with('lesMois', $lesMois)
+       ->with('leMois', $moisASelectionner)
+       ;
+    }
+}

@@ -1,3 +1,59 @@
+<?php //include_once './../../Controller/SigninController.php';
+require_once __DIR__ . "/../../Model/DatabaseModel.php";
+//Inscription Check
+//
+if (!empty($_POST['submit']) && isset($_POST['submit'])) {
+  // $Nom = htmlspecialchars(trim($_POST['nom']));
+  // $Prenom = htmlspecialchars(trim($_POST['prenom']));
+  // $Email = htmlspecialchars(trim($_POST['email']));
+  // $DateDeNaissance = htmlspecialchars(trim($_POST['dateDeNaissance']));
+  // $MotDePasse = htmlspecialchars(trim($_POST['motDePasse']));
+  // $Poste = htmlspecialchars(trim($_POST['poste']));
+
+  // $Nom = isset($_POST['nom']) ? htmlspecialchars(trim($_POST['nom'])) : '';
+  // $Prenom = isset($_POST['prenom']) ? htmlspecialchars(trim($_POST['prenom'])) : '';
+  // $Email = isset($_POST['email']) ? htmlspecialchars(trim($_POST['email'])) : '';
+  // $DateDeNaissance = isset($_POST['dateDeNaissance']) ? htmlspecialchars(trim($_POST['dateDeNaissance'])) : '';
+  // $MotDePasse = isset($_POST['motDePasse']) ? htmlspecialchars(trim($_POST['motDePasse'])) : '';
+  // $Poste = isset($_POST['poste']) ? htmlspecialchars(trim($_POST['poste'])) : '';
+
+  $PDO = DatabaseModel::connexion();
+  $SQL = "INSERT INTO Soignant(nom_soignant, prenom_soignant, datenaissance_soignant, motdepasse_soignant, poste_soignant, mail_soignant)
+          VALUES(?, ?, ?, ?, ?, ?)";
+  $REQUÊTE_INSERT = $PDO->prepare($SQL);
+  $REQUÊTE_INSERT->execute([$_POST['nom'], $_POST['prenom'], $_POST['dateDeNaissance'], $_POST['motDePasse'], $_POST['poste'], $_POST['email']]);
+
+  // if(!empty($Nom) && !empty($Prenom) && !empty($Email) && !empty($DateDeNaissance) && !empty($MotDePasse) && !empty($Poste)){
+    // $PDO = DatabaseModel::connexion();
+
+    // $SQL = "INSERT INTO Soignant(nom_soignant, prenom_soignant, datenaissance_soignant, motdepasse_soignant, poste_soignant, mail_soignant)
+    //       VALUES(?, ?, ?, ?, ?, ?)
+    //      ";
+    // $REQUÊTE_INSERT = $PDO->prepare($SQL);
+    // $REQUÊTE_INSERT->execute([$Nom, $Prenom, $DateDeNaissance, $MotDePasse, $Poste, $Email]);
+
+    // $SQL = "INSERT INTO Soignant(nom_soignant, prenom_soignant, datenaissance_soignant, motdepasse_soignant, poste_soignant, mail_soignant)
+    //       VALUES(:nom_soignant, :prenom_soignant, :datenaissance_soignant, :motdepasse_soignant, :poste_soignant, :mail_soignant)
+    //      ";
+    // $REQUÊTE_INSERT = $PDO->prepare($SQL);
+    // $REQUÊTE_INSERT->execute([
+    //   ":nom_soignant" => $Nom,
+    //   ":prenom_soignant" => $Prenom,
+    //   ":datenaissance_soignant" => $DateDeNaissance,
+    //   ":motdepasse_soignant" => $MotDePasse,
+    //   ":poste_soignant" => $Poste,
+    //   ":mail_soignant" => $Email]);
+  // }
+
+  
+}
+
+// else {
+//   // header('Location: index.php?page=SigninSoignant');
+//   echo "<h2>Echec Inscription Soignant<h2>";
+// }
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -5,10 +61,11 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Signin | Inscription</title>
+  <title>Inscription | Signin</title>
   <!-- CSS LINKPACK -->
-  <link rel="stylesheet" href="./SigninSoignant.css">
-  <link rel="stylesheet" href="./../../../public/pages/css/SigninSoignantView.css">
+  <link rel="stylesheet" href="./src/View/pages/css/SigninSoignantView.css">
+  <!-- Bootstrap CSS -->
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
   <!-- <script src="./Signin.js" defer></script> -->
 </head>
 
@@ -16,10 +73,32 @@
   <header id="Header">
     <section class="container">
       <div>
-        <!-- <img src="./../media/images/soignant.png" id="img1"> -->
-        <img src="./../../../public/media/images/soignant.png" id="img1">
+
+      </div>
+      <div class="Debug">
+        <h2>Debug Page => SigninSoignantView
+          <pre>
+          <?php
+          var_dump($_POST['submit']);
+          var_dump($_POST['nom']);
+          // var_dump($Nom);
+          var_dump($_POST['prenom']);
+          // var_dump($Prenom);
+          var_dump($_POST['email']);
+          // var_dump($Email);
+          var_dump($_POST['dateDeNaissance']);
+          // var_dump($DateDeNaissance);
+          var_dump($_POST['motDePasse']);
+          // var_dump($MotDePasse);
+          var_dump($_POST['poste']);
+          // var_dump($Poste);
+          ?>
+          </pre>
+        </h2>
+
       </div>
     </section>
+
 
   </header>
   <br>
@@ -29,29 +108,33 @@
       <div class="BarreDeNotification">
         <p></p>
       </div>
-      <h1>Inscription</h1>
+      <h1>Inscription Soignant</h1>
     </section>
 
     <section class="container">
-      <form id="formulaire" method="POST">
-        <label for="Prenom"><b>Prenom:</b><i>*</i></label>
-        <input type="text" name="nom" placeholder="Prenom ?">
-        <br>
+      <!-- <form action="./../../Controller/SigninController.php" method="POST"> -->
+      <form action="index.php?page=SigninSoignant" method="POST">
         <label for="Nom"><b>Nom:</b><i>*</i></label>
-        <input type="text" name="pre" placeholder="Nom ?">
+        <input type="text" name="nom" placeholder="Nom ?" required autocomplete="name">
         <br>
-        <label for="Date"><b>Date de naissance:</b><i>*</i></label>
-        <input type="text" name="daten" placeholder="Date de naissance ?">
-        <br>
-        <label for="MotDePasse"><b>Mot de passe: </b><i>*</i></label>
-        <input type="password" name="pwd" placeholder="Password ?">
-        <br>
-        <label for="Email"><b>Poste:</b><i>*</i></label>
-        <input type="text" name="poste" placeholder="Poste ?">
+        <label for="Prenom"><b>Prenom:</b><i>*</i></label>
+        <input type="text" name="prenom" placeholder="Prenom ?" required autocomplete="additional-name">
         <br>
         <label for="Email"><b>Email:</b><i>*</i></label>
-        <input type="text" name="eml" placeholder="Email ?">
+        <input type="email" name="email" placeholder="Email ?" required autocomplete="email">
         <br>
+        <label for="Date"><b>Date de naissance:</b><i>*</i></label>
+        <input type="date" name="dateDeNaissance" placeholder="Date de naissance ?" required>
+        <br>
+        <label for="MotDePasse"><b>Mot de passe:</b><i>*</i></label>
+        <input type="password" name="motDePasse" placeholder="Password ?" required>
+        <br>
+        <label for="Poste"><b>Poste:</b><i>*</i></label>
+        <select name="poste" id="Poste" required>
+          <option>Medecin(e)</option>
+          <option>Infirmier(e)</option>
+          <option>Aide Soigant(e)</option>
+        </select><br />
         <button type="submit" name="submit" id="Inscription"><b>Inscription</b></button>
       </form>
       <div class="Option">
@@ -61,118 +144,11 @@
 
   </main>
   <br>
-  <style>
-    <?php
-    include_once('Controller/InscriptionController.php');
-    ?>#img1 {
-      height: 50px;
-      width: 50px;
-      margin-left: 110px;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      width: 100%;
-      height: 100%;
-    }
-
-    body {
-      /* width: 100%; height: 100%; */
-      /* background: url('../../media/images/Background_Login0.jpeg') repeat space; */
-      background: url("./media/images/Background_Login0.jpeg") no-repeat;
-      background-size: cover;
-      background-color: rgba(0, 0, 0, 0.1);
-    }
-
-    header,
-    main,
-    footer {
-      /* width:500px; */
-      margin: 0 auto;
-      margin-bottom: 0%;
-      padding: 3%;
-      width: 50%;
-      height: 12%;
-      text-align: center;
-      font-size: 32px;
-
-    }
-
-    header {
-      margin: 1%;
-      margin-left: -10%;
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 2%;
-      font-size: 64px;
-    }
-
-    main {
-      margin-top: -6%;
-      text-align: left;
-    }
-
-    footer {
-      padding-top: 6%;
-      width: 600px;
-      font-size: 21px;
-    }
-
-
-    /* Full-width inputs */
-    input[type=text],
-    input[type=password] {
-      display: inline-block;
-      margin: 8px 0;
-      padding: 12px 20px;
-      width: 100%;
-      border: 1px solid #ccc;
-      box-sizing: border-box;
-    }
-
-    button {
-      background-color: black;
-      color: white;
-    }
-
-    button[type=submit] {
-      margin: 8px 0;
-      padding: 14px 20px;
-      width: 100%;
-      border: none;
-      font-size: 21px;
-      cursor: pointer;
-
-    }
-
-    button[type=submit]:hover {
-      border: 2px solid #53af57;
-    }
-
-    .Option {
-      text-align: center;
-      margin-top: -2%;
-    }
-
-    .Option a {
-      color: black;
-      font-size: 20px;
-
-    }
-
-    .Option a:nth-child(2) {
-      margin-left: 3%;
-      font-size: 19px;
-    }
-  </style>
 
   <script type="text/javascript">
+    // document.body.style.backgroundImage = "./src/View/media/images/Background_LoginSoignant.jpg"
+    // document.body.style.backgroundImage = "./public/Background_LoginSoignant.jpg"
+    // document.body.style.backgroundImage = "./../media/images/Background_LoginSoignant.jpg"
     // if(!localStorage.getItem("Email") && !localStorage.getItem("MotDePasse")){
     // }else{
 
@@ -197,100 +173,16 @@
       localStorage.setItem("MotDePasse", MotDePasse.value)
 
       // document.location.reload()
-      document.location.pathname = "dashboard/Admin/Login.php"
-
+      //document.location.pathname = "dashboardAdminphp/Home/Jeux/MemoryCard/V3/index.php?page=SigninSoignant.php"
     }
 
     /** Recherche window.open(?url, ?target, ?features)
      * @exemple window.open('mailto:test@example.com?subject=subject&body=body');
      * @test window.open('mailto:jeaffy.bambimahicka@gmail.com?subject=JSSendMail&body=VraiBackEnd');
      */
-
     //chrissMcKenzie.IT.Agence@gmail.com
+    //Jeaffy.BambiMahicka@gmail.com
   </script>
 </body>
 
 </html>
-
-<!-- 
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Sélecteurs CSS</title>
-  <style>
-    th,
-    td {
-      border-style: dotted;
-    }
-  </style>
-</head>
-<body>
-  <form>
-    Nom d'utilisateur: <input type="text" id="nom"><br />
-    Mot de passe: <input type="password" id="pass"><br />
-    Sexe:
-    H <input type="radio" id="H" name="sexe" value="H">
-    F <input type="radio" id="F" name="sexe" value="F"><br />
-    Fonction: <select id="fonction">
-      <option VALUE="etudiant">Etudiant</option>
-      <option VALUE="ingenieur">Ingénieur</option>
-      <option VALUE="enseignant">Enseignant</option>
-      <option VALUE="retraite">Retraité</option>
-      <option VALUE="autre">Autre</option>
-    </select><br /><br />
-    <input type="submit" id="envoyer" value="Envoyer">
-    <input type="reset" id="annuler" value="Annuler">
-  </form>
-  <p id='log'>Log</p>
-  <script src="jquery.js"></script>
-  <script>
-    $(function () {
-      // Entrer les instructions jQuery ici
-      // $('#nom').val("bond")
-      // sur appui du bouton submit
-      $("form").submit(function (e) {
-        e.preventDefault(); //empêche de changer de page
-        var Nom = $('#nom').val(); var Password = $('#pass').val()
-        var H = $('input#H').val(); //console.log('input#H', H1) //#=> "H"
-        var F = $('input#F').val(); //console.log('input#F', F) //#=> "F"
-        var Genre = $(':radio:checked').val(); console.log(':radio:checked', Genre) //#=> "undefined" | "H" | "F"
-        var Sexe = (Genre === 'H') ? H : F
-        var Fonction = $('#fonction').val()
-        switch (Fonction) {
-          case 'etudiant': $('#fonction').val('etudiant'); break;
-          case 'ingenieur': $('#fonction').val('ingenieur'); break;
-          case 'enseignant': $('#fonction').val('enseignant'); break;
-          case 'retraite': $('#fonction').val('retraite'); break;
-          case 'autre': $('#fonction').val('autre'); break;
-          default:
-            $('#fonction').html('NOT DEFINED')
-            break;
-        }
-        console.log("#=> info contenue de la variable Fonction", Fonction)
-        var Log = $('#log').html(`
-          <table style="width:50%">
-            <tr>
-              <th>Nom</th>
-              <th>pass</th>
-              <th>Sex</th>
-              <th>Fonction</th>
-            </tr>
-            <tbody>
-              <tr>
-                <td>${Nom}</td>
-                <td>${Password}</td>
-                <td>${Sexe}</td>
-                <td>${Fonction}</td>
-              </tr>
-            </tbody>
-          </table>`)
-      })
-      // setInterval(() => {
-      //   document.location.reload()
-      // }, 20000);
-    })
-  </script>
-</body>
-</html>
- -->

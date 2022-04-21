@@ -1,10 +1,8 @@
-<?php include_once('./DatabaseModel.php'); // https://www.copier-coller.com/un-crud-en-php/
-class Soignant
-{
+<?php require_once "./PatientModel.php"; // https://www.copier-coller.com/un-crud-en-php/
+class Soignant{
     private $id;
 
-    public function __construct($id)
-    {
+    public function __construct($id){
     }
 
     /** DatabaseModel CRUD
@@ -14,7 +12,7 @@ class Soignant
     {
         if ($this->pdo === null) {
             try {
-                $pdo = DatabaseModel::connection_DatabaseModel(); //on se connecte à la base
+                $pdo = DatabaseModel::connexion(); //on se connecte à la base
                 $this->pdo = $pdo;
             } catch (PDOException $e) {
                 die("#=> Error_createSoignant: " . $e->getMessage());
@@ -33,7 +31,7 @@ class Soignant
     {
         if ($this->pdo === null) {
             try {
-                $pdo = DatabaseModel::connection_DatabaseModel(); //on se connecte à la base
+                $pdo = DatabaseModel::connexion(); //on se connecte à la base
                 $this->pdo = $pdo;
                 // var_dump("PDO initialise");
             } catch (PDOException $e) {
@@ -50,7 +48,7 @@ class Soignant
     {
         if ($this->pdo === null) {
             try {
-                $pdo = DatabaseModel::connection_DatabaseModel(); //on se connecte à la base
+                $pdo = DatabaseModel::connexion(); //on se connecte à la base
                 $this->pdo = $pdo;
             } catch (PDOException $e) {
                 die("#=> Error_updateSoignant: " . $e->getMessage());
@@ -65,7 +63,7 @@ class Soignant
     {
         if ($this->pdo === null) {
             try {
-                $pdo = DatabaseModel::connection_DatabaseModel(); //on se connecte à la base
+                $pdo = DatabaseModel::connexion(); //on se connecte à la base
                 $this->pdo = $pdo;
             } catch (PDOException $e) {
                 die("#=> Error_deleteSoignant: " . $e->getMessage());
@@ -77,7 +75,7 @@ class Soignant
     {
         if ($this->pdo === null) {
             try {
-                $pdo = DatabaseModel::connection_DatabaseModel(); //on se connecte à la base
+                $pdo = DatabaseModel::connexion(); //on se connecte à la base
                 $this->pdo = $pdo;
             } catch (PDOException $e) {
                 die("#=> Error_getScore: " . $e->getMessage());

@@ -1,4 +1,4 @@
-<?php include_once('./DatabaseModel.php'); // https://www.copier-coller.com/un-crud-en-php/
+<?php require_once './DatabaseModel.php'; // https://www.copier-coller.com/un-crud-en-php/
 class Patient
 {
     private $id;
@@ -22,7 +22,7 @@ class Patient
     {
         if ($this->pdo === null) {
             try {
-                $pdo = DatabaseModel::connection_DatabaseModel(); //on se connecte à la base
+                $pdo = DatabaseModel::connexion(); //on se connecte à la base
                 $this->pdo = $pdo;
             } catch (PDOException $e) {
                 die("#=> Error_createPatient: " . $e->getMessage());
@@ -42,7 +42,7 @@ class Patient
     {
         if ($this->pdo === null) {
             try {
-                $pdo = DatabaseModel::connection_DatabaseModel(); //on se connecte à la base
+                $pdo = DatabaseModel::connexion(); //on se connecte à la base
                 $this->pdo = $pdo;
                 // var_dump("PDO initialise");
             } catch (PDOException $e) {

@@ -1,0 +1,154 @@
+    * {
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+    }
+
+    html {
+        width: 100%;
+        height: 100%;
+    }
+
+    body {
+        /* width: 100%; height: 100%; */
+        /* background: url('../../media/images/Background_Login0.jpeg') repeat space; */
+        background: url("../../media/images/Background_Login1.jpeg") repeat-y;
+        background-position: left;
+        /* background-size: cover; */
+        background-color: black;
+        color: white;
+    }
+
+    header,
+    main,
+    footer {
+        /* width:500px; */
+        margin: 0 auto;
+        margin-bottom: 0%;
+        padding: 3%;
+        width: 50%;
+        height: 12%;
+        text-align: center;
+        font-size: 32px;
+    }
+
+    header {
+        display: flex;
+        margin: 1%;
+        margin-left: 0%;
+    }
+
+    main {
+        display: block;
+        margin-top: -6%;
+        text-align: left;
+    }
+
+    footer {
+        display: block;
+        position: absolute;
+        left: 25%;
+        bottom: 0%;
+        padding-top: 15%;
+        width: 600px;
+        font-size: 21px;
+    }
+
+    table {
+        margin-top: 0%;
+        margin-left: -7px;
+        font-size: 18.5px;
+    }
+
+    .Menu {
+        display: block;
+        position: absolute;
+        top: 1%;
+        left: 3%;
+    }
+
+    .Sous_Menu {
+        background-color: black;
+        text-shadow: 3px 2px 2px blue;
+        color: white;
+    }
+
+    .Sous_Menu a {
+        color: white;
+    }
+
+    .profile {
+        display: block;
+        position: absolute;
+        top: 1%;
+        right: 1%;
+    }
+
+    h1,
+    h2 {
+        text-align: center;
+    }
+
+    h1 {
+        font-style: italic;
+    }
+
+    h2 {
+        color: #66FF00;
+        margin-top: 3%;
+        font-size: 32px;
+    }
+
+    li:hover {
+        background-color: white;
+    }
+
+    li a:hover {
+        color: black;
+    }
+
+
+    /* Full-width inputs */
+    input[type="text"],
+    input[type="password"] {
+        display: inline-block;
+        margin: 8px 0;
+        padding: 12px 20px;
+        width: 100%;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+    }
+
+    button[type="submit"] {
+        margin: 8px 0;
+        padding: 14px 20px;
+        width: 100%;
+        background-color: red;
+        border: none;
+        font-size: 21px;
+        cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+        border: 2px solid #53af57;
+    }
+
+    .INSERT {
+        background-color: #66FF00;
+        color: black;
+        font-weight: bold;
+    }
+
+    .UPDATE {
+        background-color: blue;
+        color: white;
+        font-weight: bold;
+    }
+
+
+    .DELETE,
+    .CLEAR {
+        background-color: red;
+        color: black;
+        font-weight: bold;
+    }

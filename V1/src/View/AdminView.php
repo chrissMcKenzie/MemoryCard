@@ -1,8 +1,30 @@
-<?php session_start();
-include_once './../Model/DatabaseModel.php';
-include_once './../Model/PatientModel.php';
-include_once './../Model/SoignantModel.php';
+<?php //session_start();
+//include_once './../Model/DatabaseModel.php';
+//include_once './../Model/SoignantModel.php';
+//include_once './../Model/PatientModel.php';
+
 //require_once './template/TemplateView.php';
+
+// $PDO = DatabaseModel::connect();
+
+// $SQL = "SELECT * FROM Patient";
+// $REQUÊTE = $PDO->query($SQL);
+// $RESULTAT_PATIENTS = $REQUÊTE->fetchAll();
+
+// $SQL = "SELECT * FROM Score";
+// $REQUÊTE = $PDO->query($SQL);
+// $RESULTAT_SCORES = $REQUÊTE->fetchAll();
+
+// foreach ($allRows as $row) { //on cree un objet Person avec chaque valeur retournée
+//     $id = $row["id_soignant"];
+//     $nom = $row["nom_soignant"];
+//     $prenom = $row["prenom_soignant"];
+//     $date = $row["datenaissance_soignant"];
+//     $mp = $row["motdepasse_soignant"];
+//     $poste = $row["poste_soignant"];
+//     $mail = $row["mail_soignant"];
+// }
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -12,170 +34,47 @@ include_once './../Model/SoignantModel.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Session Admin</title>
+    <link rel="stylesheet" href="./src/View/pages/css/AdminView.css">
+    <!-- php local server -->
+    <link rel="stylesheet" href="./pages/css/AdminView.css">
+
+    <!-- Bootstrap CSS -->
+    <?php //if (!empty($REQUÊTE)) : 
+    ?>
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+    <?php //endif 
+    ?>
+
 </head>
-
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        text-decoration: none;
-    }
-
-    html {
-        width: 100%;
-        height: 100%;
-    }
-
-    body {
-        /* width: 100%; height: 100%; */
-        /* background: url('../../media/images/Background_Login0.jpeg') repeat space; */
-        background: url("../../media/images/Background_Login1.jpeg") repeat-y;
-        background-position: left;
-        /* background-size: cover; */
-        background-color: black;
-        color: white;
-    }
-
-    header,
-    main,
-    footer {
-        /* width:500px; */
-        margin: 0 auto;
-        margin-bottom: 0%;
-        padding: 3%;
-        width: 50%;
-        height: 12%;
-        text-align: center;
-        font-size: 32px;
-    }
-
-    header {
-        display: flex;
-        margin: 1%;
-        margin-left: 0%;
-    }
-
-    main {
-        display: block;
-        margin-top: -6%;
-        text-align: left;
-    }
-
-    footer {
-        display: block;
-        position: absolute;
-        left: 25%;
-        bottom: 0%;
-        padding-top: 15%;
-        width: 600px;
-        font-size: 21px;
-    }
-
-    table {
-        margin-top: 0%;
-        margin-left: -7px;
-        font-size: 18.5px;
-    }
-
-    .Menu {
-        display: block;
-        position: absolute;
-        top: 1%;
-        left: 3%;
-    }
-
-    .Sous_Menu {
-        background-color: black;
-        text-shadow: 3px 2px 2px blue;
-        color: white;
-    }
-
-    .Sous_Menu a {
-        color: white;
-    }
-
-    .profile {
-        display: block;
-        position: absolute;
-        top: 1%;
-        right: 1%;
-    }
-
-    h1,
-    h2 {
-        text-align: center;
-    }
-
-    h1 {
-        font-style: italic;
-    }
-
-    h2 {
-        color: #66FF00;
-        margin-top: 3%;
-        font-size: 32px;
-    }
-
-    li:hover {
-        background-color: white;
-    }
-
-    li a:hover {
-        color: black;
-    }
-
-
-    /* Full-width inputs */
-    input[type="text"],
-    input[type="password"] {
-        display: inline-block;
-        margin: 8px 0;
-        padding: 12px 20px;
-        width: 100%;
-        border: 1px solid #ccc;
-        box-sizing: border-box;
-    }
-
-    button[type="submit"] {
-        margin: 8px 0;
-        padding: 14px 20px;
-        width: 100%;
-        background-color: red;
-        border: none;
-        font-size: 21px;
-        cursor: pointer;
-    }
-
-    button[type="submit"]:hover {
-        border: 2px solid #53af57;
-    }
-</style>
 
 <body>
     <header id="Header">
         <section class="container">
             <div class="Menu">
-                <img src="./View/media/images/Logo_SessionAdmin.png" height="200px" alt="Logo Session Admin">
+                <!-- <img src="./src/View/media/images/Logo_SessionAdmin.png" height="200px" alt="Logo Session Admin"> -->
+                <img src="./media/images//PhotoDeProfil_Admin1.png" height="150px" alt="Logo Session Admin">
                 <ul class="Sous_Menu">
                     <li>
-                        <a href="./Home/Home.php">Home</a>
+                        <a href="index.php?page=Accueil">Home</a>
                         <hr>
                     </li>
                     <li>
-                        <a href="index.php?page=JeuxView">Jeux</a>
+                        <a href="index.php?page=Jeux">Jeux</a>
                         <hr>
                     </li>
                     <li>
-                        <a href="index.php?page=ChambreView">Chambre</a>
+                        <a href="index.php?page=Chambre">Chambre</a>
                         <hr>
                     </li>
                     <li>
-                        <a href="./Home/Labo/index.teste.php">Teste</a>
+                        <a href="./../../../../../Labo/index.teste.php">Teste</a>
+                        <a href="./../Model/test/testTables.php">TesteTables</a>
                     </li>
                 </ul>
             </div>
             <div class="profile">
-                <img src="./View/media/images/PhotoDeProfil_Admin1.png" width="100px" height="70px" alt="Logo Session Admin">
+                <img src="./src/View/media/images/PhotoDeProfil_Admin1.png" width="100px" height="70px" alt="Logo Session Admin">
+                <!-- <img src="./media/images/PhotoDeProfil_Admin0.jpeg" width="100px" height="70px" alt="Logo Session Admin"> -->
             </div>
         </section>
 
@@ -188,8 +87,68 @@ include_once './../Model/SoignantModel.php';
 
         </section>
 
+        <section>
+            <div>
+                <h2>GESTIONNAIRE DE PATIENTS</h2>
+                <table class="table table-dark table-hover" style="border-style: double double double double;" border="1">
+                    <thead>
+                        <tr>
+                            <?php $Entête = ["ID", "NOM", "PRENOM", "DATENASSANCE", "PATHOLOGIE", "TELEPHONE", "CONTRÔLE"];
+                            foreach ($Entête as $champ) {
+                                echo "<th scope='col'>$champ</th>";
+                            }
+                            ?>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <?php foreach ($RESULTAT_PATIENTS as $DATA) : ?>
+                            <tr class="table-active" style="text-align: center;">
+                                <th scope="row"><?php echo $DATA['id_patient'] ?></th>
+                                <td style="color: white;"><?php echo $DATA['nom_patient']; ?></td>
+                                <td style="color: white;"><?php echo $DATA['prenom_patient']; ?></td>
+                                <td class="Title" style="text-align: left;"><?php echo $DATA['datenaissance_patient']; ?></td>
+                                <td style="padding: 0px 2px; color: white;"><?php echo $DATA['pathologie_patient']; ?></td>
+                                <td style="padding: 0px 2px; color: red;"><?php echo $DATA['telephone_patient']; ?> Coups</td>
+                                <td><button class="UPDATE">UPDATE</button> <button class="DELETE">DELETE</button></td>
+                            </tr>
+                        <?php endforeach ?>
+                    </tbody>
+
+                </table>
+            </div>
+            <div>
+                <h2>SCORE DES PATIENTS</h2>
+                <table class="table table-dark table-hover" style="border-style: double double double double;" border="1">
+                    <thead>
+                        <tr>
+                            <?php $Entête = ["ID_SCORE", "TEMPS", "NIVEAU", "COUPS", "ID_PATIENT", "CONTRÔLE"];
+                            foreach ($Entête as $champ) {
+                                echo "<th scope='col'>$champ</th>";
+                            }
+                            ?>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <?php foreach ($RESULTAT_SCORES as $DATA) : ?>
+                            <tr class="table-active" style="text-align: center;">
+                                <th scope="row"><?php echo $DATA['id_score'] ?></th>
+                                <td style="color: white;"><?php echo $DATA['temps']; ?></td>
+                                <td style="color: white;"><?php echo $DATA['niveau']; ?></td>
+                                <td class="Title" style="text-align: left;"><?php echo $DATA['nb_coup']; ?></td>
+                                <td><?php echo $DATA['id_patient']; ?></td>
+                                <td><button class="UPDATE">UPDATE</button> <button class="DELETE">DELETE</button></td>
+                            </tr>
+                        <?php endforeach ?>
+                    </tbody>
+
+                </table>
+            </div>
+        </section>
+
         <section class="container">
-            <form action="index.php?page=AccueilView" method="POST">
+            <form action="index.php?page=Accueil" method="POST">
                 <button type="submit" name="Deconnexion"><b>Deconnexion</b></button>
             </form>
 
@@ -199,10 +158,10 @@ include_once './../Model/SoignantModel.php';
 
     <br>
     <footer id="Footer">
-        <section class="container">
+        <!-- <section class="container">
             <div>Copyright © 2020-2021 www.chrissMcKenzie.com. Tous Droits Réservés</div>
             <div>Codeur, Développeur (c) 2020 chrissMcKenzie.com</div>
-        </section>
+        </section> -->
     </footer>
 
     <script type="text/javascript">
@@ -222,7 +181,7 @@ include_once './../Model/SoignantModel.php';
         }
 
         Deconnexion.onclick = () => {
-            document.location.pathname = "model/logout.php"
+            document.location.pathname = "index.php?page=Logout"
             localStorage.clear()
         }
 
