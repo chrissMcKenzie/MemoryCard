@@ -1,0 +1,4 @@
+.DS_Store
+V2/trashCode.txt
+vendor/
+V2/.phpunit.result.cache
