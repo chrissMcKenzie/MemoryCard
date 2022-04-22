@@ -19,9 +19,7 @@ include_once('./model/SoignantClass.php');
         else{
             echo'<script>alert("veuillez remplir tout les champs");</script>'; 
             include_once('View/LoginSoignant.php');
-
         }
-        
     }
 
     else{

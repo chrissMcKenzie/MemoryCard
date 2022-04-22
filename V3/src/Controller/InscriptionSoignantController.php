@@ -13,6 +13,8 @@ $PWD1=isset($_POST['pwd1']) ? htmlspecialchars($_POST['pwd1']) : '';
 $PWD2=isset($_POST['pwd2']) ? htmlspecialchars($_POST['pwd2']) : '';
 $POSTE=isset($_POST['poste']) ? htmlspecialchars($_POST['poste']) : '';
 $EMAIL=isset($_POST['eml']) ? htmlspecialchars($_POST['eml']) : '';
+$HOPITAL=isset($_POST['hop']) ? htmlspecialchars($_POST['hop']) : '';
+
 
     if (empty($_POST['nom']) OR empty($_POST['pre']) OR empty($_POST['daten']) OR empty($_POST['pwd1']) OR empty($_POST['pwd2']) OR empty($_POST['poste']) OR empty($_POST['eml'])) 
     {
@@ -41,7 +43,7 @@ $EMAIL=isset($_POST['eml']) ? htmlspecialchars($_POST['eml']) : '';
 
     if((!isset($v_valide))&&(isset($email_valide))&&(isset($mp_valide))){
     $managersoignant = new manageSoignant();
-    $managersoignant->enregistrementInBD($NOM,$PRENOM,$DATE,$PWD1,$POSTE,$EMAIL);
+    $managersoignant->inscriptionSoignant($NOM,$PRENOM,$DATE,$PWD1,$POSTE,$EMAIL);
     echo'<script>alert("Félicitation vous etes inscrit ! Veuillez vous connecter .");</script>';
     echo "<script type='text/javascript'>document.location.replace('index.php?page=1');</script>";
 

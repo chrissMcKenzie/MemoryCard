@@ -1,4 +1,6 @@
-<?php include_once './Model/DatabaseModel.php';
+<?php 
+
+include_once('Model/DatabaseModel.php');
 
 class Soignant{
 
@@ -43,16 +45,21 @@ class Soignant{
         }
 }
 
-class ManagerSoignant{
+class manageSoignant{
 
         private $soignantList=array();
 
-        function enregistrementInBD($NOM,$PRENOM,$DATE,$PWD1,$POSTE,$EMAIL){
-                $pdo = DatabaseModel::connect();
-                $req="INSERT INTO soignant (nom_soignant, prenom_soignant, datenaissance_soignant, motdepasse_soignant, poste_soignant, mail_soignant) values ('$NOM','$PRENOM','$DATE','$PWD1','$POSTE','$EMAIL')";
-                $result = $pdo->query($req);
-        }
+        function inscriptionSoignant($NOM,$PRENOM,$DATE,$PWD1,$POSTE,$EMAIL){
 
+                $pdo = DatabaseModel::connect();
+                $req= $pdo->prepare("INSERT INTO soignant (id_soignant,nom_soignant, prenom_soignant, datenaissance_soignant, motdepasse_soignant, poste_soignant, mail_soignant,id_hopital) values (NULL,?,?,?,?,?,?,NULL)");
+                $req->execute(array($NOM,$PRENOM,$DATE,$PWD1,$POSTE,$EMAIL));
+                $lastId = $pdo->lastInsertId();
+                $soignant= new Soignant($lastId,$NOM,$PRENOM,$DATE,$PWD1,$POSTE,$EMAIL);
+                $this->soignantList[] = $soignant;
+                return $soignant;
+        }
+        
         function log($email,$pass){
 
                 $db = DatabaseModel::connect();
@@ -73,7 +80,7 @@ class ManagerSoignant{
             $result = $pdo->query($sql);
             $allRows = $result->fetchAll();
           
-            foreach ($allRows as $row) { //on cree un objet Person avec chaque valeur retournée
+            foreach ($allRows as $row) { //on cree un objet Patient avec chaque valeur retournée
                 $id = $row["id_soignant"];
                 $nom = $row["nom_soignant"];
                 $prenom = $row["prenom_soignant"];

@@ -21,7 +21,6 @@ class Patient{
         $this->telephone_patient=$telephone;
     }
 
-
     public function getIdPatient(){
         return $this->id_patient;
     }
@@ -43,36 +42,40 @@ class Patient{
     public function getScoreIdList(){
         return $this->ScoreIdList;
     }
-    
     public function addScore($IdScore){
         // ajoute un objet Film à filmList
         $this->ScoreIdList[] = $IdScore;
     }
 }
 
-class managePatient{
+class ManagePatient{
     private $patientList=array();
 
-    function enregistrementInBD($NOM,$PRENOM,$DATE,$PATHO,$NUMERO){
+    function inscriptionPatient($NOM,$PRENOM,$DATE,$PATHO,$NUMERO){
         $pdo = DatabaseModel::connect();
 
-        $req="INSERT INTO patient (nom_patient, prenom_patient, datenaissance_patient, pathologie_patient, telephone_patient) values ('$NOM','$PRENOM','$DATE','$PATHO','$NUMERO')";
-        $result = $pdo->query($req);
+        $req= $pdo->prepare("INSERT INTO patient (id_patient, nom_patient, prenom_patient, datenaissance_patient, pathologie_patient, telephone_patient) values (NULL,?,?,?,?,?)");
+        $req->execute(array($NOM,$PRENOM,$DATE,$PATHO,$NUMERO));
+        $lastId = $pdo->lastInsertId();
+        $patient= new Patient($lastId,$lastId,$NOM,$PRENOM,$DATE,$PATHO,$NUMERO);
+        $this->patientList[] = $patient;
+        return $patient;
     }
 
     function log($nom,$prenom){
 
-        $db = DatabaseModel::connect();
+        $pdo = DatabaseModel::connect();
 
-        $req = $db->prepare('SELECT id_patient FROM patient WHERE nom_patient = :nom AND prenom_patient = :prenom');
+        $req = $pdo->prepare('SELECT id_patient FROM patient WHERE nom_patient = :nom AND prenom_patient = :prenom');
         $req->execute(array(':nom' => $nom,':prenom' => $prenom));
         $resultat = $req->fetch();
         
         if ($req->rowCount() > 0){
-        $_SESSION['nom_patient'] = $nom;
+       //creer un objet 
+        $idpatient= $resultat["id_patient"];
+        $_SESSION['id_patient'] = $idpatient;
         }
     }
-
 
 
     public function getPatientFromDB()
@@ -98,16 +101,12 @@ class managePatient{
     }
 
     public function getPatientFromId($id){
-        // retourne l'objet Person connaissant son id
-        // retourne null si pas trouvée
+      
         foreach ($this->patientList as $patient) {
             if ($patient->getIdPatient() == $id)
                 return $patient;
         }
         return null;
     }
-
-
-
 
 }

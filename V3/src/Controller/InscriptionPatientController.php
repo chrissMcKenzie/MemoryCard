@@ -17,7 +17,7 @@ $NUMERO=isset($_POST['numero']) ? htmlspecialchars($_POST['numero']) : '';
     }
     else{
     $managerpatient = new managePatient();
-    $managerpatient->enregistrementInBD($NOM,$PRENOM,$DATE,$PATHO,$NUMERO);
+    $managerpatient->inscriptionPatient($NOM,$PRENOM,$DATE,$PATHO,$NUMERO);
     echo'<script>alert("Félicitation vous etes inscrit ! Veuillez vous connecter .");</script>';
     echo "<script type='text/javascript'>document.location.replace('index.php?page=9');</script>";
     }

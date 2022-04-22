@@ -70,8 +70,10 @@
         right: 1%;
     }
 
-    h1 {
+    #H1{
         text-align: center;
+        font-size: 50px;
+        font-family:impact;
     }
 
     main {
@@ -126,7 +128,6 @@ nav li{
   color: white;
 }
 
-
 #centerbar-elem {
   border-radius: 5px 5px 0px 0px;
   text-align: center;
@@ -146,42 +147,23 @@ border-bottom:1px solid purple;
 .container{
     display:flex;
     justify-content:center;
+    margin-top:20px
+
 }
 </style>
-
-
-<header id="Header">
-        
-
-
-    </header>
-    <main id="Main">
+    <head>
         <section class="container">
             <img src="View/assets/soignant.png" id="img1">
-            <h1 id="H1"> Bienvenue dans votre espace</h1>
+            <span id="H1"> Bienvenue dans votre espace</span>
         </section>
-
+</head>
 <body>
 
     <div id="centerbar">     
     <a class="btn " id="centerbar-elem" href ='index.php?page=5&index=$id'>Mon compte</a>       
-          
-     <a class="btn" id="centerbar-elem" href = 'index.php?page=7'>Consultation Patient</a> 
+    <a class="btn" id="centerbar-elem" href = 'index.php?page=7'>Consultation Patient</a> 
     <a  class="btn" id="centerbar-elem" href="Controller/Logout.php" >Déconnexion</a>
     </div>
-
-    <script>
-// Add active class to the current button (highlight it)
-var header = document.getElementById("centerbar");
-var btns = header.getElementsByClassName("btn");
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function() {
-  var current = document.getElementsByClassName("active");
-  current[0].className = current[0].className.replace(" active", "");
-  this.className += " active";
-  });
-}
-</script>
     </body>
     
 </main>
