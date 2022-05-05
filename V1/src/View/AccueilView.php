@@ -9,7 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
     <!-- XAMP server -->
-    <link rel="stylesheet" href="./src/View/pages/css/AccueilView.css">
+    <!-- <link rel="stylesheet" href="./src/View/pages/css/AccueilView.css"> -->
+    <link rel="stylesheet" href="./pages/css/AccueilView.css">
 
 </head>
 
@@ -21,19 +22,22 @@
                     <div class="card__face card__face--front">
                         <span>Bienvenue sur MEMORY CARD !</span>
                         <!-- XAMP server -->
-                        <img src="./src/View/media/images/LogoGif.gif" id='gif'>
+                        <!-- <img src="./src/View/media/images/LogoGif.gif" id="gif"> -->
+                        <img src="./media/images/LogoGif.gif" id="gif">
 
                     </div>
                     <div class="card__face card__face--back">
                         <div class="logotitle">
                             <div class="buts">
                                 <div class="but1">
-                                    <img src="./src/View/media/images/patient.png" id="img2">
-                                    <button class="patient" onclick="window.location.href = 'index.php?page=SigninPatient';">Patient</button>
+                                    <!-- <img src="./src/View/media/images/patient.png" id="img2"> -->
+                                    <img src="./media/images/patient.png" id="img2">
+                                    <button class="patient"> <a href="./auth/SigninPatientView.php" style="color: white;">Patient</a></button>
                                 </div>
                                 <div class="but2">
-                                    <img src="./src/View/media/images/soignant.png" id="img1">
-                                    <button class="soignant" onclick="window.location.href = 'index.php?page=SigninSoignant';">Soignant</button>
+                                    <!-- <img src="./src/View/media/images/soignant.png" id="img1"> -->
+                                    <img src="./media/images/soignant.png" id="img1">
+                                    <button class="soignant"> <a href="./auth/SigninSoignantView.php" style="color: white;">Soignant</a></button>
                                 </div>
                             </div>
                             <span class="spacetitle">Veuillez choisir votre espace</span>

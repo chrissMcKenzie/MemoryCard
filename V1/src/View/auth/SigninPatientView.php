@@ -14,17 +14,18 @@ require_once __DIR__ . "/../../Model/DatabaseModel.php";
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Signin | Inscription</title>
   <!-- CSS LINKPACK -->
-  <link rel="stylesheet" href="./src/View/pages/css/SigninPatientView.css">
+  <!-- <link rel="stylesheet" href="./src/View/pages/css/SigninPatientView.css"> -->
+  <link rel="stylesheet" href="./../pages/css/SigninPatientView.css">
   <!-- <script src="./Signin.js" defer></script> -->
 </head>
 
 <body>
   <header id="Header">
-    <!-- <section class="container">
+    <section class="container">
       <div>
-        <img src="../../media/images/Logo_SessionAdmin.png" alt="Logo Session Admin">
+        <img src="/src/View/media/" alt="">
       </div>
-    </section> -->
+    </section>
 
   </header>
 
@@ -37,7 +38,8 @@ require_once __DIR__ . "/../../Model/DatabaseModel.php";
     </section>
 
     <section class="container">
-      <form action="./../../Controller/SigninController.php" method="POST">
+      <!-- <form action="./../../Controller/SigninController.php" method="POST"> -->
+      <form action="./LoginPatientView.php" method="POST">
         <label for="Nom"><b>Nom:</b><i>*</i></label>
         <input type="text" name="nom" placeholder="Nom ?">
         <br>
@@ -56,7 +58,7 @@ require_once __DIR__ . "/../../Model/DatabaseModel.php";
         <button type="submit" name="submit" id="Inscription"><b>Inscription</b></button>
       </form>
       <div class="Option">
-        <a href="index.php?page=LoginPatient">Connexion</a>
+        <a href="./LoginPatientView.php">Connexion</a>
       </div>
     </section>
 

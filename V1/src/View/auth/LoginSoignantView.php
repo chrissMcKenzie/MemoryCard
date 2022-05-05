@@ -37,7 +37,7 @@
         </section>
 
         <section class="container">
-            <form id="formulaire" method="POST">
+            <form action="./../AdminView.php" method="POST">
                 <label for="Email"><b>Email:</b><i>*</i></label>
                 <input type="text" id="Email" name="email" placeholder="Email ?" required>
                 <br>
@@ -47,8 +47,8 @@
                 <button type="submit" name="submit" id="Connexion"><b>Connexion</b></button>
                 </div>
                 <div class="Option">
-                    <a href="index.php?page=SigninSoignant">Inscription</a>
-                    <a href="index.php?page=Forgot">Mot De Passe Oublié ?</a>
+                    <a href="./SigninSoignantView.php">Inscription</a>
+                    <a href="./ForgotPasswordView.php">Mot De Passe Oublié ?</a>
                 </div>
             </form>
         </section>

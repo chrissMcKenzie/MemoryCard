@@ -10,9 +10,9 @@
 
     body {
       /* width: 100%; height: 100%; */
-      /* background-image: url('../../media/images/Background_LoginSoignant.jpg'); */
+      background-image: url('../../media/images/Background_LoginSoignant.jpg');
       /* background-image: url('../../../../Background_LoginSoignant.jpg'); */
-      background-image: url("./src/View/Background_LoginSoignant.jpg");
+      /* background-image: url("./../../../../public/Background_LoginPatient.jpg"); */
       /* background-image: url("./Background_LoginSoignant.jpg"); */
       background-size: cover;
       background-color: rgba(0, 0, 0, 0.1);

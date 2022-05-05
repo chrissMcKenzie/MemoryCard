@@ -24,28 +24,28 @@ if (!empty($_POST['submit']) && isset($_POST['submit'])) {
   $REQUÊTE_INSERT->execute([$_POST['nom'], $_POST['prenom'], $_POST['dateDeNaissance'], $_POST['motDePasse'], $_POST['poste'], $_POST['email']]);
 
   // if(!empty($Nom) && !empty($Prenom) && !empty($Email) && !empty($DateDeNaissance) && !empty($MotDePasse) && !empty($Poste)){
-    // $PDO = DatabaseModel::connexion();
+  // $PDO = DatabaseModel::connexion();
 
-    // $SQL = "INSERT INTO Soignant(nom_soignant, prenom_soignant, datenaissance_soignant, motdepasse_soignant, poste_soignant, mail_soignant)
-    //       VALUES(?, ?, ?, ?, ?, ?)
-    //      ";
-    // $REQUÊTE_INSERT = $PDO->prepare($SQL);
-    // $REQUÊTE_INSERT->execute([$Nom, $Prenom, $DateDeNaissance, $MotDePasse, $Poste, $Email]);
+  // $SQL = "INSERT INTO Soignant(nom_soignant, prenom_soignant, datenaissance_soignant, motdepasse_soignant, poste_soignant, mail_soignant)
+  //       VALUES(?, ?, ?, ?, ?, ?)
+  //      ";
+  // $REQUÊTE_INSERT = $PDO->prepare($SQL);
+  // $REQUÊTE_INSERT->execute([$Nom, $Prenom, $DateDeNaissance, $MotDePasse, $Poste, $Email]);
 
-    // $SQL = "INSERT INTO Soignant(nom_soignant, prenom_soignant, datenaissance_soignant, motdepasse_soignant, poste_soignant, mail_soignant)
-    //       VALUES(:nom_soignant, :prenom_soignant, :datenaissance_soignant, :motdepasse_soignant, :poste_soignant, :mail_soignant)
-    //      ";
-    // $REQUÊTE_INSERT = $PDO->prepare($SQL);
-    // $REQUÊTE_INSERT->execute([
-    //   ":nom_soignant" => $Nom,
-    //   ":prenom_soignant" => $Prenom,
-    //   ":datenaissance_soignant" => $DateDeNaissance,
-    //   ":motdepasse_soignant" => $MotDePasse,
-    //   ":poste_soignant" => $Poste,
-    //   ":mail_soignant" => $Email]);
+  // $SQL = "INSERT INTO Soignant(nom_soignant, prenom_soignant, datenaissance_soignant, motdepasse_soignant, poste_soignant, mail_soignant)
+  //       VALUES(:nom_soignant, :prenom_soignant, :datenaissance_soignant, :motdepasse_soignant, :poste_soignant, :mail_soignant)
+  //      ";
+  // $REQUÊTE_INSERT = $PDO->prepare($SQL);
+  // $REQUÊTE_INSERT->execute([
+  //   ":nom_soignant" => $Nom,
+  //   ":prenom_soignant" => $Prenom,
+  //   ":datenaissance_soignant" => $DateDeNaissance,
+  //   ":motdepasse_soignant" => $MotDePasse,
+  //   ":poste_soignant" => $Poste,
+  //   ":mail_soignant" => $Email]);
   // }
 
-  
+
 }
 
 // else {
@@ -63,7 +63,8 @@ if (!empty($_POST['submit']) && isset($_POST['submit'])) {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inscription | Signin</title>
   <!-- CSS LINKPACK -->
-  <link rel="stylesheet" href="./src/View/pages/css/SigninSoignantView.css">
+  <!-- <link rel="stylesheet" href="./src/View/pages/css/SigninSoignantView.css"> -->
+  <link rel="stylesheet" href="./../pages/css/SigninSoignantView.css">
   <!-- Bootstrap CSS -->
   <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
   <!-- <script src="./Signin.js" defer></script> -->
@@ -73,9 +74,9 @@ if (!empty($_POST['submit']) && isset($_POST['submit'])) {
   <header id="Header">
     <section class="container">
       <div>
-
+        <img src="./../media/images/Background_LoginSoignant.jpg" alt="">
       </div>
-      <div class="Debug">
+      <div class="Debug" style="display: none;">
         <h2>Debug Page => SigninSoignantView
           <pre>
           <?php
@@ -113,7 +114,7 @@ if (!empty($_POST['submit']) && isset($_POST['submit'])) {
 
     <section class="container">
       <!-- <form action="./../../Controller/SigninController.php" method="POST"> -->
-      <form action="index.php?page=SigninSoignant" method="POST">
+      <form action="./LoginSoignantView.php" method="POST">
         <label for="Nom"><b>Nom:</b><i>*</i></label>
         <input type="text" name="nom" placeholder="Nom ?" required autocomplete="name">
         <br>
@@ -138,7 +139,7 @@ if (!empty($_POST['submit']) && isset($_POST['submit'])) {
         <button type="submit" name="submit" id="Inscription"><b>Inscription</b></button>
       </form>
       <div class="Option">
-        <a href="index.php?page=LoginSoignant">Connexion</a>
+        <a href="./LoginSoignantView.php">Connexion</a>
       </div>
     </section>
 
