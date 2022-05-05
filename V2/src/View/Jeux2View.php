@@ -40,19 +40,7 @@
 <body>
     <h1>Memory Game</h1>
     <p>Score: <span id="score">0</span></p>
-    <div id='memory'>
-        <!-- <img src="./src/View/media/images/Animaux2/Ani0.jpeg" id="test">
-        <img src="./src/View/media/images/Animaux2/Ani1.jpeg">
-        <img src="./src/View/media/images/Animaux2/Ani2.jpeg">
-        <img src="./src/View/media/images/Animaux2/Ani3.jpeg">
-        <img src="./src/View/media/images/Animaux2/Ani4.jpeg">
-        <img src="./src/View/media/images/Animaux2/Ani5.jpeg">
-        <img src="./src/View/media/images/Animaux2/Ani6.jpeg">
-        <img src="./src/View/media/images/Animaux2/Ani7.jpeg">
-        <img src="./src/View/media/images/Animaux2/Ani8.jpeg">
-        <img src="./src/View/media/images/Animaux2/Ani9.jpeg">
-        <img src="./src/View/media/images/Animaux2/Ani10.jpeg">
-        <img src="./src/View/media/images/Animaux2/Ani11.jpeg"> -->
+    <div id="memory">
         <img src="./media/images/Animaux2/Ani0.jpeg" id="test">
         <img src="./media/images/Animaux2/Ani1.jpeg">
         <img src="./media/images/Animaux2/Ani2.jpeg">

@@ -27,7 +27,7 @@
             <h1 id="H1">Nouveau mot de passe</h1>
         </section>
 
-        <form id="formulaire" method="POST">
+        <form action="./../../Controller/AdminController.php" method="POST">
             <label for="Email"><b>Email:</b><i>*</i></label>
             <input type="text" id="Email" name="email" placeholder="Email ?" required>
             <br>
