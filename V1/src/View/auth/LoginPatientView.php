@@ -11,7 +11,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Connexion</title>
   <!-- CSS LINKPACK -->
-  <link rel="stylesheet" href="./src/View/pages/css/LoginPatientView.css">
+  <!-- <link rel="stylesheet" href="./src/View/pages/css/LoginPatientView.css"> -->
+  <link rel="stylesheet" href="./../pages/css/LoginPatientView.css">
   <!-- <script src="./Login.js" defer></script> -->
 </head>
 
@@ -32,7 +33,7 @@
     </section>
 
     <section class="container">
-      <form action="./../AdminView.php" method="POST">
+      <form action="./../PatientView.php" method="POST">
         <label for="Email"><b>Email:</b><i>*</i></label>
         <input type="text" id="Email" name="email" placeholder="Email ?" required>
         <br>

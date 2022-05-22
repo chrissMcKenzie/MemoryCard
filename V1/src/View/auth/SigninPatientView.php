@@ -1,9 +1,55 @@
 <?php //require_once './template/TemplateView.php';
-require_once __DIR__ . "/../../Model/DatabaseModel.php";
+require_once "./../../Model/DatabaseModel.php";
 
-// $SQL = "SELECT * FROM Score";
-// $REQUÊTE = $PDO->query($SQL);
-// $RESULTAT_SCORES = $REQUÊTE->fetchAll();
+/**
+ * Methode Prépare
+ */
+try {
+  $PDO = DatabaseModel::connexion();
+
+  // * DONNÉES STATIC
+  // $SQL_STATIC = "INSERT INTO Soignant(nom_soignant, prenom_soignant, datenaissance_soignant, motdepasse_soignant, poste_soignant, mail_soignant) VALUES(?, ?, ?, ?, ?, ?)";
+  // $REQUÊTE_INSERT = $PDO->prepare($SQL_STATIC);
+  // $REQUÊTE_INSERT->execute(['BAMBI', 'Jeaffy', '1996-01-23', '@1234567@', 'Medecin', 'Jeaffy.BambiMahicka@gmail.com']);
+  
+  // * DONNÉES DYNAMIQUE
+  // $Nom = "BAMBI"; $Prenom = "Jeaffy";
+  // $DateDeNaissance = "1996-01-23";
+  // $MotDePasse = "@1234567@"; $Poste = "Medecin";
+  // $Email = "Jeaffy.BambiMahicka@gmail.com";
+  
+  // $SQL_DYNAMIQUE = "INSERT INTO Soignant(nom_soignant, prenom_soignant, datenaissance_soignant, motdepasse_soignant, poste_soignant, mail_soignant) VALUES(?, ?, ?, ?, ?, ?)";
+  // $REQUÊTE_INSERT = $PDO->prepare($SQL_DYNAMIQUE);
+  // $REQUÊTE_INSERT->execute([$Nom, $Prenom, $DateDeNaissance, $MotDePasse, $Poste, $Email]);
+
+  // * DONNÉES FORMULAIRE
+  if (isset($_POST['submit'])) {
+
+    $Nom = $_POST['nom']; $Prenom = $_POST['prenom'];
+    $DateDeNaissance = $_POST['dateDeNaissance'];
+    $Pathologie = $_POST['pathologie'];
+    $Telephone = $_POST['telephone'];
+
+    $Nom = isset($_POST['nom']) ? htmlspecialchars(trim($_POST['nom'])) : '';
+    $Prenom = isset($_POST['prenom']) ? htmlspecialchars(trim($_POST['prenom'])) : '';
+    $DateDeNaissance = isset($_POST['dateDeNaissance']) ? htmlspecialchars(trim($_POST['dateDeNaissance'])) : '';
+    $Pathologie = isset($_POST['pathologie']) ? htmlspecialchars(trim($_POST['pathologie'])) : '';
+    $Telephone = isset($_POST['telephone']) ? htmlspecialchars(trim($_POST['telephone'])) : '';
+
+    $SQL_FORMULAIRE = "INSERT INTO Soignant(nom_soignant, prenom_soignant, datenaissance_soignant, motdepasse_soignant, poste_soignant, mail_soignant) VALUES(?, ?, ?, ?, ?, ?)";
+    $REQUÊTE_INSERT = $PDO->prepare($SQL_FORMULAIRE);
+    $REQUÊTE_INSERT->execute([$Nom, $Prenom, $DateDeNaissance, $MotDePasse, $Poste, $Email]);
+
+    header('Location: ./LoginSoignantView.php'); // header('Location: /dashboard/Adminphp/Home/Jeux/MemoryCard/V1/src/View/auth/LoginSoignantView.php');
+  }
+
+} catch (PDOException $e) {
+  // echo $SQL_STATIC . "<br>" . $e->getMessage();
+  // echo $SQL_DYNAMIQUE . "<br>" . $e->getMessage();
+  echo $SQL_FORMULAIRE . "<br>" . $e->getMessage();
+  echo "<h2>Erreur à l'Inscription<h2>";
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -55,8 +101,12 @@ require_once __DIR__ . "/../../Model/DatabaseModel.php";
           <option>Autisme</option>
           <option>Alzheimer</option>
         </select><br />
+        <label for="Tel"><b>Date de naissance:</b><i>*</i></label>
+        <input type="tel" name="telephone" placeholder="Téléphone ?">
+        <br>
         <button type="submit" name="submit" id="Inscription"><b>Inscription</b></button>
       </form>
+
       <div class="Option">
         <a href="./LoginPatientView.php">Connexion</a>
       </div>
@@ -71,42 +121,6 @@ require_once __DIR__ . "/../../Model/DatabaseModel.php";
     </section> -->
   </footer>
 
-  <script type="text/javascript">
-    // if(!localStorage.getItem("Email") && !localStorage.getItem("MotDePasse")){
-    // }else{
-
-    // }
-    // BarreDeNotification
-
-    Inscription.onclick = () => {
-      const annee = `${new Date().getFullYear()}`;
-      const mois = `${new Date().getMonth()+1}`;
-      const date = `${new Date().getDate()}`;
-      const jour = `${new Date().getDay()}`
-      const horaire = `${new Date().getHours()}${new Date().getMinutes()}${new Date().getSeconds()}`
-      const idInscription = `${annee}${mois}${date}${jour}${horaire}`
-      const dateInscription = `${new Date().getDate()}-${new Date().getMonth()+1}-${new Date().getFullYear()}`
-      localStorage.setItem("idInscription", idInscription)
-      localStorage.setItem("dateInscription", dateInscription.valueOf())
-      //localStorage.setItem("idInscription", idInscription.value)
-      //localStorage.setItem("idInscription", idInscription.valueOf())
-      localStorage.setItem("Nom", Nom.value);
-      localStorage.setItem("Prenom", Prenom.value)
-      localStorage.setItem("Email", Email.value)
-      localStorage.setItem("MotDePasse", MotDePasse.value)
-
-      // document.location.reload()
-      // document.location.pathname = "dashboard/Admin/Login.php"
-
-    }
-
-    /** Recherche window.open(?url, ?target, ?features)
-     * @exemple window.open('mailto:test@example.com?subject=subject&body=body');
-     * @test window.open('mailto:jeaffy.bambimahicka@gmail.com?subject=JSSendMail&body=VraiBackEnd');
-     */
-
-    //chrissMcKenzie.IT.Agence@gmail.com
-  </script>
 </body>
 
 </html>

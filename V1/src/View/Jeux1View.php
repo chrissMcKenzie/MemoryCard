@@ -188,164 +188,345 @@
         </div>
     </header>
     <main>
-            <div class="Player">
-                <button id="WinGame" onclick="Play()" style="color: white;">PLAY</button>
+        <div class="Player">
+            <button id="WinGame" onclick="Play()" style="color: white;">PLAY</button>
+        </div>
+        <section id="Field4x3" class="memory-game">
+            <div class="memory-card" data-framework="Ani0">
+                <img src="./media/images/Animaux/Chat0.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
             </div>
-            <section id="Field4x3" class="memory-game">
-                <div class="memory-card" data-framework="Ani0">
-                    <img src="./src/View/media/images/Animaux/Chat0.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani1">
-                    <img src="./src/View/media/images/Animaux/Chat1.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani2">
-                    <img src="./src/View/media/images/Animaux/Cheval0.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani3">
-                    <img src="./src/View/media/images/Animaux/Cheval1.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani4">
-                    <img src="./src/View/media/images/Animaux/Chien0.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani5">
-                    <img src="./src/View/media/images/Animaux/Chien1.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani5">
-                    <img src="./src/View/media/images/Animaux/Chien1.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani4">
-                    <img src="./src/View/media/images/Animaux/Chien0.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani3">
-                    <img src="./src/View/media/images/Animaux/Cheval1.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani2">
-                    <img src="./src/View/media/images/Animaux/Cheval0.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani1">
-                    <img src="./src/View/media/images/Animaux/Chat1.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani0">
-                    <img src="./src/View/media/images/Animaux/Chat0.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-            </section>
+            <div class="memory-card" data-framework="Ani1">
+                <img src="./media/images/Animaux/Chat1.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani2">
+                <img src="./media/images/Animaux/Cheval0.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani3">
+                <img src="./media/images/Animaux/Cheval1.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani4">
+                <img src="./media/images/Animaux/Chien0.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani5">
+                <img src="./media/images/Animaux/Chien1.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani5">
+                <img src="./media/images/Animaux/Chien1.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani4">
+                <img src="./media/images/Animaux/Chien0.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani3">
+                <img src="./media/images/Animaux/Cheval1.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani2">
+                <img src="./media/images/Animaux/Cheval0.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani1">
+                <img src="./media/images/Animaux/Chat1.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani0">
+                <img src="./media/images/Animaux/Chat0.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+        </section>
 
-            <section id="Field4x4" class="memory-game">
-                <div class="memory-card" data-framework="Ani0">
-                    <img src="./src/View/media/images/Animaux/Chat0.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani1">
-                    <img src="./src/View/media/images/Animaux/Chat1.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani2">
-                    <img src="./src/View/media/images/Animaux/Cheval0.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani3">
-                    <img src="./src/View/media/images/Animaux/Cheval1.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani4">
-                    <img src="./src/View/media/images/Animaux/Chien0.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani5">
-                    <img src="./src/View/media/images/Animaux/Chien1.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani6">
-                    <img src="./src/View/media/images/Animaux/Elephant0.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani7">
-                    <img src="./src/View/media/images/Animaux/Elephant1.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani7">
-                    <img src="./src/View/media/images/Animaux/Elephant1.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani6">
-                    <img src="./src/View/media/images/Animaux/Elephant0.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani5">
-                    <img src="./src/View/media/images/Animaux/Chien1.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani4">
-                    <img src="./src/View/media/images/Animaux/Chien0.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani3">
-                    <img src="./src/View/media/images/Animaux/Cheval1.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani2">
-                    <img src="./src/View/media/images/Animaux/Cheval0.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani1">
-                    <img src="./src/View/media/images/Animaux/Chat1.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani0">
-                    <img src="./src/View/media/images/Animaux/Chat0.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-            </section>
+        <section id="Field4x4" class="memory-game">
+            <div class="memory-card" data-framework="Ani0">
+                <img src="./media/images/Animaux/Chat0.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani1">
+                <img src="./media/images/Animaux/Chat1.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani2">
+                <img src="./media/images/Animaux/Cheval0.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani3">
+                <img src="./media/images/Animaux/Cheval1.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani4">
+                <img src="./media/images/Animaux/Chien0.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani5">
+                <img src="./media/images/Animaux/Chien1.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani6">
+                <img src="./media/images/Animaux/Elephant0.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani7">
+                <img src="./media/images/Animaux/Elephant1.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani7">
+                <img src="./media/images/Animaux/Elephant1.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani6">
+                <img src="./media/images/Animaux/Elephant0.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani5">
+                <img src="./media/images/Animaux/Chien1.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani4">
+                <img src="./media/images/Animaux/Chien0.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani3">
+                <img src="./media/images/Animaux/Cheval1.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani2">
+                <img src="./media/images/Animaux/Cheval0.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani1">
+                <img src="./media/images/Animaux/Chat1.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani0">
+                <img src="./media/images/Animaux/Chat0.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+        </section>
 
-            <section id="Field5x4" class="memory-game">
-                <div class="memory-card" data-framework="Ani0">
-                    <img src="./src/View/media/images/Animaux/Chat0.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani1">
-                    <img src="./src/View/media/images/Animaux/Chat1.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani2">
-                    <img src="./src/View/media/images/Animaux/Cheval0.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani3">
-                    <img src="./src/View/media/images/Animaux/Cheval1.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani4">
-                    <img src="./src/View/media/images/Animaux/Chien0.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani5">
-                    <img src="./src/View/media/images/Animaux/Chien1.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani6">
-                    <img src="./src/View/media/images/Animaux/Elephant0.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani7">
-                    <img src="./src/View/media/images/Animaux/Elephant1.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani8">
-                    <img src="./src/View/media/images/Animaux/Kangourou0.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani9">
-                    <img src="./src/View/media/images/Animaux/Kangourou1.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani9">
-                    <img src="./src/View/media/images/Animaux/Kangourou1.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani8">
-                    <img src="./src/View/media/images/Animaux/Kangourou0.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani7">
-                    <img src="./src/View/media/images/Animaux/Elephant1.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani6">
-                    <img src="./src/View/media/images/Animaux/Elephant0.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani5">
-                    <img src="./src/View/media/images/Animaux/Chien1.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani4">
-                    <img src="./src/View/media/images/Animaux/Chien0.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani3">
-                    <img src="./src/View/media/images/Animaux/Cheval1.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani2">
-                    <img src="./src/View/media/images/Animaux/Cheval0.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani1">
-                    <img src="./src/View/media/images/Animaux/Chat1.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-                <div class="memory-card" data-framework="Ani0">
-                    <img src="./src/View/media/images/Animaux/Chat0.jpeg" class="front-face"><img src="./src/View/media/images/Logo_Stéthoscope.jpg" class="back-face">
-                </div>
-            </section>
+        <section id="Field5x4" class="memory-game">
+            <div class="memory-card" data-framework="Ani0">
+                <img src="./media/images/Animaux/Chat0.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani1">
+                <img src="./media/images/Animaux/Chat1.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani2">
+                <img src="./media/images/Animaux/Cheval0.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani3">
+                <img src="./media/images/Animaux/Cheval1.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani4">
+                <img src="./media/images/Animaux/Chien0.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani5">
+                <img src="./media/images/Animaux/Chien1.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani6">
+                <img src="./media/images/Animaux/Elephant0.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani7">
+                <img src="./media/images/Animaux/Elephant1.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani8">
+                <img src="./media/images/Animaux/Kangourou0.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani9">
+                <img src="./media/images/Animaux/Kangourou1.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani9">
+                <img src="./media/images/Animaux/Kangourou1.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani8">
+                <img src="./media/images/Animaux/Kangourou0.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani7">
+                <img src="./media/images/Animaux/Elephant1.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani6">
+                <img src="./media/images/Animaux/Elephant0.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani5">
+                <img src="./media/images/Animaux/Chien1.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani4">
+                <img src="./media/images/Animaux/Chien0.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani3">
+                <img src="./media/images/Animaux/Cheval1.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani2">
+                <img src="./media/images/Animaux/Cheval0.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani1">
+                <img src="./media/images/Animaux/Chat1.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+            <div class="memory-card" data-framework="Ani0">
+                <img src="./media/images/Animaux/Chat0.jpeg" class="front-face"><img src="./media/images/Logo_Stéthoscope.jpg" class="back-face">
+            </div>
+        </section>
     </main>
 
+    <script type="text/javascript">
+        const bINIT = document.querySelector('.INIT')
+        const bTemps = document.querySelector('.TEMPS')
+        // const bCoups = document.querySelector('.COUPS')
 
+        //const header = document.querySelector('header')
+        const b4x3 = document.querySelector('.b4x3')
+        const b4x4 = document.querySelector('.b4x4')
+        const b5x4 = document.querySelector('.b5x4')
+
+        const Field4x3 = document.querySelector('#Field4x3')
+        const Field4x4 = document.querySelector('#Field4x4')
+        const Field5x4 = document.querySelector('#Field5x4')
+        const cards = document.querySelectorAll('.memory-card');
+
+        bINIT.onclick = () => document.location.reload()
+
+        function HiddenFields(fieldActived) {
+            if (fieldActived === "b4x3") {
+                Field4x4.style.visibility = "hidden"
+                Field4x4.style.display = "none"
+                Field5x4.style.visibility = "hidden"
+                Field5x4.style.display = "none"
+
+            } else if (fieldActived === "b4x4") {
+                Field4x3.style.visibility = "hidden"
+                Field4x3.style.display = "none"
+                Field5x4.style.visibility = "hidden"
+                Field5x4.style.display = "none"
+
+            } else if (fieldActived === "b5x4") {
+                Field4x3.style.visibility = "hidden"
+                Field4x3.style.display = "none"
+                Field4x4.style.visibility = "hidden"
+                Field4x4.style.display = "none"
+
+            } else {
+                console.log("ECHEC CONDITION")
+            }
+        }
+
+        Field4x3.style.visibility = "visible"
+        HiddenFields("b4x3")
+        b4x3.onclick = () => {
+            Field4x3.style.visibility = "visible"
+            Field4x3.style.display = "flex"
+            HiddenFields("b4x3")
+        }
+
+        b4x4.onclick = () => {
+            Field4x4.style.visibility = "visible"
+            Field4x4.style.display = "inherit"
+            HiddenFields("b4x4")
+        }
+
+        b5x4.onclick = () => {
+            Field5x4.style.visibility = "visible"
+            Field5x4.style.display = "inherit"
+            HiddenFields("b5x4")
+        }
+
+        var activedField = false
+        activedField = (Field4x3.style.visibility == "visible") ? "Field4x3" : (Field4x4.style.visibility = "visible") ? "Field4x4" : (Field5x4.style.visibility = "visible") ? "Field5x4" : console.log("ERREUR NO FIELD ACTIVED")
+
+        var buttonPlayer = document.querySelector('.Player')
+        //var Temps = document.querySelector('.TEMPS')
+        var MyInterval
+
+        function Play() {
+            buttonPlayer.onclick = () => {
+                buttonPlayer.style.display = "none";
+                var minutes = 0
+                var secondes = 0;
+                var Chrono = () => {
+                    // minutes = minutes < 10 ? "0" + minutes : minutes
+                    // secondes = secondes < 10 ? "0" + secondes : secondes
+
+                    bTemps.innerHTML = `${minutes}:${secondes}`;
+                    secondes++
+                    if (secondes > 59) {
+                        secondes = 0
+                        minutes += 1
+                    }
+                    bTemps.innerHTML = `${minutes}:${secondes}`;
+
+                }
+                MyInterval = setInterval(Chrono, 1000);
+            }
+        }
+
+        let hasFlippedCard = false;
+        let lockBoard = false;
+        let firstCard, secondCard;
+        let Coups = 0
+        var AfficheCoups = document.querySelector("span")
+        var FlippedCards = document.querySelectorAll('div.memory-card.flip')
+        // var FlippedCards = document.querySelectorAll('.font-face')
+
+        var Tableau = []
+        console.log(FlippedCards)
+        Tableau.push(FlippedCards)
+        console.log(firstCard)
+        console.log(Tableau)
+        // setInterval(() => {
+        //     console.log(FlippedCards)
+        // }, 1500);
+
+        // Field4x3.onclick = () => {
+        //     var Tableau = []
+        //     // console.log(FlippedCards)
+        //     Tableau.push(firstCard)
+        //     console.log(firstCard)
+        //     console.log(Tableau)
+        // }
+
+        function flipCard() {
+            if (lockBoard) return;
+            if (this === firstCard) return;
+
+            this.classList.add('flip')
+
+            if (!hasFlippedCard) {
+                // first click
+                hasFlippedCard = true
+                firstCard = this
+                return;
+            }
+
+            // second click
+            secondCard = this
+            checkForMatch()
+            Coups += 1
+            AfficheCoups.innerText = Coups;
+        }
+
+        function checkForMatch() {
+            let isMatch = firstCard.dataset.framework === secondCard.dataset.framework
+            isMatch ? disableCards() : unflipCards()
+            // console.log("firstCard =>", firstCard)
+            // console.log("secondCard =>", secondCard)
+        }
+
+        function disableCards() {
+            firstCard.removeEventListener('click', flipCard);
+            secondCard.removeEventListener('click', flipCard);
+            resetBoard();
+        }
+
+        function unflipCards() {
+            lockBoard = true;
+
+            setTimeout(() => {
+                firstCard.classList.remove('flip');
+                secondCard.classList.remove('flip');
+                resetBoard();
+            }, 1500);
+        }
+
+        function resetBoard() {
+            [hasFlippedCard, lockBoard] = [false, false];
+            [firstCard, secondCard] = [null, null];
+        }
+
+        (function shuffle() {
+            cards.forEach(card => {
+                let randomPos = Math.floor(Math.random() * 12);
+                card.style.order = randomPos;
+            });
+        })();
+
+        cards.forEach(card => card.addEventListener('click', flipCard));
+
+        function Win() {
+            Field4x3.onclick = () => {
+                if (FlippedCards.length == 12) {
+                    clearInterval(MyInterval);
+                }
+            }
+            console.log(FlippedCards)
+            // document.location.pathname = `/src/View/JeuxView.php?Temps=00:0${Temps.innerText}&Niveau=${Niveaux4x3}&Score=${Coups}`
+        }
+    </script>
 </body>
 
 </html>

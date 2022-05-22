@@ -2,10 +2,10 @@
 include_once './../Model/DatabaseModel.php';
 //include_once './../Model/PatientModel.php';
 
-$PDO = DatabaseModel::connect();
-$SQL = "SELECT * FROM Score WHERE id_score = 1";
-$REQUÊTE = $PDO->query($SQL);
-$RESULTAT = $REQUÊTE->fetchAll();
+// $PDO = DatabaseModel::connect();
+// $SQL = "SELECT * FROM Score WHERE id_score = 1";
+// $REQUÊTE = $PDO->query($SQL);
+// $RESULTAT = $REQUÊTE->fetchAll();
 
 //$Patient = new ManagePatient();
 //$listePatients = $Patient->getPatientFromDB();
@@ -70,13 +70,17 @@ $RESULTAT = $REQUÊTE->fetchAll();
                 <img src="./media/images/PhotoDeProfil_Admin1.png" height="150px" alt="Logo Session Admin">
                 <ul class="Sous_Menu">
                     <li>
-                        <a href="./JeuxView.php">Jeux</a>
+                        <a href="./Jeux0View.php">MemoryCard 1.0</a>
+                        <hr>
+                    </li>
+                    <li>
+                        <a href="./Jeux1View.php">MemoryCard 2.0</a>
                         <hr>
                     </li>
                 </ul>
             </div>
             <div class="profile">
-                <img src="./View/media/images/Logo_SessionAdmin.png" width="100px" height="70px" alt="Logo Session Admin">
+                <img src="./media/images/Background_LoginPatient.jpg" width="100px" height="70px" alt="Logo Session Admin">
             </div>
         </section>
 

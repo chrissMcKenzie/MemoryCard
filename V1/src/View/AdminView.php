@@ -1,19 +1,20 @@
 <?php //session_start();
-//include_once './../Model/DatabaseModel.php';
+require_once './../Model/DatabaseModel.php';
 //include_once './../Model/SoignantModel.php';
 //include_once './../Model/PatientModel.php';
 
 //require_once './template/TemplateView.php';
 
-// $PDO = DatabaseModel::connect();
+$PDO = DatabaseModel::connexion();
 
-// $SQL = "SELECT * FROM Patient";
-// $REQUÊTE = $PDO->query($SQL);
-// $RESULTAT_PATIENTS = $REQUÊTE->fetchAll();
+$SQL = "SELECT * FROM Patient";
+$REQUÊTE = $PDO->query($SQL);
+$RESULTAT_PATIENTS = $REQUÊTE->fetchAll();
 
-// $SQL = "SELECT * FROM Score";
-// $REQUÊTE = $PDO->query($SQL);
-// $RESULTAT_SCORES = $REQUÊTE->fetchAll();
+$SQL = "SELECT * FROM Score";
+$REQUÊTE = $PDO->query($SQL);
+$RESULTAT_SCORES = $REQUÊTE->fetchAll();
+
 
 // foreach ($allRows as $row) { //on cree un objet Person avec chaque valeur retournée
 //     $id = $row["id_soignant"];
@@ -34,7 +35,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Session Admin</title>
-    <link rel="stylesheet" href="./src/View/pages/css/AdminView.css">
+    <!-- <link rel="stylesheet" href="./src/View/pages/css/AdminView.css"> -->
     <!-- php local server -->
     <link rel="stylesheet" href="./pages/css/AdminView.css">
 
@@ -52,18 +53,22 @@
         <section class="container">
             <div class="Menu">
                 <!-- <img src="./src/View/media/images/Logo_SessionAdmin.png" height="200px" alt="Logo Session Admin"> -->
-                <img src="./media/images//PhotoDeProfil_Admin1.png" height="150px" alt="Logo Session Admin">
+                <img src="./media/images/PhotoDeProfil_Admin1.png" height="150px" alt="Logo Session Admin">
                 <ul class="Sous_Menu">
                     <li>
-                        <a href="index.php?page=Accueil">Home</a>
+                        <a href="./AccueilView.php">Home</a>
                         <hr>
                     </li>
                     <li>
-                        <a href="index.php?page=Jeux">Jeux</a>
+                        <a href="./Jeux0View.php">MemoryCard 1.0</a>
                         <hr>
                     </li>
                     <li>
-                        <a href="index.php?page=Chambre">Chambre</a>
+                        <a href="./Jeux1View.php">MemoryCard 2.0</a>
+                        <hr>
+                    </li>
+                    <li>
+                        <a href="index.php?page=Chambre" aria-disabled="true">Chambre</a>
                         <hr>
                     </li>
                     <li>
@@ -73,8 +78,8 @@
                 </ul>
             </div>
             <div class="profile">
-                <img src="./src/View/media/images/PhotoDeProfil_Admin1.png" width="100px" height="70px" alt="Logo Session Admin">
-                <!-- <img src="./media/images/PhotoDeProfil_Admin0.jpeg" width="100px" height="70px" alt="Logo Session Admin"> -->
+                <img src="./media/images/PhotoDeProfil_Admin0.jpeg" width="100px" height="70px" alt="Photo Admin">
+                <!-- <img src="./media/images/PhotoDeProfil_Admin0.jpeg" width="100px" height="70px" alt="Photo Admin"> -->
             </div>
         </section>
 
@@ -148,7 +153,7 @@
         </section>
 
         <section class="container">
-            <form action="index.php?page=Accueil" method="POST">
+            <form action="./auth/LogoutView.php" method="POST">
                 <button type="submit" name="Deconnexion"><b>Deconnexion</b></button>
             </form>
 
@@ -165,7 +170,7 @@
     </footer>
 
     <script type="text/javascript">
-        formulaire.style.display = "none" // let formulaire = document.getElementById("formulaire")
+        //formulaire.style.display = "none" // let formulaire = document.getElementById("formulaire")
 
         // const pseudo = "";
         if (localStorage.getItem("Email") && localStorage.getItem("MotDePasse")) {
@@ -181,7 +186,7 @@
         }
 
         Deconnexion.onclick = () => {
-            document.location.pathname = "index.php?page=Logout"
+            document.location.pathname = "dashboard/Adminphp/Home/Jeux/MemoryCard/V1/src/View/auth/LogoutView.php"
             localStorage.clear()
         }
 

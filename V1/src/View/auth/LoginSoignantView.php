@@ -16,7 +16,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion</title>
     <!-- CSS LINKPACK -->
-    <link rel="stylesheet" href="./src/View/pages/css/LoginSoignantView.css">
+    <!-- <link rel="stylesheet" href="./src/View/pages/css/LoginSoignantView.css"> -->
+    <link rel="stylesheet" href="./../pages/css/LoginSoignantView.css">
     <!-- <script src="./Login.js" defer></script> -->
 </head>
 
