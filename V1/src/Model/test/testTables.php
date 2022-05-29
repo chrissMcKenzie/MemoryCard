@@ -5,7 +5,7 @@ include_once('./../SoignantModel.php');
 // include_once('./../ScoreModel.php');
 
 // $DatabaseModel = new DatabaseModel(false); //"localhost", "root", "YES", "bts2a_MemoryCardModel"
-$connexionMySQL = DatabaseModel::connection_DatabaseModel();
+$connexionMySQL = DatabaseModel::connexion();
 
 $Patient = new Patient();
 $patientsListe = $Patient->readPatient(true);

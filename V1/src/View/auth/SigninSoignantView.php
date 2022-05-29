@@ -25,10 +25,10 @@ try {
   // * DONNÉES FORMULAIRE
   if (isset($_POST['submit'])) {
 
-    $Nom = $_POST['nom']; $Prenom = $_POST['prenom'];
-    $DateDeNaissance = $_POST['dateDeNaissance'];
-    $MotDePasse = $_POST['motDePasse'];
-    $Poste = $_POST['poste']; $Email = $_POST['email'];
+    // $Nom = $_POST['nom']; $Prenom = $_POST['prenom'];
+      // $DateDeNaissance = $_POST['dateDeNaissance'];
+      // $MotDePasse = $_POST['motDePasse'];
+      // $Poste = $_POST['poste']; $Email = $_POST['email'];
 
     $Nom = isset($_POST['nom']) ? htmlspecialchars(trim($_POST['nom'])) : '';
     $Prenom = isset($_POST['prenom']) ? htmlspecialchars(trim($_POST['prenom'])) : '';

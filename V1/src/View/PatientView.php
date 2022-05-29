@@ -1,52 +1,65 @@
-<?php //session_start();
-include_once './../Model/DatabaseModel.php';
+<?php //session_save_path(); include_once "./../Controller/PatientController.php";
+session_start();
+require_once './../Model/DatabaseModel.php';
+
 //include_once './../Model/PatientModel.php';
 
-// $PDO = DatabaseModel::connect();
-// $SQL = "SELECT * FROM Score WHERE id_score = 1";
-// $REQUÊTE = $PDO->query($SQL);
-// $RESULTAT = $REQUÊTE->fetchAll();
+//require_once './template/TemplateView.php';
 
-//$Patient = new ManagePatient();
-//$listePatients = $Patient->getPatientFromDB();
+try {
+    $PDO = DatabaseModel::connexion();
 
-// function getPDOConnexion(){
-//     $HOST = 'localhost';
-//     $DBNAME = 'bts2a_MemoryCardModel';
-//     $DSN = "mysql:host=$HOST; dbname=$DBNAME";
-//     $USER = 'root';
-//     $PASSWORD = '';
-//     $OPTIONS = [
-//         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-//         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-//     ];
+    //* SESSION
+    //$_SESSION['mail_patient']
+    if (isset($_SESSION['nom_patient']) && isset($_SESSION['prenom_patient']) && isset($_SESSION['pathologie_patient'])) {
+        $emailPatient = $_SESSION['nom_patient'];
+        echo "<h1>Vous êtes connecté en tant que : <br>".$emailPatient."</h1>";
 
-//     try {
-//         $DB_CONNEXION = new PDO($DSN, $USER, $PASSWORD, $OPTIONS);
-//     } catch (PDOException $e) {
-//         die("ErrorConnexion: " . $e->getMessage());
-//     }
+        $SQL_SELECT = "SELECT nom_patient, prenom_patient, pathologie_patient FROM Patient WHERE nom_patient = ? AND prenom_patient = ?";
+        $REQUÊTE = $PDO->query($SQL_SELECT);
+        $RESULTAT_PATIENTS = $REQUÊTE->fetchAll();
+        foreach ($RESULTAT_PATIENTS as $DATA) {
+            // $id = $row["id_patient"];
+            // $nom = $row["nom_patient"];
+            $penomPatient = $DATA["prenom_patient"];
+            $postePatient = $DATA["poste_patient"];
+            // $date = $row["datenaissance_patient"];
+            // $mp = $row["motdepasse_patient"];
+            // $mail = $row["mail_patient"];
+        }
 
-//     return $DB_CONNEXION;
-// }
+        $_SESSION["Admin"] = [
+            "prenom" => $penomPatient,
+            "email" => $emailPatient,
+            "poste" => $postePatient
+        ];
 
-// function listePatients(){
-//     $PDOConnexion = getPDOConnexion();
-//     $SQL_CODE = "SELECT * FROM Patient";
-//     $SQL_REQUÊTE = $PDOConnexion->query($SQL_CODE);
-//     $SQL_RESULTAT = $SQL_REQUÊTE->fetchAll();
+        $SQL_SELECT = "SELECT * FROM Patient";
+        $REQUÊTE = $PDO->query($SQL_SELECT);
+        $RESULTAT_PATIENTS = $REQUÊTE->fetchAll();
 
-//     // foreach ($SQL_RESULTAT as $DATA) {
-//     //     foreach ($DATA as $champ => $value) {
-//     //         if (!is_int($champ)) {
-//     //             echo "<th scope='col'>{$champ}</th>";
-//     //         }
-//     //     }
-//     //     echo "<tr class='table-active' style='text-align: center;'>{$DATA['id_patient']}</tr>";
-//     // }
+        $SQL_SELECT = "SELECT * FROM Score";
+        $REQUÊTE = $PDO->query($SQL_SELECT);
+        $RESULTAT_SCORES = $REQUÊTE->fetchAll();
+        
+    }else{
+        header('Location: ./auth/LoginPatientView.php');
+    }
 
-//     return $SQL_RESULTAT;
-// }
+    //* DECONNEXION SESSION
+    if (isset($_POST['Deconnexion'])) {
+        header('Location: ./AccueilView.php');
+        unset($_SESSION['mail_patient']);
+        unset($_SESSION['Admin']);
+        echo "<h1 style='color: red;'>Vous êtes Déconnecté</h1>";
+    }
+
+}catch (PDOException $e) {
+    // echo $SQL_STATIC . "<br>" . $e->getMessage();
+    // echo $SQL_DYNAMIQUE . "<br>" . $e->getMessage();
+    echo $SQL_SELECT . "<br>" . $e->getMessage();
+  }
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -110,7 +123,6 @@ include_once './../Model/DatabaseModel.php';
                             ?>
                         </tr>
                     </thead>
-
                     <tbody>
                         <?php foreach ($RESULTAT as $DATA) : ?>
                             <tr class="table-active" style="text-align: center;">
@@ -131,13 +143,9 @@ include_once './../Model/DatabaseModel.php';
 
         <section class="container">
             <!-- XAMP Server-->
-            <form method="POST" action="./AccueilView.php">
+            <form action="./auth/LogoutView.php" method="POST">
                 <button type="submit" name="Deconnexion"><b>Deconnexion</b></button>
             </form>
-            <!-- XAMP Server-->
-            <!-- <form method="POST" action="index.php?page=Accueil">
-                <button type="submit" name="Deconnexion"><b>Deconnexion</b></button>
-            </form> -->
 
         </section>
 
@@ -151,31 +159,6 @@ include_once './../Model/DatabaseModel.php';
         </section>
     </footer>
 
-    <script type="text/javascript">
-        //formulaire.style.display = "none" // let formulaire = document.getElementById("formulaire")
-
-        // const pseudo = "";
-        // if (localStorage.getItem("Email") && localStorage.getItem("MotDePasse")) {
-        //     if (localStorage.pseudo != null) {
-        //         const pseudo = localStorage.pseudo
-        //         H1.innerHTML = `Bonjour <br> ${pseudo}`
-        //     } else {
-        //         const pseudo = prompt("Entrez votre pseudo")
-        //         localStorage.pseudo = pseudo // local = JSON.parse(localStorage.getItem("Email"))
-        //         H1.innerHTML = `Bonjour <br> ${pseudo}`
-        //     }
-
-        // }
-
-        // Deconnexion.onclick = () => {
-        //     document.location.pathname = "model/logout.php"
-        //     localStorage.clear()
-        // }
-
-        //document.querySelector(h1).innerText = `${Email}`
-
-        //chrissMcKenzie.IT.Agence@gmail.com
-    </script>
 </body>
 
 </html>

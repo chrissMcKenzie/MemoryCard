@@ -1,31 +1,110 @@
-<?php //session_start();
+<?php //session_save_path(); include_once "./../Controller/AdminController.php";
+session_start();
 require_once './../Model/DatabaseModel.php';
 //include_once './../Model/SoignantModel.php';
 //include_once './../Model/PatientModel.php';
 
 //require_once './template/TemplateView.php';
 
-$PDO = DatabaseModel::connexion();
+try {
+    $PDO = DatabaseModel::connexion();
 
-$SQL = "SELECT * FROM Patient";
-$REQUÊTE = $PDO->query($SQL);
-$RESULTAT_PATIENTS = $REQUÊTE->fetchAll();
+    //* SESSION
+    //$_SESSION['mail_soignant']
+    if (isset($_SESSION['mail_soignant'])) {
+        $emailSoignant = $_SESSION['mail_soignant'];
+        echo "<h1>Vous êtes connecté en tant que : <br>".$emailSoignant."</h1>";
 
-$SQL = "SELECT * FROM Score";
-$REQUÊTE = $PDO->query($SQL);
-$RESULTAT_SCORES = $REQUÊTE->fetchAll();
+        $SQL_SELECT = "SELECT prenom_soignant, poste_soignant FROM Soignant WHERE mail_soignant = '$emailSoignant'";
+        $REQUÊTE = $PDO->query($SQL_SELECT);
+        $RESULTAT_PATIENTS = $REQUÊTE->fetchAll();
+        foreach ($RESULTAT_PATIENTS as $DATA) {
+            // $id = $row["id_soignant"];
+            // $nom = $row["nom_soignant"];
+            $penomData = $DATA["prenom_soignant"];
+            $posteData = $DATA["poste_soignant"];
+            // $date = $row["datenaissance_soignant"];
+            // $mp = $row["motdepasse_soignant"];
+            // $mail = $row["mail_soignant"];
+        }
 
+        $_SESSION["Admin"] = [
+            "prenom" => $penomData,
+            "email" => $emailSoignant,
+            "poste" => $posteData
+        ];
 
-// foreach ($allRows as $row) { //on cree un objet Person avec chaque valeur retournée
-//     $id = $row["id_soignant"];
-//     $nom = $row["nom_soignant"];
-//     $prenom = $row["prenom_soignant"];
-//     $date = $row["datenaissance_soignant"];
-//     $mp = $row["motdepasse_soignant"];
-//     $poste = $row["poste_soignant"];
-//     $mail = $row["mail_soignant"];
+        $SQL_SELECT = "SELECT * FROM Patient";
+        $REQUÊTE = $PDO->query($SQL_SELECT);
+        $RESULTAT_PATIENTS = $REQUÊTE->fetchAll();
+
+        $SQL_SELECT = "SELECT * FROM Score";
+        $REQUÊTE = $PDO->query($SQL_SELECT);
+        $RESULTAT_SCORES = $REQUÊTE->fetchAll();
+        
+    }else{
+        header('Location: ./auth/LoginSoignantView.php');
+    }
+
+    //* DECONNEXION SESSION
+    if (isset($_POST['Deconnexion'])) {
+        header('Location: ./AccueilView.php');
+        unset($_SESSION['mail_soignant']);
+        unset($_SESSION['Admin']);
+        echo "<h1 style='color: red;'>Vous êtes Déconnecté</h1>";
+    }
+
+}catch (PDOException $e) {
+    // echo $SQL_STATIC . "<br>" . $e->getMessage();
+    // echo $SQL_DYNAMIQUE . "<br>" . $e->getMessage();
+    echo $SQL_SELECT . "<br>" . $e->getMessage();
+  }
+
+// $PDO = DatabaseModel::connect();
+// $SQL = "SELECT * FROM Score WHERE id_score = 1";
+// $REQUÊTE = $PDO->query($SQL);
+// $RESULTAT = $REQUÊTE->fetchAll();
+
+//$Patient = new ManagePatient();
+//$listePatients = $Patient->getPatientFromDB();
+
+// function getPDOConnexion(){
+//     $HOST = 'localhost';
+//     $DBNAME = 'bts2a_MemoryCardModel';
+//     $DSN = "mysql:host=$HOST; dbname=$DBNAME";
+//     $USER = 'root';
+//     $PASSWORD = '';
+    // $OPTIONS = [
+    //     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    //     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+    // ];
+
+//     try {
+//         $DB_CONNEXION = new PDO($DSN, $USER, $PASSWORD, $OPTIONS);
+//     } catch (PDOException $e) {
+//         die("ErrorConnexion: " . $e->getMessage());
+//     }
+
+//     return $DB_CONNEXION;
 // }
 
+// function listePatients(){
+//     $PDOConnexion = getPDOConnexion();
+//     $SQL_CODE = "SELECT * FROM Patient";
+//     $SQL_REQUÊTE = $PDOConnexion->query($SQL_CODE);
+//     $SQL_RESULTAT = $SQL_REQUÊTE->fetchAll();
+
+//     // foreach ($SQL_RESULTAT as $DATA) {
+//     //     foreach ($DATA as $champ => $value) {
+//     //         if (!is_int($champ)) {
+//     //             echo "<th scope='col'>{$champ}</th>";
+//     //         }
+//     //     }
+//     //     echo "<tr class='table-active' style='text-align: center;'>{$DATA['id_patient']}</tr>";
+//     // }
+
+//     return $SQL_RESULTAT;
+// }
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -40,10 +119,10 @@ $RESULTAT_SCORES = $REQUÊTE->fetchAll();
     <link rel="stylesheet" href="./pages/css/AdminView.css">
 
     <!-- Bootstrap CSS -->
-    <?php //if (!empty($REQUÊTE)) : 
+    <?php //if (!empty($REQUÊTE)):
     ?>
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
-    <?php //endif 
+    <?php //endif
     ?>
 
 </head>
@@ -59,18 +138,25 @@ $RESULTAT_SCORES = $REQUÊTE->fetchAll();
                         <a href="./AccueilView.php">Home</a>
                         <hr>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="./Jeux0View.php">MemoryCard 1.0</a>
                         <hr>
                     </li>
                     <li>
                         <a href="./Jeux1View.php">MemoryCard 2.0</a>
                         <hr>
+                    </li> -->
+                    <li>
+                        <a href="./auth/SigninPatientView.php">Insrire un Patient</a>
                     </li>
                     <li>
-                        <a href="index.php?page=Chambre" aria-disabled="true">Chambre</a>
+                        <a href="./auth/LoginPatientView.php">Tester un Patient</a>
                         <hr>
                     </li>
+                    <!-- <li>
+                        <a href="index.php?page=Chambre" aria-disabled="true">Chambre</a>
+                        <hr>
+                    </li> -->
                     <li>
                         <a href="./../../../../../Labo/index.teste.php">Teste</a>
                         <a href="./../Model/test/testTables.php">TesteTables</a>
@@ -88,7 +174,12 @@ $RESULTAT_SCORES = $REQUÊTE->fetchAll();
 
     <main id="Main">
         <section class="container">
-            <h1 id="H1">Connexion à la Session Admin</h1>
+            <pre><?php //var_dump($_SESSION); ?></pre>
+            <h1 id="H1">
+                Connexion à la Session <b style="color: blue;"><?php echo $_SESSION["Admin"]["poste"]; ?></b>
+            <p><b style="color: red;"><?php echo $_SESSION["Admin"]["prenom"]; ?></b></p>
+            </h1>
+            
 
         </section>
 
@@ -99,13 +190,12 @@ $RESULTAT_SCORES = $REQUÊTE->fetchAll();
                     <thead>
                         <tr>
                             <?php $Entête = ["ID", "NOM", "PRENOM", "DATENASSANCE", "PATHOLOGIE", "TELEPHONE", "CONTRÔLE"];
-                            foreach ($Entête as $champ) {
-                                echo "<th scope='col'>$champ</th>";
-                            }
+                                foreach ($Entête as $champ) {
+                                    echo "<th scope='col'>$champ</th>";
+                                }
                             ?>
                         </tr>
                     </thead>
-
                     <tbody>
                         <?php foreach ($RESULTAT_PATIENTS as $DATA) : ?>
                             <tr class="table-active" style="text-align: center;">
@@ -128,9 +218,9 @@ $RESULTAT_SCORES = $REQUÊTE->fetchAll();
                     <thead>
                         <tr>
                             <?php $Entête = ["ID_SCORE", "TEMPS", "NIVEAU", "COUPS", "ID_PATIENT", "CONTRÔLE"];
-                            foreach ($Entête as $champ) {
-                                echo "<th scope='col'>$champ</th>";
-                            }
+                                foreach ($Entête as $champ) {
+                                    echo "<th scope='col'>$champ</th>";
+                                }
                             ?>
                         </tr>
                     </thead>
@@ -163,37 +253,11 @@ $RESULTAT_SCORES = $REQUÊTE->fetchAll();
 
     <br>
     <footer id="Footer">
-        <!-- <section class="container">
+        <section class="container">
             <div>Copyright © 2020-2021 www.chrissMcKenzie.com. Tous Droits Réservés</div>
             <div>Codeur, Développeur (c) 2020 chrissMcKenzie.com</div>
-        </section> -->
+        </section>
     </footer>
-
-    <script type="text/javascript">
-        //formulaire.style.display = "none" // let formulaire = document.getElementById("formulaire")
-
-        // const pseudo = "";
-        if (localStorage.getItem("Email") && localStorage.getItem("MotDePasse")) {
-            if (localStorage.pseudo != null) {
-                const pseudo = localStorage.pseudo
-                H1.innerHTML = `Bonjour <br> ${pseudo}`
-            } else {
-                const pseudo = prompt("Entrez votre pseudo")
-                localStorage.pseudo = pseudo // local = JSON.parse(localStorage.getItem("Email"))
-                H1.innerHTML = `Bonjour <br> ${pseudo}`
-            }
-
-        }
-
-        Deconnexion.onclick = () => {
-            document.location.pathname = "dashboard/Adminphp/Home/Jeux/MemoryCard/V1/src/View/auth/LogoutView.php"
-            localStorage.clear()
-        }
-
-        //document.querySelector(h1).innerText = `${Email}`
-
-        //chrissMcKenzie.IT.Agence@gmail.com
-    </script>
 </body>
 
 </html>

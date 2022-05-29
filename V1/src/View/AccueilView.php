@@ -53,6 +53,11 @@
         card.addEventListener("click", function(e) {
             card.classList.toggle('is-flipped');
         });
+
+        /** Recherche window.open(?url, ?target, ?features)
+         * @exemple window.open('mailto:test@example.com?subject=subject&body=body');
+         * @test window.open('mailto:jeaffy.bambimahicka@gmail.com?subject=JSSendMail&body=VraiBackEnd');
+         */
     </script>
 </body>
 
