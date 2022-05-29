@@ -64,10 +64,11 @@
 
 <style>
     #img1{
-    height: 50px;
-    width: 50px;
-   margin-left:110px;
-}
+        height: 50px;
+        width: 50px;
+        margin-left:110px;
+    }
+
     * {
         margin: 0;
         padding: 0;
@@ -169,7 +170,8 @@
         margin-left: 3%;
         font-size: 19px;
     }
-    </style>
+</style>
+
 <?php
         
     }

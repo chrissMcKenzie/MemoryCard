@@ -1,7 +1,6 @@
 <?php //session_save_path(); include_once "./../Controller/PatientController.php";
 session_start();
 require_once './../Model/DatabaseModel.php';
-
 //include_once './../Model/PatientModel.php';
 
 //require_once './template/TemplateView.php';
@@ -12,31 +11,26 @@ try {
     //* SESSION
     //$_SESSION['mail_patient']
     if (isset($_SESSION['nom_patient']) && isset($_SESSION['prenom_patient']) && isset($_SESSION['pathologie_patient'])) {
-        $emailPatient = $_SESSION['nom_patient'];
-        echo "<h1>Vous êtes connecté en tant que : <br>".$emailPatient."</h1>";
+        $nomPatient = $_SESSION['nom_patient'];
+        echo "<h1>Vous êtes connecté en tant que : <br>".$nomPatient."</h1>";
 
         $SQL_SELECT = "SELECT nom_patient, prenom_patient, pathologie_patient FROM Patient WHERE nom_patient = ? AND prenom_patient = ?";
         $REQUÊTE = $PDO->query($SQL_SELECT);
         $RESULTAT_PATIENTS = $REQUÊTE->fetchAll();
         foreach ($RESULTAT_PATIENTS as $DATA) {
-            // $id = $row["id_patient"];
-            // $nom = $row["nom_patient"];
-            $penomPatient = $DATA["prenom_patient"];
-            $postePatient = $DATA["poste_patient"];
-            // $date = $row["datenaissance_patient"];
-            // $mp = $row["motdepasse_patient"];
-            // $mail = $row["mail_patient"];
+            // $idData = $row["id_patient"];
+            $nomData = $row["nom_patient"];
+            $penomData = $DATA["prenom_patient"];
+            $pathologieData = $row["pathologie_patient"];
+            // $dateData= $row["datenaissance_patient"];
+            // $motdepasseData = $row["motdepasse_patient"];
         }
 
-        $_SESSION["Admin"] = [
-            "prenom" => $penomPatient,
-            "email" => $emailPatient,
-            "poste" => $postePatient
+        $_SESSION["User"] = [
+            "prenom" => $nomData,
+            "prenom" => $penomData,
+            "pathologie" => $pathologieData
         ];
-
-        $SQL_SELECT = "SELECT * FROM Patient";
-        $REQUÊTE = $PDO->query($SQL_SELECT);
-        $RESULTAT_PATIENTS = $REQUÊTE->fetchAll();
 
         $SQL_SELECT = "SELECT * FROM Score";
         $REQUÊTE = $PDO->query($SQL_SELECT);
@@ -49,8 +43,8 @@ try {
     //* DECONNEXION SESSION
     if (isset($_POST['Deconnexion'])) {
         header('Location: ./AccueilView.php');
-        unset($_SESSION['mail_patient']);
-        unset($_SESSION['Admin']);
+        unset($_SESSION['nom_patient']); unset($_SESSION['prenom_patient']); unset($_SESSION['pathologie_patient']);
+        unset($_SESSION['User']);
         echo "<h1 style='color: red;'>Vous êtes Déconnecté</h1>";
     }
 
@@ -68,8 +62,8 @@ try {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UserView</title>
-    <link rel="stylesheet" href="./src/View/pages/css/UserView.css">
+    <title>PatientView</title>
+    <!-- <link rel="stylesheet" href="./src/View/pages/css/UserView.css"> -->
     <!-- php local server -->
     <link rel="stylesheet" href="./pages/css/UserView.css">
 </head>
@@ -124,7 +118,7 @@ try {
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($RESULTAT as $DATA) : ?>
+                        <?php foreach ($RESULTAT_SCORES as $DATA) : ?>
                             <tr class="table-active" style="text-align: center;">
                                 <th scope="row"><?php echo $DATA['id_score'] ?></th>
                                 <td style="color: white;"><?php echo $DATA['temps']; ?></td>

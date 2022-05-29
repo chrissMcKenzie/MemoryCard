@@ -202,7 +202,7 @@
       localStorage.setItem("MotDePasse", MotDePasse.value)
 
       // document.location.reload()
-      document.location.pathname = "dashboard/Admin/Login.php"
+      //document.location.pathname = "dashboard/Admin/Login.php"
 
     }
 

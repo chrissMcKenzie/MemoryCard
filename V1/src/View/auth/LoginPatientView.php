@@ -25,8 +25,8 @@ try {
   // * DONNÉES FORMULAIRE
   if (isset($_POST['submit'])) {
 
-    $Nom = isset($_POST['nom_patient']) ? htmlspecialchars(trim($_POST['nom_patient'])) : '';
-    $Prenom = isset($_POST['prenom_patient']) ? htmlspecialchars(trim($_POST['prenom_patient'])) : '';
+    $Nom = isset($_POST['nom']) ? htmlspecialchars(trim($_POST['nom'])) : '';
+    $Prenom = isset($_POST['prenom']) ? htmlspecialchars(trim($_POST['prenom'])) : '';
     $Pathologie = isset($_POST['pathologie']) ? htmlspecialchars(trim($_POST['pathologie'])) : '';
     
     $SQL_FORMULAIRE = "SELECT nom_patient, prenom_patient, pathologie_patient FROM Patient WHERE nom_patient = ? AND prenom_patient = ?";
@@ -93,13 +93,13 @@ try {
     <section class="container">
       <form action="./../PatientView.php" method="POST">
         <label for="Nom"><b>Nom:</b><i>*</i></label>
-        <input type="text" name="nom" placeholder="Nom ?">
+        <input type="text" name="nom" placeholder="Nom ?" required>
         <br>
         <label for="Prenom"><b>Prenom:</b><i>*</i></label>
-        <input type="text" name="prenom" placeholder="Prenom ?">
+        <input type="text" name="prenom" placeholder="Prenom ?" required>
         <br>
         <label for="Pathologie"><b>Pathologie:</b><i>*</i></label>
-        <select name="pathologie" id="Pathologie">
+        <select name="pathologie" id="Pathologie" required>
           <option>AVC</option>
           <option>Autisme</option>
           <option>Alzheimer</option>

@@ -2,31 +2,33 @@
 session_start();
 
 include_once('./View/LoginSoignant.php');
-include_once('./model/DatabaseModel.php');
+include_once('./Model/DatabaseModel.php');
+// include_once('./../Model/DatabaseModel.php');
 
 ?>
 <style>
 
-table {
-  font-style: normal;
-  font-weight: bold;
-  font-size: 15px;
-  line-height: 20px;
-  border-right: 1px solid rgba(255, 255, 255, 0.05);
-  color: white;
-  padding-left: 25px;
-  font-weight: 400px;
-  padding-right: 80px;
-}
+  table {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 20px;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    color: white;
+    padding-left: 25px;
+    font-weight: 400px;
+    padding-right: 80px;
+  }
 
-.title-fiche{
-  margin-left:80px;
-  margin-right:0px;
-  margin-bottom:20px;
-  font-size:40px;
-  display:block;
-  font-family:impact;
-}
+  .title-fiche{
+    margin-left:80px;
+    margin-right:0px;
+    margin-bottom:20px;
+    font-size:40px;
+    display:block;
+    font-family:impact;
+  }
+
   .info {
     color:white;
     margin-top: 80px;
@@ -55,36 +57,38 @@ table {
     border-radius: 5px;
   }
 
-.flexdetail{
-  display:flex;
-  margin-left:100px;
-  margin-right:100px;
+  .flexdetail{
+    display:flex;
+    margin-left:100px;
+    margin-right:100px;
 
-}
+  }
 
-#ppimg{
-  width: 150px;
-  height: 160px;
-  display:block;
-  margin:auto;
-}
+  #ppimg{
+    width: 150px;
+    height: 160px;
+    display:block;
+    margin:auto;
+  }
 
-.fiche-info{
-  text-align:center;
-  margin-top:50px;
-}
+  .fiche-info{
+    text-align:center;
+    margin-top:50px;
+  }
 
-.liste{
-  font-family:impact;
-  font-size:50px;
-  text-align:center;
-  margin-top: 30px;
-}
-.graphs{
-  margin:50px;
-}
-}
+  .liste{
+    font-family:impact;
+    font-size:50px;
+    text-align:center;
+    margin-top: 30px;
+  }
+
+  .graphs{
+    margin:50px;
+  }
+
 </style>
+
 <html>
   <head>
   <div class="liste">Détail Patient</div>
@@ -97,13 +101,13 @@ table {
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Parties', 'Scores'],
-<?php        
-    $bdd = DatabaseModel::connect(); //on se connecte à la base 
-        $sql = "SELECT * FROM score where id_patient='$index'" ;
-        foreach ($bdd->query($sql) as $graph){
-            echo '["'.$graph['id_score'].'",'.$graph['score'].'],';
-        }
-?>
+          <?php        
+              $bdd = DatabaseModel::connect(); //on se connecte à la base 
+                  $sql = "SELECT * FROM score where id_patient='$index'" ;
+                  foreach ($bdd->query($sql) as $graph){
+                      echo '["'.$graph['id_score'].'",'.$graph['score'].'],';
+                  }
+          ?>
         ]);
 
         var options = {
@@ -192,6 +196,6 @@ table {
       <div id="chart_div" style="margin:20px;margin-top:20px;"></div>
       <div id="top_x_div" style="margin-left:180px;margin-bottom:50px;"></div>
     </div>
-</div>
+  </div>
 </body>
 </html>

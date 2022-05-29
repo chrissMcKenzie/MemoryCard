@@ -1,6 +1,6 @@
 <?php //namespace chrissMcKenzie;
 
-class DatabaseModel { 
+class DatabaseModel {
     private static $dbName = 'bts2a_MemoryCardModel' ;
     private static $dbHost = 'localhost';
     private static $dbUsername = 'root';
@@ -11,7 +11,7 @@ class DatabaseModel {
         die('Init function is not allowed');
     }
     
-    public static function connect() {
+    public static function connexion() {
         // Connexion à la base de données
 
         if (null == self::$cont) {
@@ -24,7 +24,7 @@ class DatabaseModel {
         return self::$cont;
     }
 
-    public static function disconnect() {
+    public static function deconnexion() {
         self::$cont = null;
     }
 }

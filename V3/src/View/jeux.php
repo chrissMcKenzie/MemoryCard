@@ -49,72 +49,72 @@ $sess = $_SESSION['nom_patient'];
             border-radius: 10px;
         }
 
-            .jeu{
-            display:grid;
-            width:550px;
-            height:610px;
-            margin-left:250px;
-            padding:20px;
-            display:grid;
-            grid-template-columns: repeat(4, 160px);
-            grid-gap:20px;
-            z-index: 1;
+        .jeu{
+        display:grid;
+        width:550px;
+        height:610px;
+        margin-left:250px;
+        padding:20px;
+        display:grid;
+        grid-template-columns: repeat(4, 160px);
+        grid-gap:20px;
+        z-index: 1;
+        border-radius: 10px;
+        }
+
+        #start{
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #4CAF50;
+            border: none;
+            font-size: 28px;
+            color: #000000;
+            padding: 20px;
+            width: 200px;
+            text-align: center;
+            transition-duration: 0.4s;
+            text-decoration: none;
+            overflow: hidden;
+            cursor: pointer;
+            border:2px ;
             border-radius: 10px;
-            }
+        }
 
-            #start{
-                margin: 0;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background-color: #4CAF50;
-                border: none;
-                font-size: 28px;
-                color: #000000;
-                padding: 20px;
-                width: 200px;
-                text-align: center;
-                transition-duration: 0.4s;
-                text-decoration: none;
-                overflow: hidden;
-                cursor: pointer;
-                border:2px ;
-                border-radius: 10px;
-            }
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 130px;
+            background-color: #f1f1f1;
+            font-weight: bold;
+            font-family: Arial
+        }
 
-            ul {
-                list-style-type: none;
-                margin: 0;
-                padding: 0;
-                width: 130px;
-                background-color: #f1f1f1;
-                font-weight: bold;
-                font-family: Arial
-            }
+        li a {
+            display: block;
+            color: #000;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
 
-            li a {
-                display: block;
-                color: #000;
-                padding: 8px 16px;
-                text-decoration: none;
-            }
+        li a:hover {
+            background-color: #555;
+            color: white;
+        }
 
-            li a:hover {
-                background-color: #555;
-                color: white;
-            }
+        .flex{
+            display:flex; 
+        }
 
-            .flex{
-                display:flex; 
-            }
-
-            table, td, th {   
-                background-color: white;
-                border-radius: 10px;
-                border: 1px solid #ddd;
-                text-align: left;
-            }
+        table, td, th {   
+            background-color: white;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
 
         table {
             border-collapse: collapse;
@@ -123,16 +123,15 @@ $sess = $_SESSION['nom_patient'];
         th, td {
             padding: 15px;
         }
-body{
-    background-color: #87CEFA;
-}
-.conttable{
-  height: 500px;
-  overflow-x:hidden;
-overflow-y:scroll;
-}
-
-</style>
+        body{
+            background-color: #87CEFA;
+        }
+        .conttable{
+            height: 500px;
+            overflow-x:hidden;
+            overflow-y:scroll;
+        }
+    </style>
 </head>
 
 <body>
@@ -234,30 +233,30 @@ document.addEventListener('click', function(e){
     }
 });
 
-function check(){
-            if(p1.src2==p2.src2){
-                p1.replaceWith(document.createElement('span'))
-                p2.replaceWith(document.createElement('span'))
-                score += 1;
-            }else{
-                p2.src = p1.src = 'View/imageJeu/img0.jpg';
-                score = Math.max(0, score-1);
-            }
-            step = 1;
-            eltscore.textContent = score;
+    function check(){
+        if(p1.src2==p2.src2){
+            p1.replaceWith(document.createElement('span'))
+            p2.replaceWith(document.createElement('span'))
+            score += 1;
+        }else{
+            p2.src = p1.src = 'View/imageJeu/img0.jpg';
+            score = Math.max(0, score-1);
+        }
+        step = 1;
+        eltscore.textContent = score;
 
-            if (document.getElementsByTagName('img').length==0){
-                Swal.fire({
-                    title: 'Votre score :',
-                    text: score,
-                    imageUrl: 'View/assets/bravo.jpg',
-                    confirmButtonText:'<a href="index.php?page=12&var1='+score+'&var3='+time +'&var4=<?= $date?>'+'&var2=<?= $sess?>">Rejouer</a>',
-                    cancelButtonText: 'Quitter le jeu',
-                    showCancelButton: true,
-                    showCloseButton: true
+        if (document.getElementsByTagName('img').length==0){
+            Swal.fire({
+                title: 'Votre score :',
+                text: score,
+                imageUrl: 'View/assets/bravo.jpg',
+                confirmButtonText:'<a href="index.php?page=12&var1='+score+'&var3='+time +'&var4=<?= $date?>'+'&var2=<?= $sess?>">Rejouer</a>',
+                cancelButtonText: 'Quitter le jeu',
+                showCancelButton: true,
+                showCloseButton: true
             });
         }
-}
+    }
 
 var sp = document.getElementsByTagName("span");
   var btn_start=document.getElementById("start");

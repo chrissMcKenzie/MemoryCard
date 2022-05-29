@@ -1,5 +1,5 @@
 <?php
-include_once('Model/DatabaseModel.php');
+include_once('./Model/DatabaseModel.php');
 
    class hopital{
 
@@ -9,7 +9,7 @@ include_once('Model/DatabaseModel.php');
     private $codePostal_hopital;
     private $ville_hopital;
 
-    public function __construct($hid,$hnom, $hadresse, $hcode,$hville ){
+    public function __construct($hid,$hnom, $hadresse, $hcode,$hville){
         $this->id_hopital=$hid;
         $this->nom_hopital=$hnom;
         $this->adresse_hopital=$hadresse;
@@ -37,35 +37,34 @@ include_once('Model/DatabaseModel.php');
 class manageHopital{
     private $hopitalList=array();
 
+    private function getHopitalFromBD(){
+        $pdo = DatabaseModel::connect(); //on se connecte à la base 
+        $sql = 'SELECT * FROM hopital ORDER BY id_hopital ASC'; //on formule notre requete 
+        $result = $pdo->query($sql);
+        $allRows = $result->fetchAll();
 
-private function getHopitalFromBD(){
-    $pdo = DatabaseModel::connect(); //on se connecte à la base 
-    $sql = 'SELECT * FROM hopital ORDER BY id_hopital ASC'; //on formule notre requete 
-    $result = $pdo->query($sql);
-    $allRows = $result->fetchAll();
+        foreach ($allRows as $row) { //on cree un objet Film avec chaque valeur retournée
+            $hid = $row["id_hopital"];  
+            $hnom = $row["nom_patient"];                                                                                    
+            $hadresse = $row["adresse_hopital"];
+            $hcode = $row["codePostal_hopital"];
+            $hville = $row["ville_hopital"];
 
-    foreach ($allRows as $row) { //on cree un objet Film avec chaque valeur retournée
-         $hid = $row["id_hopital"];  
-         $hnom = $row["nom_patient"];                                                                                    
-         $hadresse = $row["adresse_hopital"];
-         $hcode = $row["codePostal_hopital"];
-         $hville = $row["ville_hopital"];
-
-        $hopital = new hopital($sid, $pid, $pscore, $ptemps, $pcoup, $pniveau);
-        $this->hopitalList[] = $hopital;
+            $hopital = new hopital($hid, $hnom, $hadresse, $hcode, $hville);
+            $this->hopitalList[] = $hopital;
         }
 
         $result->closeCursor();
         return $this->hopitalList;
-}
-
-
-public function gethopitalFromId($id_hopital){
-    foreach ($this->hopitalList as $hopital) {
-        if ($film->getIdhopital() == $id_hopital)
-            return $hopital;
     }
-    return null;
-}
+
+
+    public function gethopitalFromId($id_hopital){
+        foreach ($this->hopitalList as $hopital) {
+            if ($hopital->getIdhopital() == $id_hopital)
+                return $hopital;
+        }
+        return null;
+    }
 
 }

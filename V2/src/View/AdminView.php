@@ -9,11 +9,11 @@ $PDO = DatabaseModel::connect();
 
 $SQL = "SELECT * FROM Patient";
 $REQUÊTE = $PDO->query($SQL);
-$RESULTAT_PATIENTS = $REQUÊTE->fetchAll();
+$RESULTAT_PATIENTS = $REQUÊTE->fetchAll(); //*OK
 
 $SQL = "SELECT * FROM Score";
 $REQUÊTE = $PDO->query($SQL);
-$RESULTAT_SCORES = $REQUÊTE->fetchAll();
+$RESULTAT_SCORES = $REQUÊTE->fetchAll(); //*OK
 
 // foreach ($allRows as $row) { //on cree un objet Person avec chaque valeur retournée
 //     $id = $row["id_soignant"];
