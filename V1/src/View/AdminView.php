@@ -17,15 +17,15 @@ try {
 
         $SQL_SELECT = "SELECT prenom_soignant, poste_soignant FROM Soignant WHERE mail_soignant = '$emailSoignant'";
         $REQUÊTE = $PDO->query($SQL_SELECT);
-        $RESULTAT_PATIENTS = $REQUÊTE->fetchAll();
-        foreach ($RESULTAT_PATIENTS as $DATA) {
-            // $id = $row["id_soignant"];
-            // $nom = $row["nom_soignant"];
+        $RESULTAT_SOIGNANTS = $REQUÊTE->fetchAll();
+        foreach ($RESULTAT_SOIGNANTS as $DATA) {
+            // $id = $DATA["id_soignant"];
+            // $nom = $DATA["nom_soignant"];
             $penomData = $DATA["prenom_soignant"];
             $posteData = $DATA["poste_soignant"];
-            // $date = $row["datenaissance_soignant"];
-            // $mp = $row["motdepasse_soignant"];
-            // $mail = $row["mail_soignant"];
+            // $date = $DATA["datenaissance_soignant"];
+            // $mp = $DATA["motdepasse_soignant"];
+            // $mail = $DATA["mail_soignant"];
         }
 
         $_SESSION["Admin"] = [
@@ -177,7 +177,7 @@ try {
             <pre><?php //var_dump($_SESSION); ?></pre>
             <h1 id="H1">
                 Connexion à la Session <b style="color: blue;"><?php echo $_SESSION["Admin"]["poste"]; ?></b>
-            <p><b style="color: red;"><?php echo $_SESSION["Admin"]["prenom"]; ?></b></p>
+                <p><b style="color: red;"><?php echo $_SESSION["Admin"]["prenom"]; ?></b></p>
             </h1>
             
 

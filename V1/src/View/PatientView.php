@@ -1,5 +1,5 @@
 <?php //session_save_path(); include_once "./../Controller/PatientController.php";
-session_start();
+session_start(); $_SESSION["User"];
 require_once './../Model/DatabaseModel.php';
 //include_once './../Model/PatientModel.php';
 
@@ -11,23 +11,23 @@ try {
     //* SESSION
     //$_SESSION['mail_patient']
     if (isset($_SESSION['nom_patient']) && isset($_SESSION['prenom_patient']) && isset($_SESSION['pathologie_patient'])) {
-        $nomPatient = $_SESSION['nom_patient'];
+        $nomPatient = $_SESSION['nom_patient']; $prenomPatient = $_SESSION['prenom_patient']; $pathologiePatient = $_SESSION['pathologie_patient'];
         echo "<h1>Vous êtes connecté en tant que : <br>".$nomPatient."</h1>";
 
-        $SQL_SELECT = "SELECT nom_patient, prenom_patient, pathologie_patient FROM Patient WHERE nom_patient = ? AND prenom_patient = ?";
+        $SQL_SELECT = "SELECT nom_patient, prenom_patient, pathologie_patient FROM Patient WHERE nom_patient = '$nomPatient' AND prenom_patient = '$prenomPatient'";
         $REQUÊTE = $PDO->query($SQL_SELECT);
         $RESULTAT_PATIENTS = $REQUÊTE->fetchAll();
-        foreach ($RESULTAT_PATIENTS as $DATA) {
-            // $idData = $row["id_patient"];
-            $nomData = $row["nom_patient"];
+        foreach($RESULTAT_PATIENTS as $DATA) {
+            // $idData = $DATA["id_patient"];
+            $nomData = $DATA["nom_patient"];
             $penomData = $DATA["prenom_patient"];
-            $pathologieData = $row["pathologie_patient"];
-            // $dateData= $row["datenaissance_patient"];
-            // $motdepasseData = $row["motdepasse_patient"];
+            $pathologieData = $DATA["pathologie_patient"];
+            // $dateData= $DATA["datenaissance_patient"];
+            // $motdepasseData = $DATA["motdepasse_patient"];
         }
 
         $_SESSION["User"] = [
-            "prenom" => $nomData,
+            "nom" => $nomData,
             "prenom" => $penomData,
             "pathologie" => $pathologieData
         ];
@@ -44,7 +44,7 @@ try {
     if (isset($_POST['Deconnexion'])) {
         header('Location: ./AccueilView.php');
         unset($_SESSION['nom_patient']); unset($_SESSION['prenom_patient']); unset($_SESSION['pathologie_patient']);
-        unset($_SESSION['User']);
+        unset($_SESSION["User"]);
         echo "<h1 style='color: red;'>Vous êtes Déconnecté</h1>";
     }
 
@@ -103,7 +103,7 @@ try {
                 //print_r(listePatients());
                 ?>
             </pre>
-            <h1 id="H1">Connexion à la Session User</h1>
+            <h1 id="H1">Connexion à la Session <b style="color: blue;"><?php echo $_SESSION["User"]["prenom"]; ?></b></h1>
 
             <div>
                 <h2>SCORE DES PATIENTS</h2>
@@ -118,7 +118,7 @@ try {
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach ($RESULTAT_SCORES as $DATA) : ?>
+                    <?php foreach ($RESULTAT_SCORES as $DATA) : ?>
                             <tr class="table-active" style="text-align: center;">
                                 <th scope="row"><?php echo $DATA['id_score'] ?></th>
                                 <td style="color: white;"><?php echo $DATA['temps']; ?></td>

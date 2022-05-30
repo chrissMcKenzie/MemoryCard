@@ -41,12 +41,12 @@ try {
         $pathologie_Data = $DATA["pathologie_patient"];
     }
 
-    if($Nom === $nom_Data && $Prenom === $prenom_Data && $Pathologie === $pathologie_Data){
+    if($Nom === $nom_Data && $Prenom === $prenom_Data){
         header('Location: ./../PatientView.php');
         $_SESSION['nom_patient'] = $nom_Data;
         $_SESSION['prenom_patient'] = $prenom_Data;
         $_SESSION['pathologie_patient'] = $prenom_Data;
-        include_once "./../PatientView.php";
+        // include_once "./../PatientView.php";
     }else{
         echo "<h2 style='color: red;'>Erreur à la Connexion<h2>";
     }
@@ -76,11 +76,23 @@ try {
 
 <body>
   <header id="Header">
-    <!-- <section class="container">
-      <div>
-        <img src="View/assets/patient.png" id="img2">
-      </div>
-    </section> -->
+    <section class="container">
+        <div class="Debug" style="display: none;">
+          <h2>Debug Page => LoginSoignantView
+            <pre>
+            <?php var_dump($_POST['submit']);
+            var_dump($_POST['nom']);
+            var_dump($_POST['prenom']);
+            ?>
+            </pre>
+            <pre>
+                <?php echo $nom_Data." ".$prenom_Data; ?>
+            </pre>
+
+          </h2>
+
+        </div>
+      </section>
 
   </header>
   <br>
@@ -91,7 +103,8 @@ try {
     </section>
 
     <section class="container">
-      <form action="./../PatientView.php" method="POST">
+      <!-- <form action="./../PatientView.php" method="POST"> -->
+      <form action="#" method="POST">
         <label for="Nom"><b>Nom:</b><i>*</i></label>
         <input type="text" name="nom" placeholder="Nom ?" required>
         <br>
@@ -111,20 +124,20 @@ try {
         <input type="password" id="MotDePasse" name="pass" placeholder="password ?" required>
         <br> -->
         <button type="submit" name="submit" id="Connexion"><b>Connexion</b></button>
-        </div>
-        <div class="Option">
-          <a href="./SigninPatientView.php">Inscription</a>
-          <a href="./ForgotPasswordView.php">Mot De Passe Oublié ?</a>
       </form>
+      <div class="Option">
+        <a href="./SigninPatientView.php">Inscription</a>
+        <a href="./ForgotPasswordView.php">Mot De Passe Oublié ?</a>
+      </div>
     </section>
   </main>
 
   <br>
   <footer id="Footer">
-    <section class="container">
+    <!-- <section class="container">
       <div>Copyright © 2021-2022 www.chrissMcKenzie.com. Tous Droits Réservés</div>
       <div>Codeur, Développeur (c) 2021 chrissMcKenzie.com</div>
-    </section>
+    </section> -->
   </footer>
 
 

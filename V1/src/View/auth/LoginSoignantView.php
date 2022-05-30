@@ -111,7 +111,6 @@ try {
                 <input type="password" name="motDePasse" id="MotDePasse" placeholder="password ?" required>
                 <br>
                 <button type="submit" name="submit" id="Connexion"><b>Connexion</b></button>
-                </div>
 
                 <div class="Option">
                     <a href="./SigninSoignantView.php">Inscription</a>
