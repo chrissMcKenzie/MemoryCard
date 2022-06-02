@@ -14,7 +14,9 @@ include_once('./model/SoignantClass.php');
             $pass = hash('sha1',$pass);
             $managersoi = new manageSoignant();
             $managersoi->log($email,$pass);
+            echo'<script>alert("Vous etes connecté !");</script>';
             include_once('View/LoginSoignant.php');
+
         }
         else{
             echo'<script>alert("veuillez remplir tout les champs");</script>'; 
@@ -23,6 +25,7 @@ include_once('./model/SoignantClass.php');
     }
 
     else{
+        echo"<script>alert('Erreur d'authentification');</script>";
         include_once('View/LoginSoignant.php');
     }
 

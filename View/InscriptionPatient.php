@@ -44,7 +44,7 @@
         <input type="text" name="nom" placeholder="Prenom" required>
         <br>
         <label for="Date"><b>Date de naissance:</b><i>*</i></label>
-        <input type="date" name="daten" placeholder="Date de naissance" required>
+        <input class="date" type="date" name="daten" placeholder="Date de naissance" required>
         <br>
         <label for="Patho"><b>Pathologie:</b><i>*</i></label>
         <input type="text" name="patho" placeholder="Pathologie " required>
@@ -52,8 +52,15 @@
         <label for="numero"><b>Numero de telephone:</b><i>*</i></label>
         <input type="text" name="numero" placeholder="numero de telephone " required>
         <br>
+        <label for="numero"><b>Matricule Soignant</b><i>*</i></label>
+        <input type="text" name="matricule" placeholder="Matricule Soignant " required>
+        <br>
+        <input type="checkbox" name="subscribe" value="newsletter" required/>
+        <label for="coche" id="coche">En cochant cette case vous acceptez de partager vos informations personnelles</label>
+        <br>
         <button type="submit" name="submit" id="Inscription"><b>Inscription</b></button>
       </form>
+      <br>
       <div class="Option">
         <a href="index.php?page=9">Connexion</a>
       </div>
@@ -62,6 +69,15 @@
   <br>
 
 <style>
+  #coche{
+    font-size: 20px;
+    color:red;
+    font-weight:arial;
+  }
+  .date{
+  height: 42px;
+  width: 759px;
+}
 #img1{
     height: 50px;
     width: 50px;
@@ -174,44 +190,13 @@
   }
 </style>
 
-<script type="text/javascript">
-    // if(!localStorage.getItem("Email") && !localStorage.getItem("MotDePasse")){
-    // }else{
-
-    // }
-    // BarreDeNotification
-
-    Inscription.onclick = () => {
-      const annee = `${new Date().getFullYear()}`;
-      const mois = `${new Date().getMonth()+1}`;
-      const date = `${new Date().getDate()}`;
-      const jour = `${new Date().getDay()}`
-      const horaire = `${new Date().getHours()}${new Date().getMinutes()}${new Date().getSeconds()}`
-      const idInscription = `${annee}${mois}${date}${jour}${horaire}`
-      const dateInscription = `${new Date().getDate()}-${new Date().getMonth()+1}-${new Date().getFullYear()}`
-      localStorage.setItem("idInscription", idInscription)
-      localStorage.setItem("dateInscription", dateInscription.valueOf())
-      //localStorage.setItem("idInscription", idInscription.value)
-      //localStorage.setItem("idInscription", idInscription.valueOf())
-      localStorage.setItem("Nom", Nom.value);
-      localStorage.setItem("Prenom", Prenom.value)
-      localStorage.setItem("Email", Email.value)
-      localStorage.setItem("MotDePasse", MotDePasse.value)
-
-      // document.location.reload()
-      document.location.pathname = "dashboard/Admin/Login.php"
-
-    }
-
-    /** Recherche window.open(?url, ?target, ?features)
-     * @exemple window.open('mailto:test@example.com?subject=subject&body=body');
-     * @test window.open('mailto:jeaffy.bambimahicka@gmail.com?subject=JSSendMail&body=VraiBackEnd');
-     */
-
-    //chrissMcKenzie.IT.Agence@gmail.com
-  </script>
 </body>
-
+<footer id="Footer">
+    <section class="container">
+      <div>Copyright © 2021-2022 JMS Corporation Tous Droits Réservés</div>
+      <div>Codeur, Développeur (c) 2021 OMRANI Sofiane</div>
+    </section>
+  </footer>
 </html>
 
 <!-- 

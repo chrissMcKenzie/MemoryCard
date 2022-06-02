@@ -1,26 +1,100 @@
-<!DOCTYPE html>
-<html lang="fr">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UserView</title>
-</head>
+<body>
+        
+    <main id="Main">
+        <h2><center> Espace de jeux </center></h2>
+    </main>
+    
+    <div class="flexlevel">
+        <?php    
+            echo"<div class='leveljeu' ><ul><li><a href=\"index.php?page=12&index=$idpat\"> Niveau 1 - Jouer</a></li></ul></div>"
+        ?>
+         <?php          
+            echo"<div class='leveljeu'><ul><li><a href=\"index.php?page=13&index=$idpat\"> Niveau 2 - Jouer</a></li></ul></div>"
+        ?>
+         <?php          
+            echo"<div class='leveljeu'><ul><li><a href=\"index.php?page=14&index=$idpat\"> Niveau 3 - Jouer</a></li></ul></div>"
+        ?>
+        </div>
+        <div class="info">
+        <div class="infos-container">
+            <span class="title-fiche">Votre Profil</span>
+            <div class="fiche-info">        
+                    <div class="cont-title"><img src="View/assets/pp.jpg" id="ppimg"></div>
+                    <div class="input-detail">Nom:</div> 
+                    <div class="input-title"><?php echo($nom)?></div> 
+                    <div class="input-detail">Prenom:</div> 
+                    <div class="input-title"><?php echo($prenom) ?></div>  
+                    <div class="input-detail">Date de naissance:</div>
+                    <div class="input-title"><?php echo($date)?> </div>  
+                    <div class="input-detail">Numero de telephone:</div>  
+                    <div class="input-title"><?php echo($telephone)?></div>   
+            </div>
+        </div>
+        </div>
+</body>
+<footer id="Footer">
+    <section class="container">
+      <div>Copyright © 2021-2022 JMS Corporation Tous Droits Réservés</div>
+      <div>Codeur, Développeur (c) 2021 OMRANI Sofiane</div>
+    </section>
+  </footer>
 
 <style>
+.co{
+    margin-left:35%;
+    margin-top:6px;
+    color:black;
+    font-family: 'Poppins', sans-serif;
+
+}
+footer{
+ /* width:500px; */
+ margin: 0 auto;
+    margin-top: 5%;
+    padding: 3%;
+    width: 50%;
+    height: 12%;
+    text-align: center;
+    font-size: 15px;
+}
+
+.deco{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 100px;
+  text-align: center;
+  background-color: #f1f1f1;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  color: black;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 10px;
+  margin-right:20px;
+}
+.flextop{
+  justify-content: space-between;
+  display:flex;
+  padding-top:10px
+}
+.deco:hover{
+  background-color: #555;
+  color: white;
+}
     * {
         margin: 0;
         padding: 0;
         text-decoration: none;
     }
 
-    pre {
-        margin: 0%;
-        margin-top: -10%;
-        padding: 0%;
-        font-size: small;
-        color: #66FF00;
+    .flexlevel{
+        display:flex;
+    }
+    .contflexx{
+        display:flex;
+        margin-top:50px;
     }
 
     html {
@@ -31,68 +105,40 @@
     body {
         /* width: 100%; height: 100%; */
         /* background: url('../../media/images/Background_Login0.jpeg') repeat space; */
-        background: url("../../media/images/Background_Login1.jpeg") repeat-y;
         background-position: left;
         /* background-size: cover; */
-        background-color: blue;
+        background: #6563ff;
         color: white;
-    }
-
-    header,
-    main,
-    footer {
-        /* width:500px; */
-        margin: 0 auto;
-        margin-bottom: 0%;
-        padding: 3%;
-        width: 50%;
-        height: 12%;
-        text-align: center;
-        font-size: 32px;
+        height: 100%;
     }
 
     header {
-        display: flex;
-        margin: 1%;
-        margin-left: 0%;
-    }
-
-    main {
-        display: block;
-        margin-top: -6%;
-        text-align: left;
-    }
-
-    .Menu {
-        display: block;
-        position: absolute;
-        top: 1%;
-        left: 3%;
-    }
-
-    .Sous_Menu {
-        background-color: black;
-        text-shadow: 3px 2px 2px blue;
-        color: white;
-    }
-
-    .Sous_Menu a {
-        color: white;
-    }
-
-    .profile {
-        display: block;
-        position: absolute;
-        top: 1%;
-        right: 1%;
-    }
-
-    h1,
-    h2 {
+        /* width:500px; */
+        margin: 0 auto;
+        width: 80%;
         text-align: center;
+        font-size: 32px;display: flex;
+        margin: 1%;
     }
 
-    h1 {
+    #Main {
+        display: block;
+        font-weight: bold;
+        font-family: Arial; 
+    }
+
+    .leveljeu{
+        margin-left:auto;
+        margin-right:auto;
+        margin-top:20px;
+    }
+
+    .deco{
+        float:right;
+    }
+
+    h1 {        
+        text-align: center;
         font-style: italic;
     }
 
@@ -102,79 +148,93 @@
         font-size: 32px;
     }
 
-    li:hover {
-        background-color: white;
-    }
+    ul {
+             list-style-type: none;
+                margin: 0;
+                padding: 0;
+                width: 165px;
+                background-color: #f1f1f1;
+                font-weight: bold;
+                font-family: Arial; 
+                border-radius: 10px;
+                border: 1px solid #ddd;
+                text-align:center;
+            }
 
-    li a:hover {
-        color: black;
-    }
+            li a {
+                display: block;
+                color: #000;
+                padding: 8px 16px;
+                text-decoration: none;
+                border-radius: 10px;
+                border: 1px solid #ddd
+            }
 
-    /* Full-width inputs */
-    input[type="text"],
-    input[type="password"] {
-        display: inline-block;
-        margin: 8px 0;
-        padding: 12px 20px;
-        width: 100%;
-        border: 1px solid #ccc;
-        box-sizing: border-box;
-    }
+            ul:hover {
+                background-color: #555;
+                color: white;
+            }
 
-    button[type="submit"] {
-        margin: 8px 0;
-        padding: 14px 20px;
-        width: 100%;
-        background-color: red;
-        border: none;
-        font-size: 21px;
-        cursor: pointer;
-    }
 
-    button[type="submit"]:hover {
-        border: 2px solid #53af57;
-    }
-
-    .Menu{
+    .Menu{        
         display:flex;
+        float:right;
+        margin-right:10px;
+        
     }
-</style>
 
-<body>
-    <header id="Header">
-        <section class="container">
-            
-            
-            
-        </section>
+.jeu{
+    text-align: center;
+}
 
-    </header>
-    <br>
+.title-fiche{
+margin-top:50px;
+  margin:20px;
+  font-size:40px;
+  display:block;
+  margin-left: 200px;
+  margin-right: 200px;
+  font-family:impact;
+}
 
-    <main id="Main">
-        <section class="container">
-            <pre>
-                
-            </pre>
-            <h1 id="H1">
-                <?php 
-                    echo"<center> Bienvenue dans votre espace</center>";
-                ?>
-            </h1>
+  .info {
+    color:white;
+    margin: auto;
+    width: 500px;
+    display:block;    
+  }
 
-        </section>
-    </main>
-<div class="Menu">
-                <div>
-                        <a href="index.php?page=12">Jeux</a>
-</div>
-<div>
-                    <a class="btn" id="centerbar-elem" href="Controller/Logout.php" >Déconnexion</a>
-                    </div>
+  body{
+    height: 1000px;
+  }
 
-            </div>
-    <br>
-  
-</body>
+  .input-title{
+    margin-top:3px;
+    font-weight:bold;
+    font-size:20px;
+  }
 
-</html>
+  .infos-container {
+    margin-top:50px;
+
+    width: 600px;
+    height:500px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-sizing: border-box;
+    border-radius: 5px;   
+     margin-bottom:50px;
+  }
+
+#ppimg{
+  width: 150px;
+  height: 160px;
+  display:block;
+  margin:auto;
+}
+
+.fiche-info{
+  text-align:center;
+margin-top:20px;
+height:200px;
+}

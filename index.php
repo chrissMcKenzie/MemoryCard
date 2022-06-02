@@ -61,6 +61,16 @@ if (isset($_GET['page'])) {		// l'URL complétée par ?page=x fournit le nom de 
 			$laPage = "controller/jeuxController.php"; 
 			$titre = 'jeu';
 			break;
+
+		case 13:
+			$laPage = "controller/jeux2Controller.php"; 
+			$titre = 'jeu';
+			break;
+
+		case 14:
+			$laPage = "controller/jeux3Controller.php"; 
+			$titre = 'jeu';
+			break;
 	}
 }
 include($laPage);

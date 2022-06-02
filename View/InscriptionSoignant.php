@@ -45,19 +45,16 @@
         <input class="date" type="date" name="daten" placeholder="Date de naissance" required>
         <br>
         <label for="MotDePasse"><b>Mot de passe: </b><i>*</i></label>
-        <input type="password" name="pwd1" minlength="4" maxlength="8"  placeholder="Mot de passe"  required>
+        <input type="password" name="pwd1" minlength="8" maxlength="15"  placeholder="Mot de passe"  required>
         <br>
         <label for="MotDePasse"><b>Confirmer mot de passe: </b><i>*</i></label>
-        <input type="password" name="pwd2" placeholder="Mot de passe" minlength="4" maxlength="8" required>
+        <input type="password" name="pwd2" placeholder="Mot de passe" minlength="8" maxlength="15" required>
         <br>
-        <label for="Email"><b>Poste:</b><i>*</i></label>
+        <label for="poste"><b>Poste:</b><i>*</i></label>
         <input type="text" name="poste" placeholder="Poste " min="10" max="100" required>
         <br>
         <label for="Email"><b>Email:</b><i>*</i></label>
         <input type="text" name="eml" placeholder="Email "  min="10" max="100" required>
-        <br>
-        <label for="Email"><b>Hopital:</b><i>*</i></label>
-        <input type="text" name="hop" placeholder="hopital"  min="10" max="100" required>
         <br>
         <button type="submit" name="submit" id="Inscription"><b>Inscription</b></button>
       </form>
@@ -224,104 +221,10 @@
     //chrissMcKenzie.IT.Agence@gmail.com
   </script>
 </body>
-
+<footer id="Footer">
+    <section class="container">
+      <div>Copyright © 2021-2022 JMS Corporation Tous Droits Réservés</div>
+      <div>Codeur, Développeur (c) 2021 OMRANI Sofiane</div>
+    </section>
+  </footer>
 </html>
-
-<!-- 
-
-<!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="UTF-8">
-  <title>Sélecteurs CSS</title>
-  <style>
-    th,
-    td {
-      border-style: dotted;
-    }
-  </style>
-</head>
-
-<body>
-  <form>
-    Nom d'utilisateur: <input type="text" id="nom"><br />
-
-    Mot de passe: <input type="password" id="pass"><br />
-
-    Sexe:
-    H <input type="radio" id="H" name="sexe" value="H">
-    F <input type="radio" id="F" name="sexe" value="F"><br />
-
-    Fonction: <select id="fonction">
-      <option VALUE="etudiant">Etudiant</option>
-      <option VALUE="ingenieur">Ingénieur</option>
-      <option VALUE="enseignant">Enseignant</option>
-      <option VALUE="retraite">Retraité</option>
-      <option VALUE="autre">Autre</option>
-    </select><br /><br />
-
-    <input type="submit" id="envoyer" value="Envoyer">
-    <input type="reset" id="annuler" value="Annuler">
-  </form>
-  <p id='log'>Log</p>
-
-  <script src="jquery.js"></script>
-  <script>
-    $(function () {
-      // Entrer les instructions jQuery ici
-      // $('#nom').val("bond")
-
-      // sur appui du bouton submit
-      $("form").submit(function (e) {
-        e.preventDefault(); //empêche de changer de page
-        var Nom = $('#nom').val(); var Password = $('#pass').val()
-        var H = $('input#H').val(); //console.log('input#H', H1) //#=> "H"
-        var F = $('input#F').val(); //console.log('input#F', F) //#=> "F"
-        var Genre = $(':radio:checked').val(); console.log(':radio:checked', Genre) //#=> "undefined" | "H" | "F"
-
-        var Sexe = (Genre === 'H') ? H : F
-        var Fonction = $('#fonction').val()
-        switch (Fonction) {
-          case 'etudiant': $('#fonction').val('etudiant'); break;
-          case 'ingenieur': $('#fonction').val('ingenieur'); break;
-          case 'enseignant': $('#fonction').val('enseignant'); break;
-          case 'retraite': $('#fonction').val('retraite'); break;
-          case 'autre': $('#fonction').val('autre'); break;
-
-          default:
-            $('#fonction').html('NOT DEFINED')
-            break;
-        }
-        console.log("#=> info contenue de la variable Fonction", Fonction)
-
-        var Log = $('#log').html(`
-          <table style="width:50%">
-            <tr>
-              <th>Nom</th>
-              <th>pass</th>
-              <th>Sex</th>
-              <th>Fonction</th>
-            </tr>
-            <tbody>
-              <tr>
-                <td>${Nom}</td>
-                <td>${Password}</td>
-                <td>${Sexe}</td>
-                <td>${Fonction}</td>
-              </tr>
-            </tbody>
-          </table>`)
-      })
-
-      // setInterval(() => {
-      //   document.location.reload()
-      // }, 20000);
-
-    })
-  </script>
-</body>
-
-</html>
-
- -->

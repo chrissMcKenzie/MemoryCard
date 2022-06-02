@@ -2,8 +2,12 @@
 <html lang="fr">
 
 <?php
+
+
     if(isset($_SESSION['mail_soignant']))
-    {        
+    {      
+        $SESS=$_SESSION['mail_soignant'];
+  
         echo"<center > Vous etes connecté en tant que : " . $_SESSION['mail_soignant']. "</center>";
         include_once('./View/OrganisationAdminSession/NavBar.php');
 ?>
@@ -51,7 +55,6 @@
             </div>
             <div class="Option">
                 <a href="index.php?page=6">Inscription</a>
-                <a href="index.php?page=3">Mot De Passe Oublié ?</a>
             </form>
         </section>
     </main>
@@ -89,16 +92,16 @@
     header,
     main,
     footer {
-        /* width:500px; */
-        margin: 0 auto;
-        margin-bottom: 0%;
-        padding: 3%;
-        width: 50%;
-        height: 12%;
-        text-align: center;
-        font-size: 32px;
+    /* width:500px; */
+    margin: 0 auto;
+    margin-top: 20%;
+    padding: 3%;
+    width: 50%;
+    height: 12%;
+    text-align: center;
+    font-size: 32px;
 
-    }
+  }
 
     header {
         margin: 1%;
@@ -169,9 +172,15 @@
         margin-left: 3%;
         font-size: 19px;
     }
-    </style>
+    </style><footer id="Footer">
+    <section class="container">
+      <div>Copyright © 2021-2022 JMS Corporation Tous Droits Réservés</div>
+      <div>Codeur, Développeur (c) 2021 OMRANI Sofiane</div>
+    </section>
+  </footer>
 <?php
         
     }
 ?>
+
 </html>

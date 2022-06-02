@@ -160,10 +160,8 @@ border-bottom:1px solid purple;
 <body>
 
     <div id="centerbar">     
-    <a class="btn " id="centerbar-elem" href ='index.php?page=5'>Mon compte</a>
-    <?php
-      echo "<a class='btn'id='centerbar-elem' href=\"index.php?page=7&index=$SESS\" class=\"btn btn-primary\">Consultation Patient</a>"
-    ?>       
+    <a class="btn " id="centerbar-elem" href ='index.php?page=10'>Mon compte</a>       
+    <a class="btn" id="centerbar-elem" href = 'index.php?page=7'>Consultation Patient</a> 
     <a  class="btn" id="centerbar-elem" href="Controller/Logout.php" >Déconnexion</a>
     </div>
     </body>

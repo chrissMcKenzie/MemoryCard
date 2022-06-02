@@ -39,6 +39,12 @@
 
     </script>
 </body>
+<footer id="Footer">
+    <section class="container">
+      <div>Copyright © 2021-2022 JMS Corporation Tous Droits Réservés</div>
+      <div>Codeur, Développeur (c) 2021 OMRANI Sofiane</div>
+    </section>
+  </footer>
 </html>
 
 <style>
@@ -47,7 +53,17 @@
 body{
   background-color:#142b4e;
 }
+footer {
+    /* width:500px; */
+    margin: 0 auto;
+    margin-top: 20%;
+    padding: 3%;
+    width: 50%;
+    height: 12%;
+    text-align: center;
+    font-size: 32px;
 
+  }
 .spacetitle{
   display: block;
   margin: 20px;

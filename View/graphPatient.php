@@ -44,7 +44,17 @@ table {
     margin-top:35px;
     font-size:25px;
   }
+  footer {
+    /* width:500px; */
+    margin: 0 auto;
+    margin-top: 5%;
+    padding: 3%;
+    width: 50%;
+    height: 12%;
+    text-align: center;
+    font-size: 15px;
 
+  }
   .infos-container {
     padding: 15px 20px;
     width: 406px;
@@ -59,9 +69,7 @@ table {
   display:flex;
   margin-left:100px;
   margin-right:100px;
-
 }
-
 #ppimg{
   width: 150px;
   height: 160px;
@@ -83,7 +91,7 @@ table {
 .graphs{
   margin:50px;
 }
-}
+
 </style>
 <html>
   <head>
@@ -110,20 +118,6 @@ table {
 // Titre du graphique
           title: 'Evolution du patient',
           titleTextStyle: {color: 'white'},
-          series: {
-          // Gives each series an axis name that matches the Y-axis below.
-          0: {axis: 'Temps'},
-          1: {axis: 'Daylight'},
-        },
-     
-        axes: {
-          // Adds labels to each axis; they don't have to match the axis names.
-          y: {
-            Temps: {label: 'Temps (Celsius)'},
-            Daylight: {label: 'Daylight'}
-          }
-        },
-
           'width':1000,
           'height':500,
           backgroundColor: '#000',
@@ -133,8 +127,10 @@ table {
         var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
         chart.draw(data, options);
       }
-      
     </script>
+
+
+
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {'packages':['bar']});
@@ -181,21 +177,29 @@ table {
         <span class="title-fiche">Fiche Patient</span>
         <div class="cont-title"><img src="View/assets/pp.jpg" id="ppimg"></div>
       <div class="fiche-info">
-      <?php      
-        $bdd = DatabaseModel::connect(); //on se connecte à la base 
-        $sql = "SELECT * FROM patient where id_patient='$index'" ;
-        foreach ($bdd->query($sql) as $pat){
+      <?php
+          $managerPatient = new ManagePatient();
+          $patientList = $managerPatient->getPatientFromDB();
+          $patient2 = $managerPatient->getPatientFromId($index);
+
+          $id = $patient2->getIdPatient();
+          $name = $patient2->getNomPatient();
+          $firstName = $patient2->getPrenomPatient();
+          $date = $patient2->getDatePatient();
+          $patho = $patient2->getPathoPatient();
+          $telephone = $patient2->getTelephonePatient();
+          
             echo '<div class="input-detail">Nom:</div>';  
-            echo '<div class="input-title">'.htmlspecialchars($pat['nom_patient']).'</div>';  
+            echo '<div class="input-title">'.$name.'</div>';
             echo '<div class="input-detail">Prenom:</div>';  
-            echo ' <div class="input-title">'.htmlspecialchars($pat['prenom_patient']).'</div>';  
+            echo ' <div class="input-title">'.$firstName.'</div>';  
             echo '<div class="input-detail">Date de naissance:</div>';  
-            echo '<div class="input-title">'.htmlspecialchars($pat['datenaissance_patient']).'</div>';  
+            echo '<div class="input-title">'.$date.'</div>';  
             echo '<div class="input-detail">Pathologie:</div>';  
-            echo '<div class="input-title">'.htmlspecialchars($pat['pathologie_patient']).'</div>';
+            echo '<div class="input-title">'.$patho.'</div>';
             echo '<div class="input-detail">Numero de Telephone:</div>';  
-            echo '<div class="input-title">'.htmlspecialchars($pat['telephone_patient']).'</div>';    
-        }
+            echo '<div class="input-title">'.$telephone.'</div>';    
+        
       ?>
       </div>
     </div>
@@ -205,5 +209,5 @@ table {
       <div id="top_x_div" style="margin-left:180px;margin-bottom:50px;"></div>
     </div>
 </div>
-</body>
+
 </html>

@@ -26,24 +26,29 @@ $HOPITAL=isset($_POST['hop']) ? htmlspecialchars($_POST['hop']) : '';
     {
         $email_valide = true;
     }
+
     else
     {
-     echo'<script>alert("Email pas conforme");</script>';
+        echo'<script>alert("Email non conforme");</script>';
     }
 
-    if(($_POST['pwd1'])==($_POST['pwd2']))
+    if(!(preg_match('/^(?=.*\d)(?=.*[@#\-_$%^&+=§!\?])(?=.*[a-z])(?=.*[A-Z])[0-9A-Za-z@#\-_$%^&+=§!\?]{8,20}$/',$PWD1))){
+        echo'<script>alert("Le mot de passe doit contenir au moin une lettre minuscule, une lettre majuscule, un nombre et un charactere speciale");</script>';
+    }
+
+    if(($_POST['pwd1'])==($_POST['pwd2']) )
     {
         $PWD1 = hash('sha1',$PWD1);
         $mp_valide = true;
     }
 
     else{
-        echo'<script>alert("Les mot de passes doivent etre identique");</script>'; 
+        echo'<script>alert("Les mots de passes doivent etre identique");</script>'; 
     }
 
     if((!isset($v_valide))&&(isset($email_valide))&&(isset($mp_valide))){
     $managersoignant = new manageSoignant();
-    $managersoignant->enregistrementInBD($NOM,$PRENOM,$DATE,$PWD1,$POSTE,$EMAIL);
+    $managersoignant->inscriptionSoignant($NOM,$PRENOM,$DATE,$PWD1,$POSTE,$EMAIL);
     echo'<script>alert("Félicitation vous etes inscrit ! Veuillez vous connecter .");</script>';
     echo "<script type='text/javascript'>document.location.replace('index.php?page=1');</script>";
 
